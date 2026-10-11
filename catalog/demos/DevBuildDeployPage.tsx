@@ -55,16 +55,9 @@ Guidelines:
 
 ## Catalog deployment
 
-The catalog deploys to GitHub Pages from the \`gh-pages\` branch. The Vite \`base\` config matches the GitHub Pages URL path.
+The catalog is published to [admin-ui.f-90.co.uk](https://admin-ui.f-90.co.uk) by the \`pages\` workflow on every push to \`main\`. That workflow runs \`npm run build:catalog\` and deploys \`catalog-dist\`.
 
-The catalog uses \`HashRouter\` (hash-based routing via \`window.location.hash\`) rather than \`BrowserRouter\`. This avoids redirect loops on GitHub Pages, which does not support server-side routing for SPAs.
-
-To deploy:
-
-\`\`\`bash
-npm run build:catalog
-gh-pages -d catalog-dist
-\`\`\`
+The site is served from the domain root, so the Vite \`base\` stays \`/\`. Hash routing avoids redirect loops on GitHub Pages, which does not support server-side routes for single-page apps.
 `;
 
 export default function DevBuildDeployPage() {
