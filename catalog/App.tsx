@@ -326,7 +326,7 @@ export default function App() {
 
   return (
     <AppLayout topNav={topNav} sideNav={sideNav} sideNavWidth={360}>
-      <div style={{ padding: 'var(--admin-space-xl)' }}>
+      <div className={tab === 'home' ? undefined : styles.content}>
         {ActiveDemo && <ActiveDemo />}
       </div>
     </AppLayout>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { InlineSearch } from '@/primitives';
 import { PageHeading } from '@/layout';
 import { CopyButton } from '../../shared/CopyButton';
@@ -143,7 +143,7 @@ const SEMANTIC_GROUPS: TokenGroup[] = [
 // ── Hex extraction ───────────────────────────────────────────────────────────
 
 function rgbToHex(rgb: string): string {
-  const match = rgb.match(/rgba?\(\s*([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\s*\)/);
+  const match = rgb.match(/rgba?\(\s*([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\s*\)/i);
   if (!match) return rgb;
   const [, r, g, b, a] = match;
   const hex = [r, g, b].map((v) => Math.round(Number(v)).toString(16).padStart(2, '0')).join('');
@@ -153,25 +153,50 @@ function rgbToHex(rgb: string): string {
   return '#' + hex + alpha;
 }
 
-function useComputedDisplayValue(token: string) {
+function formatTokenValue(raw: string): string {
+  const value = raw.trim();
+  if (!value) return '';
+  if (/^rgba?\(/i.test(value)) return rgbToHex(value).toUpperCase();
+  if (value.startsWith('#')) return value.toUpperCase();
+  return value;
+}
+
+function readDocumentThemeKey() {
+  const root = document.documentElement;
+  return `${root.getAttribute('data-theme') ?? ''}|${root.getAttribute('data-admin-theme') ?? ''}`;
+}
+
+function useDocumentThemeKey() {
+  const [themeKey, setThemeKey] = useState(readDocumentThemeKey);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const sync = () => setThemeKey(readDocumentThemeKey());
+    const observer = new MutationObserver(sync);
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'data-admin-theme'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return themeKey;
+}
+
+function useComputedDisplayValue(token: string, themeKey: string) {
   const ref = React.useRef<HTMLButtonElement>(null);
   const [value, setValue] = React.useState('');
   React.useEffect(() => {
-    if (ref.current) {
-      const computed = getComputedStyle(ref.current);
-      const image = computed.backgroundImage;
-      setValue(image && image !== 'none'
-        ? image
-        : rgbToHex(computed.backgroundColor).toUpperCase());
-    }
-  }, []);
+    if (!ref.current) return;
+    setValue(formatTokenValue(getComputedStyle(ref.current).getPropertyValue(token)));
+  }, [token, themeKey]);
   return { ref, value };
 }
 
 // ── Token row ────────────────────────────────────────────────────────────────
 
-function TokenRow({ token, desc }: TokenDef) {
-  const { ref, value } = useComputedDisplayValue(token);
+function TokenRow({ token, desc, themeKey }: TokenDef & { themeKey: string }) {
+  const { ref, value } = useComputedDisplayValue(token, themeKey);
   const [copied, setCopied] = useState(false);
 
   const copy = () => {
@@ -199,7 +224,7 @@ function TokenRow({ token, desc }: TokenDef) {
       <code className={styles.rowToken}>{token}</code>
       <span className={styles.rowDesc}>{desc}</span>
       <div className={styles.rowHex}>
-        <code className={styles.rowHexValue}>{value}</code>
+        <code className={styles.rowHexValue} title={value}>{value}</code>
         <CopyButton value={value} />
       </div>
     </div>
@@ -241,6 +266,7 @@ function RampSwatch({ token, step }: { token: string; step: string }) {
 
 export default function ColorsPage() {
   const [search, setSearch] = useState('');
+  const themeKey = useDocumentThemeKey();
 
   const filteredGroups = useMemo(() => {
     if (!search) return SEMANTIC_GROUPS;
@@ -280,7 +306,7 @@ export default function ColorsPage() {
                   <div className={styles.groupHeading}>{group.label}</div>
                   <div className={styles.groupRows}>
                     {group.tokens.map(({ token, desc }) => (
-                      <TokenRow key={token} token={token} desc={desc} />
+                      <TokenRow key={token} token={token} desc={desc} themeKey={themeKey} />
                     ))}
                   </div>
                 </div>

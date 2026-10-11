@@ -33,8 +33,8 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   return (
     <div className={`${styles.wrapper} ${className}`}>
       <div className={styles.row}>
-        <div className={styles.content}>
-          <Tag className={`${styles.title} ${styles[resolved]}`}>{title}</Tag>
+        <div className={`${styles.content} ${styles[resolved]}`}>
+          <Tag className={styles.title}>{title}</Tag>
           {description && (
             <p className={styles.description}>{description}</p>
           )}

@@ -2,6 +2,8 @@
 
 React component library providing design tokens, primitives, overlays, layout, and navigation components for admin interfaces.
 
+The catalog — a tour of the components, advanced editors, and themes — is at [admin-ui.f-90.co.uk](https://admin-ui.f-90.co.uk).
+
 ## Installation
 
 ```bash

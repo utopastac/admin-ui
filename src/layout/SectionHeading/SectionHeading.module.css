@@ -18,22 +18,42 @@
   color: var(--admin-text-primary);
 }
 
+.description {
+  margin: 0;
+  color: var(--admin-text-secondary);
+}
+
 .lg {
-  @mixin type-heading-m;
+  & .title {
+    @mixin type-heading-m;
+  }
+
+  & .description {
+    @mixin type-body-l;
+    margin-top: var(--admin-space-m);
+  }
 }
 
 .md {
-  @mixin type-heading-s;
+  & .title {
+    @mixin type-heading-s;
+  }
+
+  & .description {
+    @mixin type-body-s;
+    margin-top: var(--admin-space-s);
+  }
 }
 
 .sm {
-  @mixin type-heading-xs;
-}
+  & .title {
+    @mixin type-heading-xs;
+  }
 
-.description {
-  @mixin type-body-s;
-  margin: var(--admin-space-xs) 0 0;
-  color: var(--admin-text-secondary);
+  & .description {
+    @mixin type-body-xs;
+    margin-top: var(--admin-space-xs);
+  }
 }
 
 .actions {

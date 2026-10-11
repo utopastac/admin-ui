@@ -54,10 +54,10 @@ describe('SectionHeading', () => {
     expect(container.firstElementChild).toHaveClass('custom-section');
   });
 
-  it('applies the size class to the heading element', () => {
+  it('applies the size class to the content wrapper', () => {
     render(<SectionHeading title="Large" size="lg" />);
     const heading = screen.getByRole('heading', { level: 2 });
-    expect(heading.className).toContain('lg');
+    expect(heading.parentElement?.className).toContain('lg');
   });
 
   it('renders with all props provided', () => {

@@ -1,3 +1,7 @@
+.content {
+  padding: var(--admin-space-xl);
+}
+
 .themeSwatch {
   display: grid;
   grid-template-columns: 1fr 1fr;

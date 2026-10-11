@@ -20169,15 +20169,15 @@ const W2 = "_footer_fnr00_1", G2 = "_border_fnr00_11", V2 = "_alignLeft_fnr00_15
     n && /* @__PURE__ */ h("p", { className: Er.description, children: n })
   ] }),
   t && /* @__PURE__ */ h("div", { className: Er.actions, children: t })
-] }), nN = "_wrapper_1a0q9_1", rN = "_row_1a0q9_5", iN = "_content_1a0q9_12", oN = "_title_1a0q9_16", sN = "_lg_1a0q9_21", aN = "_md_1a0q9_25", lN = "_sm_1a0q9_29", cN = "_description_1a0q9_33", uN = "_actions_1a0q9_39", zn = {
+] }), nN = "_wrapper_1itot_1", rN = "_row_1itot_5", iN = "_content_1itot_12", oN = "_title_1itot_16", sN = "_description_1itot_21", aN = "_lg_1itot_26", lN = "_md_1itot_37", cN = "_sm_1itot_48", uN = "_actions_1itot_59", zn = {
   wrapper: nN,
   row: rN,
   content: iN,
   title: oN,
-  lg: sN,
-  md: aN,
-  sm: lN,
-  description: cN,
+  description: sN,
+  lg: aN,
+  md: lN,
+  sm: cN,
   actions: uN
 }, dN = {
   lg: "h2",
@@ -20192,8 +20192,8 @@ const W2 = "_footer_fnr00_1", G2 = "_border_fnr00_11", V2 = "_alignLeft_fnr00_15
 }) => {
   const o = an(t, "md"), s = dN[o];
   return /* @__PURE__ */ h("div", { className: `${zn.wrapper} ${i}`, children: /* @__PURE__ */ M("div", { className: zn.row, children: [
-    /* @__PURE__ */ M("div", { className: zn.content, children: [
-      /* @__PURE__ */ h(s, { className: `${zn.title} ${zn[o]}`, children: e }),
+    /* @__PURE__ */ M("div", { className: `${zn.content} ${zn[o]}`, children: [
+      /* @__PURE__ */ h(s, { className: zn.title, children: e }),
       n && /* @__PURE__ */ h("p", { className: zn.description, children: n })
     ] }),
     r && /* @__PURE__ */ h("div", { className: zn.actions, children: r })
