@@ -1,0 +1,99 @@
+.inputRow {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex: 1;
+}
+
+.triggerInput {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: 0 var(--admin-space-s);
+  height: var(--admin-input-height-sm);
+  background: var(--admin-input-background);
+  border: 1px solid var(--admin-input-border);
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-border-subtle);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}
+
+.triggerValue {
+  flex: 1;
+  @mixin text-truncate;
+  color: var(--admin-text-primary);
+  @mixin type-body-ui;
+}
+
+.dropdown {
+  @mixin popover-panel;
+  padding: var(--admin-space-s);
+}
+
+.panel {
+  width: 280px;
+  padding: var(--admin-space-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xs);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+}
+
+.rowFill {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Makes a FieldLabel (left-position) and its input child both fill available width */
+.fillInput {
+  flex: 1;
+  min-width: 0;
+
+  & > :last-child {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.bezierSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xs);
+  padding-top: var(--admin-space-xs);
+}
+
+.bezierReadout {
+  display: flex;
+  align-items: center;
+  margin-top: var(--admin-space-xs);
+  min-width: 0;
+}
+
+/* Flex row that spreads the 4 bezier CompactInputs equally */
+.bezierInputs {
+  display: flex;
+  gap: var(--admin-space-xs);
+  flex: 1;
+  min-width: 0;
+
+  & > * {
+    flex: 1;
+    min-width: 0;
+  }
+}

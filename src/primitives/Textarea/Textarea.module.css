@@ -1,0 +1,19 @@
+.textarea {
+  @mixin input-base;
+  @mixin type-body-s;
+
+  width: 100%;
+  padding: var(--admin-space-s) var(--admin-input-padding-x);
+  border-radius: var(--admin-input-radius);
+  border: 1px solid var(--admin-input-border);
+  display: block;
+  box-sizing: border-box;
+
+  &:disabled {
+    @mixin disabled-state;
+  }
+
+  &.error {
+    border-color: var(--admin-surface-error-primary);
+  }
+}

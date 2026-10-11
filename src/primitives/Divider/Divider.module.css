@@ -1,0 +1,31 @@
+.divider {
+  /* Size variants */
+  &.sm {
+    --divider-size: 1px;
+  }
+
+  &.md {
+    --divider-size: 2px;
+  }
+
+  &.lg {
+    --divider-size: 4px;
+  }
+
+  /* Orientation variants */
+  &.horizontal {
+    border: none;
+    border-top: var(--divider-size) solid var(--admin-border-subtle);
+    width: 100%;
+    margin: 0;
+  }
+
+  &.vertical {
+    display: inline-block;
+    border: none;
+    border-left: var(--divider-size) solid var(--admin-border-subtle);
+    height: 100%;
+    align-self: stretch;
+    margin: 0;
+  }
+}

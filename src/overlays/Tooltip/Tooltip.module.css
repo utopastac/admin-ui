@@ -1,0 +1,47 @@
+.wrapper {
+  display: inline-flex;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  white-space: nowrap;
+  padding: var(--admin-space-xs) var(--admin-space-s);
+  background: var(--admin-surface-inverted-primary);
+  color: var(--admin-text-inverted-primary);
+  border-radius: var(--admin-interactive-radius);
+  pointer-events: none;
+  @mixin type-body-xs;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--admin-surface-inverted-primary);
+  }
+
+  &.top::after {
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &.bottom::after {
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &.left::after {
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  &.right::after {
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}

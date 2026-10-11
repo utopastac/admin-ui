@@ -1,0 +1,27 @@
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  position: relative;
+}
+
+.label {
+  @mixin type-body-s-strong;
+  color: var(--admin-text-primary);
+}
+
+.errorText {
+  @mixin type-body-xs;
+  color: var(--admin-text-warning);
+  margin: 0;
+}
+
+.helperText {
+  @mixin type-body-xs;
+  color: var(--admin-text-subtle);
+  margin: 0;
+}
+
+.disabled {
+  @mixin disabled-state;
+}

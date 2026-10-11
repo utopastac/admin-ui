@@ -1,0 +1,196 @@
+/* Trigger (popover mode) */
+
+.inputRow {
+  position: relative;
+}
+
+.triggerInput {
+  @mixin input-trigger;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  width: 100%;
+  height: var(--admin-input-height-sm);
+  padding: 0 var(--admin-space-s);
+  border-radius: var(--admin-radius-sm);
+  text-align: left;
+}
+
+.triggerSwatch {
+  flex-shrink: 0;
+  width: 23px;
+  height: 23px;
+  margin-left: -5px;
+  border-radius: var(--admin-radius-xs);
+}
+
+.triggerValue {
+  @mixin type-body-ui;
+  flex: 1;
+  min-width: 0;
+  @mixin text-truncate;
+  color: var(--admin-text-subtle);
+}
+
+.dropdown {
+  @mixin popover-panel;
+  padding: var(--admin-space-l);
+  width: 280px;
+}
+
+/* Panel */
+
+.gradientPicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+}
+
+/* Type / angle row */
+
+.typeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  justify-content: space-between;
+}
+
+.typeRowActions {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  margin-left: auto;
+}
+
+.typeSelect {
+  flex: 0 0 auto;
+}
+
+.angleInput {
+  flex: 0 0 72px;
+}
+
+.iconButton {
+  @mixin icon-button;
+  flex-shrink: 0;
+  width: var(--admin-icon-button-size-sm);
+  height: var(--admin-icon-button-size-sm);
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text-subtle);
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+    color: var(--admin-text-secondary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+
+  &:disabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: not-allowed;
+  }
+}
+
+/* Gradient bar */
+
+.barWrapper {
+  /* Vertical padding gives room for handles that overflow the bar edges */
+  padding: 10px 0;
+}
+
+.bar {
+  position: relative;
+  height: 16px;
+  border-radius: var(--admin-radius-pill);
+  cursor: crosshair;
+}
+
+.stopHandle {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 14px;
+  height: 20px;
+  border-radius: var(--admin-radius-sm);
+  border: 2px solid var(--admin-white-100);
+  box-shadow: var(--admin-shadow-handle);
+  cursor: grab;
+  padding: 0;
+  transition: box-shadow 0.1s;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.stopHandleSelected {
+    border-color: var(--admin-input-border-focus);
+    box-shadow: 0 0 0 1px var(--admin-input-border-focus);
+  }
+}
+
+/* Stops list */
+
+.stopsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stopsLabel {
+  @mixin type-body-s;
+  @mixin weight-medium;
+  color: var(--admin-text-primary);
+}
+
+.stopsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+}
+
+.stopEntry {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  min-width: 0;
+}
+
+.stopRow {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs);
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  transition: border-color 0.1s;
+
+  &:hover {
+    border-color: var(--admin-border-subtle);
+  }
+
+  &.stopRowSelected {
+    border-color: var(--admin-input-border-focus);
+  }
+}
+
+.positionInput {
+  flex: 0 0 56px;
+}
+
+.colorPickerWrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow: hidden;
+
+  & > * {
+    flex: 1;
+    min-width: 0;
+  }
+}

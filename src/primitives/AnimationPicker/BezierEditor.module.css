@@ -1,0 +1,9 @@
+.canvas {
+  display: block;
+  width: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  background: var(--admin-surface-info-subtle);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-sm);
+}

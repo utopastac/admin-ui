@@ -1,0 +1,384 @@
+# admin-ui
+
+React component library providing design tokens, primitives, overlays, navigation, and layout components for admin interfaces.
+
+## Install & Import
+
+```ts
+// Stylesheet (single CSS bundle with all tokens and component styles)
+import 'admin-ui/styles';
+
+// Components
+import { Button, Card, Text, SideNav, Modal } from 'admin-ui';
+```
+
+## Dark Mode
+
+Set `data-theme="dark"` on any ancestor element. All tokens swap automatically.
+
+```html
+<div data-theme="dark">...</div>
+```
+
+## CSS Rules
+
+- CSS Modules only — no inline styles, no global class names.
+- Use `--admin-*` semantic tokens in component styles.
+- Never reference primitive color tokens directly.
+
+---
+
+## Components
+
+### Primitives
+
+**Avatar**
+```tsx
+<Avatar name="Jane Doe" src="/photo.jpg" size="md" />
+```
+Props: `name: string`, `src?: string`, `size?: 'sm' | 'md' | 'lg'`, `className?: string`
+
+**Badge**
+```tsx
+<Badge variant="success" size="md">Active</Badge>
+```
+Props: `variant?: 'default' | 'success' | 'warning' | 'info'`, `size?: 'sm' | 'md'`, `children: ReactNode`, `className?: string`
+
+**Banner**
+```tsx
+<Banner variant="warning" message="Disk usage at 90%" title="Warning" dismissible />
+```
+Props: `variant: 'info' | 'success' | 'warning' | 'error'`, `message: string`, `title?: string`, `icon?: LucideIcon`, `dismissible?: boolean`, `onDismiss?: () => void`, `layout?: 'inline' | 'full'`, `className?: string`
+
+**Blockquote**
+```tsx
+<Blockquote cite="Author Name">Quoted text here.</Blockquote>
+```
+Props: `children: ReactNode`, `cite?: string`, `className?: string`
+
+**Breadcrumb**
+```tsx
+<Breadcrumb items={[{ label: 'Home', onClick: goHome }, { label: 'Settings' }]} />
+```
+Props: `items: BreadcrumbItem[]`, `separator?: ReactNode` (default `'/'`), `className?: string`
+BreadcrumbItem: `{ label: string, href?: string, onClick?: () => void }`
+
+**BulletList**
+```tsx
+<BulletList items={['First item', 'Second item']} size="md" />
+```
+Props: `items: string[]`, `size?: 'sm' | 'md'`, `className?: string`
+
+**Button**
+```tsx
+<Button variant="primary" size="md" onClick={handleClick}>Save</Button>
+```
+Props: `variant?: 'primary' | 'secondary' | 'ghost'`, `size?: 'sm' | 'md' | 'lg'`, `disabled?: boolean`, `children: ReactNode`, `onClick?: () => void`, `type?: 'button' | 'submit' | 'reset'`, `className?: string`, `aria-label?: string`
+
+**ButtonGroup**
+```tsx
+<ButtonGroup align="end">
+  <Button variant="ghost">Cancel</Button>
+  <Button>Save</Button>
+</ButtonGroup>
+```
+Props: `children: ReactNode`, `align?: 'start' | 'center' | 'end'`, `className?: string`
+
+**Card**
+```tsx
+<Card hoverable active={isSelected} onClick={handleSelect}>Content</Card>
+```
+Props: `children: ReactNode`, `active?: boolean`, `hoverable?: boolean`, `onClick?: () => void`, `className?: string`
+
+**Carousel**
+```tsx
+<Carousel slidesPerView={3} gap={16} loop>{slides}</Carousel>
+```
+Props: `children: ReactNode`, `slidesPerView?: number`, `gap?: number`, `loop?: boolean`, `className?: string`
+
+**Checkbox**
+```tsx
+<Checkbox checked={isChecked} onChange={setChecked} label="Accept terms" />
+```
+Props: `checked: boolean`, `onChange: (checked: boolean) => void`, `label?: string`, `disabled?: boolean`, `className?: string`, `id?: string`
+
+**CodeBlock**
+```tsx
+<CodeBlock language="typescript" showLineNumbers>{codeString}</CodeBlock>
+```
+Props: `children: string`, `language?: string`, `showLineNumbers?: boolean`, `className?: string`
+
+**Input**
+```tsx
+<Input value={name} onChange={setName} label="Name" error={nameError} />
+```
+Props: `value: string`, `onChange: (value: string) => void`, `type?: string`, `label?: string`, `error?: string`, `helperText?: string`, `min?: number`, `max?: number`, `id?: string`
+
+**NumberedList**
+```tsx
+<NumberedList items={['Step one', 'Step two']} start={1} />
+```
+Props: `items: string[]`, `size?: 'sm' | 'md'`, `start?: number`, `className?: string`
+
+**Select**
+```tsx
+<Select options={options} value={selected} onChange={setSelected} placeholder="Choose..." />
+```
+Props: `options: SelectOption[]`, `value?: string`, `onChange: (value: string) => void`, `placeholder?: string`, `disabled?: boolean`, `size?: 'sm' | 'md'`, `className?: string`
+SelectOption: `{ value: string, label: string, disabled?: boolean }`
+
+**SelectionList**
+```tsx
+<SelectionList items={items} value={selected} onChange={setSelected} columns={2} />
+```
+Props: `items: SelectionListItem[]`, `value?: string`, `onChange?: (value: string) => void`, `columns?: 1 | 2 | 3`, `className?: string`, `aria-label?: string`
+SelectionListItem: `{ value: string, label: string, description?: string }`
+
+**Table**
+```tsx
+<Table columns={columns} data={rows} rowKey="id" striped compact />
+```
+Props: `columns: TableColumn[]`, `data: T[]`, `rowKey: string | ((row: T) => string)`, `striped?: boolean`, `compact?: boolean`, `className?: string`
+TableColumn: `{ key: string, header: string, width?: string, render?: (value, row) => ReactNode }`
+
+**Tabs**
+```tsx
+<Tabs tabs={[{ id: 'a', label: 'Tab A' }]} activeId="a" onChange={setTab} />
+```
+Props: `tabs: TabItem[]`, `activeId: string`, `onChange: (id: string) => void`, `size?: 'sm' | 'md'`, `className?: string`
+TabItem: `{ id: string, label: string }`
+
+**Text**
+```tsx
+<Text variant="heading-m" as="h2" color="primary">Title</Text>
+```
+Props: `variant: TextVariant`, `as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'label' | 'div' | 'li'`, `color?: TextColor`, `className?: string`, `children: ReactNode`
+TextVariant: `'heading-xl' | 'heading-l' | 'heading-m' | 'heading-s' | 'heading-xs' | 'overline' | 'body-m' | 'body-s' | 'body-xs' | 'body-m-strong' | 'body-s-strong' | 'body-xs-strong'`
+TextColor: `'primary' | 'secondary' | 'subtle' | 'highlight' | 'warning' | 'inverted-primary'`
+
+**Toggle**
+```tsx
+<Toggle checked={isOn} onChange={setOn} label="Enable feature" />
+```
+Props: `checked: boolean`, `onChange: (checked: boolean) => void`, `label?: string`, `disabled?: boolean`, `size?: 'sm' | 'md'`, `className?: string`, `id?: string`
+
+**ToolbarButton**
+```tsx
+import { Settings } from 'lucide-react';
+<ToolbarButton icon={Settings} onClick={openSettings} aria-label="Settings" />
+```
+Props: `icon: LucideIcon`, `onClick?: () => void`, `size?: 'sm' | 'md'`, `pressed?: boolean`, `aria-label?: string`, `title?: string`, `className?: string`
+
+### Overlays
+
+**AlertDialog**
+```tsx
+<AlertDialog
+  isOpen={showConfirm}
+  title="Delete item?"
+  description="This action cannot be undone."
+  variant="destructive"
+  onConfirm={handleDelete}
+  onCancel={() => setShowConfirm(false)}
+/>
+```
+Props: `isOpen: boolean`, `onConfirm: () => void`, `onCancel: () => void`, `title: string`, `description: string`, `confirmLabel?: string`, `cancelLabel?: string`, `variant?: 'default' | 'destructive'`
+
+**ContextMenu**
+```tsx
+<ContextMenu items={[{ label: 'Edit', onClick: edit }, { label: 'Delete', variant: 'destructive', onClick: remove }]}>
+  <div>Right-click me</div>
+</ContextMenu>
+```
+Props: `children: ReactNode`, `items: ContextMenuItem[]`, `className?: string`
+ContextMenuItem: `{ label: string, onClick?: () => void, shortcut?: string, variant?: 'default' | 'destructive', disabled?: boolean, separator?: boolean }`
+
+**Modal**
+```tsx
+<Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Edit Profile" footer={<Button>Save</Button>}>
+  <p>Modal content here</p>
+</Modal>
+```
+Props: `isOpen: boolean`, `onClose: () => void`, `children: ReactNode`, `title?: string`, `footer?: ReactNode`, `headerBorder?: boolean`, `footerBorder?: boolean`, `maxWidth?: 'sm' | 'md' | 'lg'`
+
+**SidePanel**
+```tsx
+<SidePanel isOpen={showPanel} onClose={closePanel} title="Details" width="md">
+  <p>Panel content</p>
+</SidePanel>
+```
+Props: `isOpen: boolean`, `onClose: () => void`, `children: ReactNode`, `title?: string`, `footer?: ReactNode`, `width?: 'sm' | 'md' | 'lg'`
+
+### Navigation
+
+**SideNav**
+```tsx
+<SideNav
+  sections={[{ label: 'Main', items: [{ id: 'home', label: 'Home' }] }]}
+  activeId="home"
+  onSelect={setActiveId}
+  searchable
+/>
+```
+Props: `sections: SideNavSectionData[]`, `activeId?: string`, `onSelect: (id: string) => void`, `searchable?: boolean`, `searchPlaceholder?: string`, `className?: string`
+SideNavSectionData: `{ label?: string, items: SideNavItemData[] }`
+SideNavItemData: `{ id: string, label: string }`
+
+**TopNav**
+```tsx
+<TopNav
+  brand={<Logo />}
+  tabs={[{ id: 'flows', label: 'Flows' }]}
+  activeTabId="flows"
+  onTabSelect={setActiveTab}
+  actions={<ToolbarButton icon={Settings} />}
+/>
+```
+Props: `brand?: ReactNode`, `onBrandClick?: () => void`, `tabs: TopNavTabData[]`, `activeTabId?: string`, `onTabSelect?: (id: string) => void`, `actions?: ReactNode`, `className?: string`
+TopNavTabData: `{ id: string, label: string }`
+
+**Pagination**
+```tsx
+<Pagination currentPage={3} totalPages={10} onPageChange={setPage} variant="numbered" />
+```
+Props: `currentPage: number`, `totalPages: number`, `onPageChange: (page: number) => void`, `variant?: 'buttons' | 'numbered' | 'dots'`, `className?: string`
+
+### Layout
+
+**DocPage**
+```tsx
+<DocPage content={markdownString} />
+```
+Props: `content: string`, `className?: string`
+
+**PageHeading**
+```tsx
+<PageHeading title="Dashboard" description="Overview of all systems" actions={<Button>Export</Button>} />
+```
+Props: `title: string`, `description?: string`, `actions?: ReactNode`, `className?: string`
+
+**SectionHeading**
+```tsx
+<SectionHeading title="Configuration" size="md" actions={<Button size="sm">Edit</Button>} />
+```
+Props: `title: string`, `description?: string`, `size?: 'lg' | 'md' | 'sm'`, `actions?: ReactNode`, `className?: string`
+
+**PageFooter**
+```tsx
+<PageFooter align="right" border>
+  <ButtonGroup><Button variant="ghost">Cancel</Button><Button>Save</Button></ButtonGroup>
+</PageFooter>
+```
+Props: `children: ReactNode`, `align?: 'left' | 'center' | 'right'`, `border?: boolean`, `className?: string`
+
+---
+
+## Semantic Design Tokens
+
+Use these `--admin-*` CSS custom properties in component styles. Never reference primitive tokens directly.
+
+### Surface
+| Token | Purpose |
+|---|---|
+| `--admin-surface-primary` | Main content surface |
+| `--admin-surface-secondary` | Secondary surface |
+| `--admin-surface-mid` | Mid-tone surface |
+| `--admin-surface-subtle` | Subtle background |
+| `--admin-surface-extra-subtle` | Extra-subtle background |
+| `--admin-surface-action` | Action/CTA surface |
+| `--admin-surface-highlight` | Highlight/accent surface |
+| `--admin-surface-inverted-primary` | Inverted primary |
+| `--admin-surface-inverted-subtle` | Inverted subtle |
+| `--admin-surface-inverted-extra-subtle` | Inverted extra-subtle |
+
+### Text
+| Token | Purpose |
+|---|---|
+| `--admin-text-primary` | Default text |
+| `--admin-text-secondary` | Secondary text |
+| `--admin-text-subtle` | Subtle/muted text |
+| `--admin-text-highlight` | Link/accent text |
+| `--admin-text-warning` | Warning text |
+| `--admin-text-annotation` | Annotation text |
+| `--admin-text-success` | Success text |
+| `--admin-text-error` | Error text |
+| `--admin-text-info` | Informational text |
+| `--admin-text-inverted-primary` | Inverted primary text |
+| `--admin-text-inverted-secondary` | Inverted secondary text |
+| `--admin-text-inverted-subtle` | Inverted subtle text |
+
+### Background
+| Token | Purpose |
+|---|---|
+| `--admin-background-primary` | Page background |
+| `--admin-background-inverted-primary` | Inverted page background |
+| `--admin-background-mid` | Mid-tone background |
+| `--admin-background-inverted-secondary` | Inverted secondary |
+| `--admin-background-subtle` | Subtle background |
+| `--admin-background-extra-subtle` | Extra-subtle background |
+| `--admin-background-highlight` | Highlight background |
+| `--admin-background-annotation` | Annotation background |
+| `--admin-background-annotation-subtle` | Subtle annotation background |
+
+### Border
+| Token | Purpose |
+|---|---|
+| `--admin-border-prominent` | Prominent borders |
+| `--admin-border-subtle` | Subtle borders |
+| `--admin-border-inverted-prominent` | Inverted prominent |
+| `--admin-border-inverted-subtle` | Inverted subtle |
+
+### Status Surfaces
+| Token | Purpose |
+|---|---|
+| `--admin-surface-warning-primary` | Warning primary |
+| `--admin-surface-warning-secondary` | Warning secondary |
+| `--admin-surface-warning-subtle` | Warning subtle |
+| `--admin-surface-success-primary` | Success primary |
+| `--admin-surface-success-secondary` | Success secondary |
+| `--admin-surface-success-subtle` | Success subtle |
+| `--admin-surface-error-primary` | Error primary |
+| `--admin-surface-error-secondary` | Error secondary |
+| `--admin-surface-error-subtle` | Error subtle |
+| `--admin-surface-info-primary` | Info primary |
+| `--admin-surface-info-secondary` | Info secondary |
+| `--admin-surface-info-subtle` | Info subtle |
+
+### Interactive & Elevation
+| Token | Purpose |
+|---|---|
+| `--admin-interactive-subtle` | Subtle interactive background |
+| `--admin-interactive-focus` | Focus state background |
+| `--admin-overlay` | Modal/overlay backdrop |
+| `--admin-elevate-1` | Hover state overlay |
+| `--admin-elevate-2` | Active state overlay |
+
+### Spacing
+| Token | Value |
+|---|---|
+| `--admin-space-xxl` | 4rem (64px) |
+| `--admin-space-xl` | 2rem (32px) |
+| `--admin-space-l` | 1.25rem (20px) |
+| `--admin-space-m` | 1rem (16px) |
+| `--admin-space-s` | 0.5rem (8px) |
+| `--admin-space-xs` | 0.25rem (4px) |
+
+### Typography
+| Token | Value |
+|---|---|
+| `--admin-font-size-4xl` | 2.25rem (36px) |
+| `--admin-font-size-3xl` | 1.875rem (30px) |
+| `--admin-font-size-2xl` | 1.5rem (24px) |
+| `--admin-font-size-xl` | 1.25rem (20px) |
+| `--admin-font-size-l` | 1rem (16px) |
+| `--admin-font-size-m` | 0.875rem (14px) |
+| `--admin-font-size-s` | 0.8rem (12.8px) |
+| `--admin-font-size-xs` | 0.75rem (12px) |
+
+### Radius
+| Token | Value |
+|---|---|
+| `--admin-radius-sm` | radius - 4px |
+| `--admin-radius-md` | radius - 2px |
+| `--admin-radius-lg` | 0.75rem (12px) |
+| `--admin-radius-xl` | radius + 4px |

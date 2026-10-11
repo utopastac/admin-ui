@@ -1,0 +1,81 @@
+/* ── Heading variants ── */
+
+.headingXl {
+  @mixin type-heading-xl;
+}
+
+.headingL {
+  @mixin type-heading-l;
+}
+
+.headingM {
+  @mixin type-heading-m;
+}
+
+.headingS {
+  @mixin type-heading-s;
+}
+
+.headingXs {
+  @mixin type-heading-xs;
+}
+
+/* ── Overline ── */
+
+.overline {
+  @mixin type-overline;
+}
+
+/* ── Body variants ── */
+
+.bodyM {
+  @mixin type-body-m;
+}
+
+.bodyS {
+  @mixin type-body-s;
+}
+
+.bodyXs {
+  @mixin type-body-xs;
+}
+
+/* ── Body strong variants ── */
+
+.bodyMStrong {
+  @mixin type-body-m-strong;
+}
+
+.bodySStrong {
+  @mixin type-body-s-strong;
+}
+
+.bodyXsStrong {
+  @mixin type-body-xs-strong;
+}
+
+/* ── Color variants ── */
+
+.colorPrimary {
+  color: var(--admin-text-primary);
+}
+
+.colorSecondary {
+  color: var(--admin-text-secondary);
+}
+
+.colorSubtle {
+  color: var(--admin-text-subtle);
+}
+
+.colorHighlight {
+  color: var(--admin-text-highlight);
+}
+
+.colorWarning {
+  color: var(--admin-text-warning);
+}
+
+.colorInvertedPrimary {
+  color: var(--admin-text-inverted-primary);
+}

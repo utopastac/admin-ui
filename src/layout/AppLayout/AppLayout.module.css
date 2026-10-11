@@ -1,0 +1,38 @@
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--admin-page-background);
+}
+
+.topNav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+}
+
+.sideNav {
+  position: sticky;
+  top: var(--admin-top-nav-height, 48px);
+  height: calc(100vh - var(--admin-top-nav-height, 48px));
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.panel {
+  position: sticky;
+  top: var(--admin-top-nav-height, 48px);
+  height: calc(100vh - var(--admin-top-nav-height, 48px));
+  flex-shrink: 0;
+}

@@ -1,0 +1,103 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xl);
+}
+
+.scaleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-m);
+}
+
+.weightList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+}
+
+.spacingList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--admin-space-l);
+}
+
+.sampleText {
+  color: var(--admin-text-primary);
+  min-width: 200px;
+}
+
+.scaleText {
+  font-weight: var(--admin-font-weight-medium);
+}
+
+.metaCode {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+  white-space: nowrap;
+}
+
+.metaCodeWrap {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+}
+
+/* ── Mixin rows ── */
+
+.mixinList {
+  display: flex;
+  flex-direction: column;
+}
+
+.mixinRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-l);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.mixinMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  flex-shrink: 0;
+}
+
+.mixinName {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+}
+
+/* Heading mixins */
+.headingXl  { @mixin type-heading-xl;  color: var(--admin-text-primary); }
+.headingL   { @mixin type-heading-l;   color: var(--admin-text-primary); }
+.headingM   { @mixin type-heading-m;   color: var(--admin-text-primary); }
+.headingS   { @mixin type-heading-s;   color: var(--admin-text-primary); }
+.headingXs  { @mixin type-heading-xs;  color: var(--admin-text-primary); }
+
+/* Body mixins */
+.bodyL        { @mixin type-body-l;         color: var(--admin-text-primary); }
+.bodyM        { @mixin type-body-m;         color: var(--admin-text-primary); }
+.bodyS        { @mixin type-body-s;         color: var(--admin-text-primary); }
+.bodyXs       { @mixin type-body-xs;        color: var(--admin-text-primary); }
+.bodyUi       { @mixin type-body-ui;        color: var(--admin-text-primary); }
+.bodyMStrong  { @mixin type-body-m-strong;  color: var(--admin-text-primary); }
+.bodySStrong  { @mixin type-body-s-strong;  color: var(--admin-text-primary); }
+.bodyXsStrong { @mixin type-body-xs-strong; color: var(--admin-text-primary); }
+.overline     { @mixin type-overline;       color: var(--admin-text-primary); }
+
+/* Mono mixins */
+.monoS  { @mixin type-mono-s;  color: var(--admin-text-primary); }
+.monoXs { @mixin type-mono-xs; color: var(--admin-text-primary); }

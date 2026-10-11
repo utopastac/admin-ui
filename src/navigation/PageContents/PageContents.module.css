@@ -1,0 +1,68 @@
+.nav {
+  /* No fixed width — consumer controls sizing */
+}
+
+.label {
+  @mixin type-body-xs;
+  @mixin weight-medium;
+  color: var(--admin-text-subtle);
+  margin: 0 0 var(--admin-space-s) 0;
+  letter-spacing: 0.01em;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+}
+
+.childList {
+  list-style: none;
+  margin: var(--admin-space-xxs) 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  @mixin type-body-s;
+  color: var(--admin-text-secondary);
+  text-decoration: none;
+  padding: var(--admin-space-xxs) var(--admin-space-xs);
+  border-radius: var(--admin-interactive-radius);
+  border-left: 2px solid transparent;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  display: block;
+
+  &:hover {
+    color: var(--admin-text-primary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+
+  &.active {
+    color: var(--admin-nav-selected-text);
+    background-color: var(--admin-nav-selected);
+  }
+}
+
+.childLink {
+  padding-left: calc(var(--admin-space-xs) + var(--admin-space-m));
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

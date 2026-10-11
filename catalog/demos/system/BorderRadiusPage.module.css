@@ -1,0 +1,13 @@
+.swatch {
+  width: 48px;
+  height: 48px;
+  background: var(--admin-surface-highlight);
+  flex-shrink: 0;
+}
+
+.semanticHeading {
+  @mixin type-heading-xs;
+  color: var(--admin-text-primary);
+  margin-top: var(--admin-space-l);
+  margin-bottom: var(--admin-space-s);
+}

@@ -1,0 +1,119 @@
+.control {
+  display: flex;
+  background: var(--admin-surface-extra-subtle);
+  border-radius: var(--admin-radius);
+  padding: 3px;
+
+  &.disabled {
+    @mixin disabled-state;
+  }
+
+  &.md {
+    height: calc(var(--admin-input-height-md) - 6px);
+    & .segment {
+      font-size: var(--admin-font-size-s);
+      padding: var(--admin-space-xs) var(--admin-space-m);
+    }
+  }
+
+  &.sm {
+    height: var(--admin-input-height-sm);
+    background: var(--admin-surface-extra-subtle);
+    padding: 0;
+
+    & .segment {
+      font-size: var(--admin-font-size-ui);
+      padding: 0 var(--admin-space-s);
+      border-radius: var(--admin-interactive-radius);
+
+      &.selected {
+        background: var(--admin-interactive-selected);
+        border: 1px solid var(--admin-border-subtle);
+        color: var(--admin-interactive-selected-text);
+        font-weight: var(--admin-font-weight-medium);
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.scroll {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  padding-block: 4px;
+  margin-block: -4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.segment {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-secondary);
+  border: none;
+  border-radius: var(--admin-interactive-radius);
+  cursor: pointer;
+  font-weight: var(--admin-font-weight-body);
+  white-space: nowrap;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+
+  &:hover:not(.selected):not(.segmentDisabled) {
+    background: var(--admin-surface-subtle);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+
+  &.selected {
+    background: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+    font-weight: var(--admin-font-weight-medium);
+    box-shadow: var(--admin-shadow-sm);
+  }
+
+  &.segmentDisabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: default;
+  }
+}
+
+.tooltipWrapper {
+  flex: 1 0 auto;
+}
+
+.segmentInner {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+.pinnedLeft {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.pinnedRight {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.pinnedLeft.shadowLeft {
+  box-shadow: var(--admin-shadow-overflow-left);
+  z-index: 1;
+  position: relative;
+}
+
+.pinnedRight.shadowRight {
+  box-shadow: var(--admin-shadow-overflow-right);
+  z-index: 1;
+  position: relative;
+}

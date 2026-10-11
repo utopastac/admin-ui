@@ -1,0 +1,73 @@
+/* TopNav — horizontal top bar with tabs on the left and actions on the right.
+ * Sits at the top of the viewport above the main content area. */
+
+.topNav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--admin-topnav-padding);
+  background: var(--admin-chrome-background);
+  -webkit-backdrop-filter: var(--admin-topnav-backdrop-filter);
+  backdrop-filter: var(--admin-topnav-backdrop-filter);
+  flex-shrink: 0;
+
+  &.sm {
+    height: 48px;
+  }
+
+  &.lg {
+    height: 72px;
+    padding-top: var(--admin-space-s);
+  }
+
+  & .left {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-space-m);
+    height: 100%;
+  }
+
+  & .brand {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+
+    &:focus-visible {
+      @mixin focus-ring;
+      border-radius: var(--admin-radius-sm);
+    }
+  }
+
+  & .tabs {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-space-xs);
+    height: 100%;
+  }
+
+  & .separator {
+    width: 1px;
+    height: 16px;
+    background: var(--admin-border-subtle);
+    flex-shrink: 0;
+  }
+
+  & .right {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-space-s);
+  }
+
+  & .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-space-xs);
+  }
+}

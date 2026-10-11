@@ -1,0 +1,64 @@
+.menu {
+  @mixin popover-panel;
+  position: fixed;
+  z-index: 10002;
+  min-width: 180px;
+  padding: var(--admin-space-xs) 0;
+  user-select: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: var(--admin-space-s) var(--admin-space-m);
+  font-size: var(--admin-font-size-s);
+  font-weight: var(--admin-font-weight-body);
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+}
+
+.destructive {
+  color: var(--admin-text-warning);
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+}
+
+.disabled {
+  @mixin disabled-state;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: var(--admin-space-s);
+  margin-left: calc(var(--admin-space-xs) * -1);
+  color: var(--admin-icon-muted);
+}
+
+.label {
+  flex: 1;
+}
+
+.shortcut {
+  margin-left: var(--admin-space-l);
+  color: var(--admin-text-subtle);
+  font-size: var(--admin-font-size-xs);
+  font-weight: var(--admin-font-weight-medium);
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--admin-separator-color);
+  margin: var(--admin-space-xs) 0;
+}

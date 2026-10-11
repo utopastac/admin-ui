@@ -1,0 +1,64 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-m);
+  padding: var(--admin-space-s) 0;
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.previewCell {
+  width: var(--token-list-preview-width, 48px);
+  min-width: var(--token-list-preview-width, 48px);
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.label {
+  @mixin type-body-s-strong;
+  color: var(--admin-text-primary);
+  width: var(--token-list-label-width, 64px);
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.value {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+  width: 56px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.desc {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tokenCell {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.token {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+}

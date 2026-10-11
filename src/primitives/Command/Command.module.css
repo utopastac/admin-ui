@@ -1,0 +1,162 @@
+/* ── Panel ────────────────────────────────────────────────────────── */
+
+.panel {
+  @mixin popover-panel;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Search input row ─────────────────────────────────────────────── */
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-s) var(--admin-space-m);
+  border-bottom: 1px solid var(--admin-separator-color);
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  color: var(--admin-text-subtle);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  @mixin type-body-m;
+  color: var(--admin-text-primary);
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--admin-text-placeholder);
+  }
+}
+
+/* ── Header slot ──────────────────────────────────────────────────── */
+
+.header {
+  padding: var(--admin-space-xs) var(--admin-space-m);
+  border-bottom: 1px solid var(--admin-separator-color);
+  flex-shrink: 0;
+}
+
+/* ── List ─────────────────────────────────────────────────────────── */
+
+.list {
+  overflow-y: auto;
+  padding: var(--admin-space-xs) 0;
+  max-height: 320px;
+  scrollbar-width: thin;
+}
+
+/* ── Group ────────────────────────────────────────────────────────── */
+
+.group {
+  & + & {
+    border-top: 1px solid var(--admin-separator-color);
+    margin-top: var(--admin-space-xs);
+    padding-top: var(--admin-space-xs);
+  }
+}
+
+.groupLabel {
+  @mixin type-body-xs;
+  color: var(--admin-text-subtle);
+  padding: var(--admin-space-xs) var(--admin-space-m);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Item ─────────────────────────────────────────────────────────── */
+
+.item {
+  @mixin icon-button;
+  width: 100%;
+  justify-content: flex-start;
+  gap: var(--admin-space-s);
+  padding: var(--admin-space-xs) var(--admin-space-m);
+  border-radius: 0;
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  transition: background 0.1s;
+
+  &[data-active] {
+    background: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+  }
+
+  &:disabled {
+    @mixin disabled-state;
+  }
+}
+
+.itemLabel {
+  flex: 1;
+  text-align: left;
+  @mixin text-truncate;
+}
+
+
+/* ── Empty state ──────────────────────────────────────────────────── */
+
+.empty {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  text-align: center;
+  padding: var(--admin-space-xl) var(--admin-space-m);
+}
+
+/* ── Dialog overlay ───────────────────────────────────────────────── */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--admin-overlay);
+  -webkit-backdrop-filter: var(--admin-overlay-backdrop-filter);
+  backdrop-filter: var(--admin-overlay-backdrop-filter);
+  z-index: 10003;
+  animation: command-backdrop-in 0.15s ease forwards;
+
+  &.closing {
+    animation: command-backdrop-out 0.15s ease forwards;
+  }
+}
+
+.dialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  width: 560px;
+  max-width: calc(100vw - var(--admin-space-xl));
+  z-index: 10004;
+  animation: command-dialog-in 0.15s ease forwards;
+
+  &.closing {
+    animation: command-dialog-out 0.15s ease forwards;
+  }
+}
+
+@keyframes command-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes command-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes command-dialog-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px) scale(0.95); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes command-dialog-out {
+  from { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  to { opacity: 0; transform: translateX(-50%) translateY(-8px) scale(0.95); }
+}

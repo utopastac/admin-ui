@@ -1,0 +1,249 @@
+/* SideNav — scrollable vertical sidebar navigation.
+ * Composed of SideNavSection groups, each containing SideNavItem buttons.
+ * Width is intentionally not set here — the consumer controls layout sizing.
+ *
+ * Horizontal padding lives in ONE place: .sideNav itself.
+ * Override via CSS custom properties on any ancestor:
+ *   --admin-sidenav-padding         sets both sides (default)
+ *   --admin-sidenav-padding-left    overrides left side independently
+ *   --admin-sidenav-padding-right   overrides right side independently
+ */
+
+.sideNav {
+  position: relative;
+  height: 100%;
+  background: var(--admin-chrome-background);
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--admin-sidenav-padding-left, var(--admin-sidenav-padding));
+  padding-right: var(--admin-sidenav-padding-right, var(--admin-sidenav-padding));
+}
+
+/* Tabbed layout */
+
+.tabbedRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 0;
+
+  & .nav {
+    padding-top: 0;
+    margin-top: var(--admin-space-s);
+  }
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  z-index: 0;
+  margin-left: -1px;
+  border-left: 1px solid var(--admin-border-subtle);
+}
+
+/* Collapse toggle — floats outside the panel's right edge */
+
+.toggleButton {
+  position: absolute;
+  top: var(--admin-space-s);
+  left: 100%;
+  margin-left: var(--admin-space-s);
+  z-index: 10;
+  border: 1px solid var(--admin-border-subtle);
+  background: var(--admin-chrome-background);
+  border-radius: var(--admin-radius-md);
+  box-shadow: 0 1px 4px 0 color-mix(in srgb, var(--admin-text-primary) 8%, transparent);
+}
+
+/* Collapsed state */
+
+.collapsed {
+  width: var(--admin-sidenav-collapsed-width, 40px);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Search */
+
+.globalSearchWrapper {
+  flex-shrink: 0;
+  padding: var(--admin-space-s) 0;
+}
+
+.searchWrapper {
+  flex-shrink: 0;
+  padding: var(--admin-space-s) 0;
+}
+
+.noResults {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  margin: 0;
+  padding: var(--admin-space-m) 0;
+}
+
+.navWrapper {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow-y: auto;
+}
+
+.nav {
+  /* padding-left absorbs the list's margin-left: -space-s to prevent clipping */
+  padding: var(--admin-space-m) 0 var(--admin-space-m) var(--admin-space-s);
+}
+
+.tabbedRow .nav {
+  padding-left: var(--admin-space-m);
+}
+
+.tabbedRow .list {
+  margin-left: 0;
+}
+
+/* Footer */
+
+.footer {
+  flex-shrink: 0;
+  padding: var(--admin-space-m) 0;
+}
+
+/* Section */
+
+.section {
+  margin-bottom: var(--admin-space-l);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sectionLabel {
+  @mixin type-body-xs;
+  @mixin weight-medium;
+  color: var(--admin-text-subtle);
+  margin: 0 0 var(--admin-space-s) 0;
+  letter-spacing: 0.01em;
+}
+
+.sectionLabelCollapsible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--admin-space-xxs) var(--admin-space-xs);
+  margin: var(--admin-space-s) calc(-1 * var(--admin-space-xs));
+  border: none;
+  background: transparent;
+  border-radius: var(--admin-interactive-radius);
+  cursor: pointer;
+  text-align: left;
+  @mixin type-body-xs;
+  @mixin weight-medium;
+  color: var(--admin-text-subtle);
+  letter-spacing: 0.01em;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+    color: var(--admin-text-secondary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+    border-radius: var(--admin-interactive-radius);
+  }
+}
+
+.sectionChevron {
+  flex-shrink: 0;
+  margin-left: var(--admin-space-xs);
+  transition: transform 0.2s ease;
+}
+
+.sectionChevronClosed {
+  transform: rotate(-90deg);
+}
+
+.list {
+  list-style: none;
+  margin: 0 0 0 calc(-1 * var(--admin-space-s));
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+  overflow: hidden;
+}
+
+.collapsibleSection {
+  border-bottom: 1px solid var(--admin-border-subtle);
+  margin-bottom: 0;
+}
+
+.collapsibleSectionOpen {
+  padding-bottom: calc(var(--admin-space-s) + var(--admin-space-xs));
+}
+
+/* Top-level accordion sections */
+
+.topLevelSection {
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.topLevelSectionWithBorder {
+  border-bottom: 1px solid var(--admin-border-subtle);
+}
+
+.topLevelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--admin-space-s);
+  margin: 0 0 0 calc(-1 * var(--admin-space-s));
+  border: none;
+  background: transparent;
+  border-radius: var(--admin-interactive-radius);
+  cursor: pointer;
+  text-align: left;
+  @mixin type-body-m;
+  @mixin weight-medium;
+  color: var(--admin-text-primary);
+  transition: background-color 0.1s, color 0.1s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+}
+
+.topLevelLabel {
+  flex: 1;
+  @mixin text-truncate;
+}
+
+.topLevelChevron {
+  flex-shrink: 0;
+  margin-left: var(--admin-space-s);
+  color: var(--admin-text-subtle);
+  transition: transform 0.2s ease;
+}
+
+.topLevelChevronClosed {
+  transform: rotate(-90deg);
+}
+
+.topLevelContent {
+  padding-top: var(--admin-space-s);
+  padding-bottom: var(--admin-space-m);
+  padding-left: var(--admin-space-s);
+}

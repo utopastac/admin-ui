@@ -1,0 +1,111 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--admin-overlay);
+  -webkit-backdrop-filter: var(--admin-overlay-backdrop-filter);
+  backdrop-filter: var(--admin-overlay-backdrop-filter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: alertdialog-backdrop-in 0.2s ease forwards;
+
+  &.closing {
+    animation: alertdialog-backdrop-out 0.2s ease forwards;
+  }
+}
+
+.dialog {
+  background: var(--admin-panel-background);
+  border: 1px solid var(--admin-panel-border);
+  border-radius: var(--admin-radius-lg);
+  width: 90%;
+  max-width: 450px;
+  padding: var(--admin-space-xl);
+  box-shadow: var(--admin-panel-shadow);
+  animation: alertdialog-in 0.2s ease forwards;
+
+  &.closing {
+    animation: alertdialog-out 0.2s ease forwards;
+  }
+}
+
+.title {
+  @mixin type-heading-s;
+  color: var(--admin-text-primary);
+  margin: 0 0 var(--admin-space-s) 0;
+}
+
+.description {
+  @mixin type-body-s;
+  color: var(--admin-text-secondary);
+  margin: 0 0 var(--admin-space-xl) 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--admin-space-s);
+}
+
+.cancelButton {
+  @mixin type-body-s-strong;
+  border: 1px solid var(--admin-border-subtle);
+  background: transparent;
+  color: var(--admin-text-primary);
+  border-radius: var(--admin-button-radius);
+  padding: var(--admin-space-s) var(--admin-space-l);
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+}
+
+.confirmButton {
+  @mixin type-body-s-strong;
+  border: none;
+  border-radius: var(--admin-button-radius);
+  padding: var(--admin-space-s) var(--admin-space-l);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.default {
+  background-color: var(--admin-button-primary-bg);
+  color: var(--admin-button-primary-text);
+
+  &:hover {
+    background-color: var(--admin-button-primary-hover-bg);
+  }
+}
+
+.destructive {
+  background-color: var(--admin-button-destructive-bg);
+  color: var(--admin-button-destructive-text);
+
+  &:hover {
+    background-color: var(--admin-button-destructive-hover-bg);
+  }
+}
+
+@keyframes alertdialog-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes alertdialog-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes alertdialog-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes alertdialog-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}

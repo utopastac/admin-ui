@@ -1,0 +1,58 @@
+.wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header cells */
+.headerCell {
+  @mixin type-body-s-strong;
+  background-color: var(--admin-table-header-background);
+  color: var(--admin-text-secondary);
+  padding: var(--admin-space-s) var(--admin-space-l);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:first-child { border-radius: var(--admin-radius-xs) 0 0 0; }
+  &:last-child  { border-radius: 0 var(--admin-radius-xs) 0 0; }
+}
+
+/* Body rows */
+.row {}
+
+/* Body cells */
+.cell {
+  color: var(--admin-text-primary);
+  font-size: var(--admin-font-size-s);
+  padding: var(--admin-space-m) var(--admin-space-l);
+  text-align: left;
+  border-bottom: 1px solid var(--admin-table-border);
+}
+
+/* Compact variant — tighter body cell padding */
+.compact {
+  & .cell {
+    padding: var(--admin-space-s) var(--admin-space-l);
+  }
+}
+
+/* Striped variant — alternating row shading */
+.striped {
+  & tbody tr:nth-child(even) {
+    background-color: var(--admin-table-row-selected);
+  }
+}
+
+/* Clickable rows */
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--admin-table-row-hover);
+  }
+}

@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-l);
+  padding-bottom: var(--admin-space-xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xs);
+  min-width: 0;
+}
+
+.title {
+  @mixin type-heading-xl;
+  color: var(--admin-text-primary);
+  margin: 0 0 var(--admin-space-m) 0;
+  padding: 0;
+}
+
+.description {
+  @mixin type-body-l;
+  color: var(--admin-text-secondary);
+  margin: 0;
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  flex-shrink: 0;
+}

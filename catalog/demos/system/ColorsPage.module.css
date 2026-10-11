@@ -1,0 +1,176 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  max-width: 860px;
+  padding: var(--admin-space-xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xl);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-m);
+}
+
+/* ── Section headings ── */
+
+.sectionHeading {
+  @mixin type-heading-xs;
+  color: var(--admin-text-primary);
+  margin: 0 0 var(--admin-space-m);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-l);
+}
+
+.groupHeading {
+  @mixin type-body-s-strong;
+  color: var(--admin-text-subtle);
+  padding-bottom: var(--admin-space-xs);
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--admin-border-subtle);
+}
+
+.groupRows {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Token row ── */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.rowSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--admin-radius-xs);
+  border: 1px solid var(--admin-border-subtle);
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  &:hover .rowSwatchOverlay,
+  &:focus-visible .rowSwatchOverlay {
+    opacity: 1;
+  }
+}
+
+.rowSwatchOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.rowDesc {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  flex: 1;
+  min-width: 140px;
+}
+
+.rowToken {
+  @mixin type-mono-xs;
+  color: var(--admin-text-subtle);
+  flex: 2;
+}
+
+.rowHex {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  flex-shrink: 0;
+}
+
+.rowHexValue {
+  @mixin type-mono-xs;
+  color: var(--admin-text-primary);
+  min-width: 72px;
+  text-align: right;
+}
+
+
+/* ── Primitive ramps ── */
+
+.ramps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-l);
+}
+
+.rampRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.rampItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 44px;
+}
+
+.rampSwatch {
+  width: 44px;
+  height: 32px;
+  border-radius: var(--admin-radius-xs);
+  border: 1px solid var(--admin-border-subtle);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+
+  &:hover {
+    outline: 2px solid var(--admin-border-highlight);
+    outline-offset: 1px;
+  }
+}
+
+.rampCopied {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.rampStep {
+  @mixin type-body-ui;
+  color: var(--admin-text-subtle);
+  text-align: center;
+}
+
+/* ── Empty state ── */
+
+.empty {
+  @mixin type-body-m;
+  color: var(--admin-text-subtle);
+}

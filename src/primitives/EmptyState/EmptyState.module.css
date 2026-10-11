@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--admin-space-s);
+  padding: var(--admin-space-xxl) var(--admin-space-xl);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.illustration {
+  color: var(--admin-text-subtle);
+  margin-bottom: var(--admin-space-s);
+
+  & svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: var(--admin-font-size-m);
+  font-weight: 600;
+  color: var(--admin-text-primary);
+  line-height: 1.33;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-subtle);
+  line-height: 1.5;
+}
+
+.actions {
+  margin-top: var(--admin-space-xs);
+  display: flex;
+  gap: var(--admin-space-s);
+  flex-wrap: wrap;
+  justify-content: center;
+}

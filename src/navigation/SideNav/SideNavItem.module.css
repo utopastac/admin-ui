@@ -1,0 +1,104 @@
+.button,
+.button--group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--admin-space-s);
+  border: none;
+  background: transparent;
+  border-radius: var(--admin-interactive-radius);
+  height: 30px;
+  cursor: pointer;
+  text-align: left;
+  @mixin type-body-s;
+  @mixin weight-medium;
+  color: var(--admin-text-primary);
+  transition: background-color 0.1s, color 0.1s;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+
+  &.active {
+    background-color: var(--admin-nav-selected);
+    color: var(--admin-nav-selected-text);
+
+    & .index,
+    & .detail {
+      color: inherit;
+    }
+  }
+
+  &.highContrast.active {
+    background-color: var(--admin-surface-inverted-primary);
+    color: var(--admin-text-inverted-primary);
+  }
+
+  &.child {
+    @mixin type-body-xs;
+  }
+
+  &.hasDetail {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.index {
+  flex-shrink: 0;
+  width: 14px;
+  text-align: left;
+  color: var(--admin-text-subtle);
+  font-variant-numeric: tabular-nums;
+  margin-right: var(--admin-space-xs);
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail {
+  @mixin type-body-xs;
+  color: var(--admin-text-subtle);
+  flex-shrink: 0;
+  margin-left: var(--admin-space-m);
+}
+
+.button--group {
+  &.active {
+    color: var(--admin-nav-selected-text);
+  }
+}
+
+.nestedList {
+  list-style: none;
+  margin: 0 0 0 var(--admin-space-s);
+  padding: var(--admin-space-xs) 0 0 var(--admin-space-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+  border-left: 1px solid var(--admin-border-subtle);
+}
+
+.badge {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--admin-surface-highlight);
+  flex-shrink: 0;
+  margin-left: var(--admin-space-xs);
+}

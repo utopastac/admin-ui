@@ -1,0 +1,97 @@
+.container {
+  margin-top: var(--admin-space-xl);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-md);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  @mixin type-body-s;
+}
+
+.headerRow {
+  background: var(--admin-surface-extra-subtle);
+}
+
+.th {
+  padding: var(--admin-space-s) var(--admin-space-m);
+  text-align: left;
+  @mixin weight-medium;
+  color: var(--admin-text-secondary);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--admin-border-subtle);
+}
+
+.row {
+  border-top: 1px solid var(--admin-border-subtle);
+  transition: background-color 0.1s;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background: var(--admin-surface-extra-subtle);
+  }
+}
+
+.td {
+  padding: var(--admin-space-s) var(--admin-space-m);
+  color: var(--admin-text-primary);
+  vertical-align: top;
+}
+
+.tdProp {
+  padding: var(--admin-space-s) var(--admin-space-m);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.tdDesc {
+  padding: var(--admin-space-s) var(--admin-space-m);
+  color: var(--admin-text-secondary);
+  vertical-align: top;
+}
+
+.propName {
+  display: inline-block;
+  background: var(--admin-interactive-selected);
+  color: var(--admin-text-primary);
+  border: 1px solid var(--admin-border-subtle);
+  padding: 1px var(--admin-space-xs);
+  border-radius: var(--admin-radius-sm);
+  @mixin type-body-xs;
+  font-family: var(--admin-font-mono);
+}
+
+.type {
+  display: inline-block;
+  background: var(--admin-surface-subtle);
+  color: var(--admin-text-secondary);
+  padding: 1px var(--admin-space-xs);
+  border-radius: var(--admin-radius-sm);
+  @mixin type-body-xs;
+  font-family: var(--admin-font-mono);
+}
+
+.defaultVal {
+  display: inline-block;
+  background: var(--admin-surface-subtle);
+  color: var(--admin-text-secondary);
+  padding: 1px var(--admin-space-xs);
+  border-radius: var(--admin-radius-sm);
+  @mixin type-body-xs;
+  font-family: var(--admin-font-mono);
+}
+
+.options {
+  color: var(--admin-text-secondary);
+  @mixin type-body-xs;
+  font-family: var(--admin-font-mono);
+}
+
+.dash {
+  color: var(--admin-text-subtle);
+}

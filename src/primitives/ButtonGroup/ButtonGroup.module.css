@@ -1,0 +1,16 @@
+.buttonGroup {
+  display: flex;
+  gap: var(--admin-space-m);
+
+  &.start {
+    justify-content: flex-start;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+}

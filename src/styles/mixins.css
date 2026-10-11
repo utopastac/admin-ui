@@ -1,0 +1,176 @@
+/*
+ * ADMIN UI — COMPONENT PATTERN MIXINS
+ *
+ * Reusable structural patterns for common component shapes.
+ * All tokens referenced here are defined in design-system.css.
+ *
+ * These mixins are available in all CSS Modules via postcss-mixins.
+ * Do not add utility classes here — see utilities.css for that.
+ */
+
+/* ──────────────── FOCUS RINGS ──────────────── */
+
+/* Standard outset focus ring — use on most interactive elements */
+@define-mixin focus-ring {
+  outline: var(--admin-focus-ring-width) var(--admin-focus-ring-style) var(--admin-interactive-focus);
+  outline-offset: var(--admin-focus-ring-offset);
+}
+
+/* Inset focus ring — use when outset would be clipped by overflow:hidden */
+@define-mixin focus-ring-inset {
+  outline: var(--admin-focus-ring-width) var(--admin-focus-ring-style) var(--admin-interactive-focus);
+  outline-offset: calc(var(--admin-focus-ring-width) * -1);
+}
+
+/* ──────────────── POPOVER PANEL ──────────────── */
+
+/* Standard dropdown / popover surface */
+@define-mixin popover-panel {
+  background-color: var(--admin-panel-background);
+  background-clip: padding-box;
+  -webkit-backdrop-filter: var(--admin-panel-backdrop-filter);
+  backdrop-filter: var(--admin-panel-backdrop-filter);
+  border: 1px solid var(--admin-panel-border);
+  border-radius: var(--admin-radius-md);
+  box-shadow: var(--admin-panel-shadow);
+}
+
+/* ──────────────── ICON BUTTON ──────────────── */
+
+/*
+ * icon-button — structural base for small square icon-only buttons.
+ * Apply size (width, height) and border-radius separately per component.
+ */
+@define-mixin icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ──────────────── INPUTS ──────────────── */
+
+/*
+ * input-wrapper — for compound inputs where a container div wraps the <input>
+ * alongside other elements (prefix, swatch, etc.). Uses :focus-within instead
+ * of :focus because the styled border is on the wrapper, not the input element.
+ */
+@define-mixin input-wrapper {
+  border: 1px solid var(--admin-input-border);
+  background-color: var(--admin-input-background);
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-control-hover-border);
+  }
+
+  &:focus-within {
+    border-color: var(--admin-input-border-focus);
+  }
+}
+
+/*
+ * input-base — shared appearance for <input> and <textarea> elements.
+ * Handles background, border, hover, and focus states.
+ * Apply sizing (height, padding, radius) separately or use input-sm / input-md.
+ */
+@define-mixin input-base {
+  border: 1px solid var(--admin-input-border);
+  background-color: var(--admin-input-background);
+  color: var(--admin-text-primary);
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-control-hover-border);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--admin-input-border-focus);
+  }
+}
+
+/* input-sm — small text input (28px) */
+@define-mixin input-sm {
+  @mixin input-base;
+  height: var(--admin-input-height-sm);
+  padding: 0 var(--admin-input-padding-x);
+  border-radius: var(--admin-input-radius);
+}
+
+/* input-md — standard text input (36px) */
+@define-mixin input-md {
+  @mixin input-base;
+  height: var(--admin-input-height-md);
+  padding: 0 var(--admin-input-padding-x);
+  border-radius: var(--admin-input-radius);
+}
+
+/* ──────────────── DISABLED STATES ──────────────── */
+
+/*
+ * disabled-state — for non-button elements (divs, list items, wrappers)
+ * where pointer-events:none is safe to use.
+ */
+@define-mixin disabled-state {
+  opacity: var(--admin-opacity-disabled);
+  pointer-events: none;
+}
+
+/*
+ * disabled-button — for <button> elements where cursor:not-allowed
+ * must remain visible even though the button is disabled.
+ */
+@define-mixin disabled-button {
+  opacity: var(--admin-opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* ──────────────── ACCESSIBILITY ──────────────── */
+
+/* Visually hidden but accessible to screen readers */
+@define-mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ──────────────── TEXT ──────────────── */
+
+/* Single-line text truncation with ellipsis */
+@define-mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ──────────────── INPUTS ──────────────── */
+
+/*
+ * input-trigger — for clickable elements styled to look like inputs
+ * (Select, ColorPicker, GradientPicker, ShadowEditor triggers).
+ * Uses focus-visible instead of focus, and cursor: pointer.
+ */
+@define-mixin input-trigger {
+  border: 1px solid var(--admin-input-border);
+  background-color: var(--admin-input-background);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-control-hover-border);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}

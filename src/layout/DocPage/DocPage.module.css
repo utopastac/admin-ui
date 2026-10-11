@@ -1,0 +1,236 @@
+.actions {
+  display: flex;
+  gap: var(--admin-space-xs);
+  justify-content: flex-end;
+  margin-bottom: var(--admin-space-s);
+}
+
+.root {
+  color: var(--admin-text-primary);
+
+  &.centered {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ── Headings ── */
+
+  & h1 {
+    @mixin type-heading-xl;
+    color: var(--admin-text-primary);
+    margin: 0 0 var(--admin-space-m) 0;
+    padding-bottom: var(--admin-space-s);
+  }
+
+  & h2 {
+    @mixin type-heading-l;
+    color: var(--admin-text-primary);
+    margin: var(--admin-space-xl) 0 var(--admin-space-xs) 0;
+    padding-bottom: var(--admin-space-xs);
+  }
+
+  & h3 {
+    @mixin type-heading-m;
+    color: var(--admin-text-primary);
+    margin: var(--admin-space-l) 0 var(--admin-space-xs) 0;
+  }
+
+  & h4 {
+    @mixin type-heading-s;
+    color: var(--admin-text-primary);
+    margin: var(--admin-space-l) 0 var(--admin-space-xs) 0;
+  }
+
+  & h5,
+  & h6 {
+    @mixin type-heading-xs;
+    color: var(--admin-text-primary);
+    margin: var(--admin-space-l) 0 var(--admin-space-xs) 0;
+  }
+
+  & h6 {
+    color: var(--admin-text-secondary);
+  }
+
+  /* ── Paragraphs ── */
+
+  & p {
+    @mixin type-body-m;
+    color: var(--admin-text-primary);
+    margin: 0 0 var(--admin-space-m) 0;
+  }
+
+  /* ── Links ── */
+
+  & a {
+    color: var(--admin-link-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--admin-link-hover-text);
+      text-decoration: underline;
+    }
+  }
+
+  /* ── Inline emphasis ── */
+
+  & strong {
+    font-weight: var(--admin-font-weight-emphasis);
+  }
+
+  & em {
+    font-style: italic;
+  }
+
+  /* ── Lists ── */
+
+  & ul,
+  & ol {
+    @mixin type-body-l;
+    color: var(--admin-text-primary);
+    margin: 0 0 var(--admin-space-m) 0;
+    padding-left: var(--admin-space-l);
+    list-style-position: outside;
+  }
+
+  & ul {
+    list-style-type: disc;
+  }
+
+  & ol {
+    list-style-type: decimal;
+  }
+
+  & li {
+    @mixin type-body-m;
+    margin: var(--admin-space-xs) 0;
+  }
+
+  & li > ul,
+  & li > ol {
+    margin-bottom: 0;
+  }
+
+  /* ── Inline code ── */
+
+  & :not(pre) > code {
+    font-family: var(--admin-font-mono);
+    font-size: var(--admin-font-size-s);
+    background: var(--admin-surface-subtle);
+    border-radius: var(--admin-radius-sm);
+    padding: var(--admin-space-xxs) var(--admin-space-xs);
+  }
+
+  /* ── Fenced code blocks ── */
+
+  & pre {
+    margin: 0 0 var(--admin-space-m) 0;
+    background: var(--admin-surface-extra-subtle);
+    border: 1px solid var(--admin-border-subtle);
+    border-radius: var(--admin-radius-md);
+    padding: var(--admin-space-m);
+    overflow-x: auto;
+
+    & code {
+      font-family: var(--admin-font-mono);
+      font-size: var(--admin-font-size-s);
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      line-height: 1.6;
+    }
+  }
+
+  /* ── Blockquotes ── */
+
+  & blockquote {
+    margin: 0 0 var(--admin-space-m) 0;
+    padding: var(--admin-space-m);
+    border-left: 3px solid var(--admin-border-prominent);
+    background: var(--admin-surface-extra-subtle);
+    border-radius: 0 var(--admin-radius-md) var(--admin-radius-md) 0;
+    color: var(--admin-text-secondary);
+    font-style: italic;
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /* ── Tables ── */
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 var(--admin-space-m) 0;
+    @mixin type-body-s;
+  }
+
+  & th {
+    font-weight: var(--admin-font-weight-emphasis);
+    background: var(--admin-surface-extra-subtle);
+    border: 1px solid var(--admin-border-subtle);
+    padding: var(--admin-space-s);
+    text-align: left;
+  }
+
+  & td {
+    border-bottom: 1px solid var(--admin-border-subtle);
+    border-left: 1px solid var(--admin-border-subtle);
+    border-right: 1px solid var(--admin-border-subtle);
+    padding: var(--admin-space-s);
+  }
+
+  /* ── Horizontal rules ── */
+
+  & hr {
+    border: none;
+    border-top: 1px solid var(--admin-border-subtle);
+    margin: var(--admin-space-xl) 0;
+  }
+
+  /* ── Images ── */
+
+  & img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--admin-radius-md);
+  }
+
+  /* ── Task list checkboxes (GFM) ── */
+
+  & ul:has(> li > input[type="checkbox"]) {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  & li > input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--admin-border-prominent);
+    border-radius: var(--admin-radius-sm);
+    background: transparent;
+    vertical-align: middle;
+    margin-right: var(--admin-space-xs);
+    position: relative;
+    cursor: default;
+
+    &:checked {
+      background: var(--admin-text-highlight);
+      border-color: var(--admin-text-highlight);
+    }
+
+    &:checked::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 0px;
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.numberedList {
+  list-style: none;
+  padding-left: var(--admin-space-xl);
+  margin: 0;
+  counter-reset: list-counter;
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  font-family: var(--admin-font-sans);
+
+  &.md {
+    font-size: var(--admin-font-size-m);
+  }
+
+  &.sm {
+    font-size: var(--admin-font-size-s);
+  }
+}
+
+.item {
+  counter-increment: list-counter;
+  position: relative;
+  color: var(--admin-text-primary);
+  line-height: 1.6;
+  font-weight: var(--admin-font-weight-body);
+
+  &::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: calc(-1 * var(--admin-space-xl));
+    color: var(--admin-text-subtle);
+    font-weight: var(--admin-font-weight-medium);
+  }
+}

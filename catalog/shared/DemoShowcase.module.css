@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--admin-radius-md);
+  border: 1px solid var(--admin-border-subtle);
+  overflow: hidden;
+  margin-bottom: var(--admin-space-l);
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--admin-space-xl);
+  background: var(--admin-background-primary);
+}

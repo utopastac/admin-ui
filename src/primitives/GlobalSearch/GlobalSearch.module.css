@@ -1,0 +1,119 @@
+.wrapper {
+  position: relative;
+}
+
+.inputWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.input {
+  @mixin input-base;
+  @mixin type-body-s;
+  width: 240px;
+  height: var(--admin-input-height-sm);
+  padding: 0 var(--admin-space-s) 0 calc(var(--admin-space-s) + 20px);
+  border-radius: var(--admin-input-radius);
+
+  &::placeholder {
+    color: var(--admin-text-placeholder);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--admin-space-s);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--admin-text-subtle);
+  pointer-events: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--admin-space-xs));
+  left: 0;
+  min-width: 320px;
+  max-width: 420px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: var(--admin-panel-background);
+  background-clip: padding-box;
+  -webkit-backdrop-filter: var(--admin-panel-backdrop-filter);
+  backdrop-filter: var(--admin-panel-backdrop-filter);
+  border: 1px solid var(--admin-panel-border);
+  border-radius: var(--admin-radius-md);
+  box-shadow: var(--admin-panel-shadow);
+  z-index: 100;
+  padding: var(--admin-space-xs);
+
+  & mark {
+    background: none;
+    color: var(--admin-text-highlight);
+    font-weight: inherit;
+  }
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  width: 100%;
+  padding: var(--admin-space-s) var(--admin-space-m);
+  border: none;
+  border-radius: var(--admin-interactive-radius);
+  background: none;
+  color: var(--admin-text-primary);
+  text-align: left;
+  cursor: pointer;
+  @mixin type-body-s;
+
+  &:hover {
+    background: var(--admin-interactive-hover);
+    outline: none;
+  }
+
+  &.resultActive {
+    background: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+    outline: none;
+  }
+}
+
+.resultIcon {
+  flex-shrink: 0;
+  color: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.resultTitle {
+  @mixin type-body-s;
+  @mixin weight-medium;
+  color: var(--admin-text-primary);
+  @mixin text-truncate;
+}
+
+.resultDescription {
+  @mixin type-body-xs;
+  color: var(--admin-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.statusMessage {
+  padding: var(--admin-space-m);
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+}

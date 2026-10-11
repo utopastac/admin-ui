@@ -1,0 +1,101 @@
+/* Pagination — flex row navigation control with three display variants:
+ * 'buttons' (prev/next only), 'numbered' (page number buttons), 'dots' (dot indicators). */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+/* Shared disabled state for prev/next ToolbarButtons */
+.disabled {
+  @mixin disabled-state;
+}
+
+/* ── Buttons variant ── */
+
+.pageIndicator {
+  @mixin type-body-s;
+  color: var(--admin-text-secondary);
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 var(--admin-space-xs);
+}
+
+/* ── Numbered variant ── */
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+.pageButton {
+  @mixin type-body-s;
+  @mixin icon-button;
+  width: var(--admin-icon-button-size-sm);
+  height: var(--admin-icon-button-size-sm);
+  border-radius: var(--admin-interactive-radius);
+  color: var(--admin-text-secondary);
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--admin-interactive-hover);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+
+  &.pageButtonActive {
+    background: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+    font-weight: var(--admin-font-weight-emphasis);
+  }
+}
+
+.ellipsis {
+  @mixin type-body-s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--admin-icon-button-size-sm);
+  height: var(--admin-icon-button-size-sm);
+  color: var(--admin-text-secondary);
+  user-select: none;
+}
+
+/* ── Dots variant ── */
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--admin-border-subtle);
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background: var(--admin-text-subtle);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+
+  &.dotActive {
+    background: var(--admin-text-primary);
+
+    &:hover {
+      background: var(--admin-text-primary);
+    }
+  }
+}

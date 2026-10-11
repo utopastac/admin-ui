@@ -1,0 +1,119 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-lg);
+  background-color: var(--admin-surface-primary);
+  overflow: hidden;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: var(--admin-input-border-focus);
+  }
+}
+
+.editor {
+  flex: 1;
+  padding: var(--admin-space-m);
+  color: var(--admin-text-primary);
+  font-family: var(--admin-font-sans);
+  @mixin type-body-m;
+  outline: none;
+  overflow-y: auto;
+  word-break: break-word;
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: var(--admin-text-subtle);
+    pointer-events: none;
+  }
+
+  & h1 {
+    font-weight: var(--admin-font-weight-medium);
+    margin: 0 0 var(--admin-space-s);
+  }
+
+  & h2 {
+    font-weight: var(--admin-font-weight-medium);
+    margin: 0 0 var(--admin-space-s);
+  }
+
+  & h3 {
+    font-weight: var(--admin-font-weight-medium);
+    margin: 0 0 var(--admin-space-s);
+  }
+
+  & p {
+    margin: 0 0 var(--admin-space-s);
+  }
+
+  & p:last-child,
+  & h1:last-child,
+  & h2:last-child,
+  & h3:last-child {
+    margin-bottom: 0;
+  }
+
+  & a {
+    color: var(--admin-text-highlight);
+    text-decoration: underline;
+  }
+}
+
+.editorDisabled {
+  pointer-events: none;
+  color: var(--admin-text-subtle);
+  background-color: var(--admin-surface-subtle);
+}
+
+.editorPopover {
+  max-height: 300px;
+}
+
+/* Popover mode */
+
+.popoverContainer {
+  position: relative;
+}
+
+.popoverTrigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--admin-input-height-sm);
+  padding: 0 var(--admin-space-s);
+  background: var(--admin-input-background);
+  border: 1px solid var(--admin-input-border);
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-border-subtle);
+  }
+}
+
+.popoverTriggerOpen {
+  visibility: hidden;
+}
+
+.popoverPreview {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popoverPlaceholder {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrapperPopover {
+  border-radius: var(--admin-radius-md);
+}

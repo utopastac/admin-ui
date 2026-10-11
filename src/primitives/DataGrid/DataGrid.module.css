@@ -1,0 +1,114 @@
+.wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.checkboxCol {
+  width: 2.5rem;
+}
+
+/* Header cells */
+.headerCell {
+  @mixin type-body-s-strong;
+  background-color: var(--admin-table-header-background);
+  color: var(--admin-text-secondary);
+  padding: var(--admin-space-s) var(--admin-space-l);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:first-child { border-radius: var(--admin-radius-xs) 0 0 0; }
+  &:last-child  { border-radius: 0 var(--admin-radius-xs) 0 0; }
+}
+
+.checkboxCell {
+  padding: var(--admin-space-s);
+  vertical-align: middle;
+
+  & > * {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Sort button — no border/background, inherits header style */
+.sortButton {
+  @mixin type-body-s-strong;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+
+  &:focus-visible {
+    @mixin focus-ring;
+    border-radius: var(--admin-radius-sm);
+    outline-offset: 2px;
+  }
+}
+
+.sortIcon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--admin-text-subtle);
+}
+
+/* Body rows */
+.row {}
+
+/* Body cells */
+.cell {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  padding: var(--admin-space-m) var(--admin-space-l);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--admin-table-border);
+}
+
+.sortedCell {}
+
+/* Selected row */
+.selected {
+  background-color: var(--admin-table-row-selected);
+}
+
+/* Clickable rows */
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--admin-table-row-hover);
+  }
+}
+
+/* Compact variant */
+.compact {
+  & .cell {
+    padding: var(--admin-space-s) var(--admin-space-l);
+  }
+}
+
+/* Striped variant */
+.striped {
+  & tbody tr:nth-child(even) {
+    background-color: var(--admin-table-row-selected);
+  }
+}
+
+/* Empty state */
+.emptyCell {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  padding: var(--admin-space-m) var(--admin-space-l);
+  text-align: center;
+}

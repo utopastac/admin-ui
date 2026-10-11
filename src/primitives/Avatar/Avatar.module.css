@@ -1,0 +1,55 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  overflow: hidden;
+
+  &.xs {
+    width: 20px;
+    height: var(--admin-input-height-sm);
+    font-size: var(--admin-font-size-xs);
+  }
+
+  &.xl {
+    width: 72px;
+    height: 100px;
+    font-size: var(--admin-font-size-m);
+  }
+
+  &.sm {
+    width: 24px;
+    height: 34px;
+    font-size: var(--admin-font-size-xs);
+  }
+
+  &.md {
+    width: 36px;
+    height: 50px;
+    font-size: var(--admin-font-size-xs);
+  }
+
+  &.lg {
+    width: 52px;
+    height: 73px;
+    font-size: var(--admin-font-size-s);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  background: var(--admin-surface-subtle);
+  color: var(--admin-text-secondary);
+  font-weight: var(--admin-font-weight-emphasis);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}

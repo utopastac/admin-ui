@@ -1,0 +1,84 @@
+/**
+ * Admin UI — Typography Utility Classes
+ *
+ * Optional CSS classes for applying typography styles directly in JSX.
+ * Import via: import 'admin-ui/utilities'
+ *
+ * Usage: <h2 className="admin-type-heading-m">Title</h2>
+ *
+ * For most cases, prefer the <Text> component instead.
+ */
+
+/* ── Headings ── */
+
+.admin-type-heading-xl {
+  @mixin type-heading-xl;
+}
+
+.admin-type-heading-l {
+  @mixin type-heading-l;
+}
+
+.admin-type-heading-m {
+  @mixin type-heading-m;
+}
+
+.admin-type-heading-s {
+  @mixin type-heading-s;
+}
+
+.admin-type-heading-xs {
+  @mixin type-heading-xs;
+}
+
+/* ── Overline ── */
+
+.admin-type-overline {
+  @mixin type-overline;
+}
+
+/* ── Body ── */
+
+.admin-type-body-m {
+  @mixin type-body-m;
+}
+
+.admin-type-body-s {
+  @mixin type-body-s;
+}
+
+.admin-type-body-xs {
+  @mixin type-body-xs;
+}
+
+.admin-type-body-ui {
+  @mixin type-body-ui;
+}
+
+/* ── Body Strong ── */
+
+.admin-type-body-m-strong {
+  @mixin type-body-m-strong;
+}
+
+.admin-type-body-s-strong {
+  @mixin type-body-s-strong;
+}
+
+.admin-type-body-xs-strong {
+  @mixin type-body-xs-strong;
+}
+
+/* ── Weight overrides ── */
+
+.admin-weight-regular {
+  @mixin weight-regular;
+}
+
+.admin-weight-medium {
+  @mixin weight-medium;
+}
+
+.admin-weight-semibold {
+  @mixin weight-semibold;
+}

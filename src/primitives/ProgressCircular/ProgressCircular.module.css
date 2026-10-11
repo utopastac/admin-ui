@@ -1,0 +1,56 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.md {
+    width: 48px;
+    height: 48px;
+  }
+
+  &.lg {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.svg {
+  display: block;
+}
+
+.track {
+  stroke: var(--admin-surface-subtle);
+}
+
+.progress {
+  transition: stroke-dashoffset 0.3s ease;
+
+  &.default {
+    stroke: var(--admin-surface-highlight);
+  }
+
+  &.success {
+    stroke: var(--admin-surface-success-primary);
+  }
+
+  &.error {
+    stroke: var(--admin-surface-error-primary);
+  }
+
+  &.warning {
+    stroke: var(--admin-surface-warning-primary);
+  }
+}
+
+.valueLabel {
+  @mixin type-body-xs;
+  position: absolute;
+  color: var(--admin-text-subtle);
+  pointer-events: none;
+}

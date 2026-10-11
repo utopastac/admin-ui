@@ -1,0 +1,40 @@
+.wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: var(--admin-space-s);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--admin-text-subtle);
+  pointer-events: none;
+}
+
+.input {
+  @mixin input-base;
+  @mixin type-body-s;
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--admin-input-height-sm);
+  padding: 0 calc(var(--admin-space-s) + 20px);
+  border-radius: var(--admin-input-radius);
+
+  &::placeholder {
+    color: var(--admin-text-placeholder);
+  }
+}
+
+.clearButton {
+  @mixin icon-button;
+  position: absolute;
+  right: var(--admin-space-s);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--admin-text-subtle);
+  border-radius: var(--admin-radius-sm);
+
+  &:hover {
+    color: var(--admin-text-primary);
+  }
+}

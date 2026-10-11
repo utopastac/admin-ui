@@ -1,0 +1,7 @@
+.swatch {
+  background: var(--admin-surface-action);
+  border-radius: var(--admin-radius-xs);
+  height: 16px;
+  max-width: 100%;
+  min-width: 3px;
+}

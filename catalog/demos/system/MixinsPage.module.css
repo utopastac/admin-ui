@@ -1,0 +1,217 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xl);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-m);
+  padding: var(--admin-space-s) 0;
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.previewCell {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.rowMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.mixinName {
+  @mixin type-mono-s;
+  color: var(--admin-text-primary);
+}
+
+.desc {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+}
+
+/* ── Disabled previews ── */
+
+.previewDisabledState {
+  @mixin type-body-s;
+  @mixin disabled-state;
+  color: var(--admin-text-primary);
+  padding: 4px 10px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-subtle);
+  display: inline-block;
+}
+
+.previewDisabledButton {
+  @mixin type-body-s;
+  @mixin disabled-button;
+  color: var(--admin-text-primary);
+  padding: 4px 10px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-subtle);
+  border: none;
+}
+
+/* ── Visually hidden preview ── */
+
+.previewVisuallyHidden {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+}
+
+.previewVisuallyHiddenLabel {
+  @mixin visually-hidden;
+}
+
+.previewVisuallyHiddenVisible {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  font-style: italic;
+}
+
+/* ── Text truncate preview ── */
+
+.previewTextTruncate {
+  @mixin type-body-s;
+  @mixin text-truncate;
+  color: var(--admin-text-primary);
+  display: block;
+  width: 100%;
+}
+
+/* ── Icon button preview ── */
+
+.previewIconButton {
+  @mixin icon-button;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--admin-interactive-radius);
+  color: var(--admin-text-subtle);
+  background: var(--admin-surface-subtle);
+}
+
+/* ── Focus ring previews ── */
+
+.previewFocusRing {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  padding: 4px 10px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-subtle);
+  outline: 2px solid var(--admin-interactive-focus);
+  outline-offset: 2px;
+  display: inline-block;
+}
+
+.previewFocusRingInset {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  padding: 4px 10px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-subtle);
+  outline: 2px solid var(--admin-interactive-focus);
+  outline-offset: -2px;
+  display: inline-block;
+}
+
+/* ── Popover preview ── */
+
+.previewPopover {
+  background-color: var(--admin-surface-primary);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-md);
+  box-shadow: var(--admin-shadow-md);
+  padding: 4px 0;
+  width: 100%;
+}
+
+.previewPopoverItem {
+  @mixin type-body-s;
+  color: var(--admin-text-primary);
+  padding: 4px 10px;
+}
+
+/* ── Input previews ── */
+
+.previewInputBase {
+  @mixin input-base;
+  @mixin type-body-s;
+  border-radius: var(--admin-radius-md);
+  height: var(--admin-input-height-md);
+  padding: 0 var(--admin-input-padding-x);
+  width: 100%;
+}
+
+.previewInputWrapper {
+  @mixin input-wrapper;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  border-radius: var(--admin-radius-md);
+  height: var(--admin-input-height-md);
+  padding: 0 var(--admin-input-padding-x);
+  width: 100%;
+}
+
+.previewSwatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--admin-blue-60);
+  flex-shrink: 0;
+}
+
+.previewInputInner {
+  @mixin type-body-s;
+  border: none;
+  background: none;
+  color: var(--admin-text-primary);
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.previewInputSm {
+  @mixin input-sm;
+  @mixin type-body-s;
+  width: 100%;
+}
+
+.previewInputMd {
+  @mixin input-md;
+  @mixin type-body-s;
+  width: 100%;
+}
+
+.previewInputTrigger {
+  @mixin input-trigger;
+  @mixin type-body-s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--admin-radius-md);
+  height: var(--admin-input-height-md);
+  padding: 0 var(--admin-input-padding-x);
+  color: var(--admin-text-primary);
+  width: 100%;
+}
+
+.previewTriggerText {
+  color: var(--admin-text-subtle);
+}

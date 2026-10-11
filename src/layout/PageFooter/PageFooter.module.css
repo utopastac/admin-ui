@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  padding-top: var(--admin-space-l);
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  margin-top: var(--admin-space-xl);
+
+  &.border {
+    border-top: 1px solid var(--admin-border-subtle);
+  }
+
+  &.alignLeft {
+    justify-content: flex-start;
+  }
+
+  &.alignCenter {
+    justify-content: center;
+  }
+
+  &.alignRight {
+    justify-content: flex-end;
+  }
+}

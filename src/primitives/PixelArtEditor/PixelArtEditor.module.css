@@ -1,0 +1,269 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-lg);
+  background-color: var(--admin-surface-primary);
+  overflow: hidden;
+}
+
+.wrapperPopover {
+  border-radius: var(--admin-radius-md);
+}
+
+.editorPopover {
+  box-shadow: var(--admin-shadow-xl);
+  border-radius: var(--admin-radius-md);
+  overflow: hidden;
+}
+
+/* ── Toolbar rows ─────────────────────────────────────────────── */
+
+.toolsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--admin-border-subtle);
+  /* Prevent the row's internal content from inflating the wrapper's intrinsic
+     width — lets overflowed toolbar/swatches scroll horizontally instead of
+     widening the whole editor. */
+  contain: inline-size;
+  min-width: 0;
+  /* background-color: var(--admin-surface-extra-subtle); */
+}
+
+.toolsScroll {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.clearFixed {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs);
+  border-left: 1px solid var(--admin-border-subtle);
+}
+
+.brushAnchor {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+.brushPopover {
+  @mixin popover-panel;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs);
+}
+
+.menuPopover {
+  @mixin popover-panel;
+  display: flex;
+  flex-direction: column;
+  padding: var(--admin-space-xxs);
+}
+
+.menuItem {
+  @mixin type-body-xs;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  padding: var(--admin-space-xs) var(--admin-space-s);
+  background: transparent;
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text-secondary);
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--admin-surface-subtle);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--admin-border-prominent);
+    outline-offset: -2px;
+  }
+}
+
+.menuItemIconSlot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.toolDivider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--admin-border-subtle);
+  flex-shrink: 0;
+  margin: 0 var(--admin-space-xs);
+}
+
+
+.colorsRow {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--admin-border-subtle);
+  /* See toolsRow — keeps added swatches from widening the whole editor. */
+  contain: inline-size;
+  min-width: 0;
+  /* background-color: var(--admin-surface-extra-subtle); */
+}
+
+.swatchScroll {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.eyedropperFixed {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: var(--admin-space-xs);
+  border-right: 1px solid var(--admin-border-subtle);
+}
+
+.customSwatchFixed {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: var(--admin-space-xs);
+  border-left: 1px solid var(--admin-border-subtle);
+}
+
+/* ── Swatches ─────────────────────────────────────────────────── */
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--admin-radius-xs);
+  border: 1px solid var(--admin-border-subtle);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--admin-border-prominent);
+  }
+}
+
+.swatchActive {
+  outline: 2px solid var(--admin-border-highlight);
+  outline-offset: 1px;
+}
+
+.swatchCustom {
+  background-color: var(--admin-surface-subtle);
+}
+
+
+.customSwatchWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Color picker popover content ─────────────────────────────── */
+
+.colorPickerPopover {
+  @mixin popover-panel;
+  padding: var(--admin-space-s);
+}
+
+/* ── Canvas container ─────────────────────────────────────────── */
+
+.canvasContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+  padding: var(--admin-space-s);
+  background-color: var(--admin-surface-extra-subtle);
+}
+
+.canvasInner {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.canvasPreview {
+  top: 0;
+  left: 0;
+}
+
+/* ── Popover mode ─────────────────────────────────────────────── */
+
+.popoverContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.popoverTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: var(--admin-input-background);
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-border-subtle);
+  }
+
+  &:disabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.popoverTriggerOpen {
+  visibility: hidden;
+}
+
+.miniPreview {
+  display: block;
+  image-rendering: pixelated;
+  border-radius: var(--admin-radius-xs);
+}

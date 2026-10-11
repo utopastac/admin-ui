@@ -1,0 +1,71 @@
+.tabStrip {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-shrink: 0;
+  /* border-right: 1px solid var(--admin-border-subtle); */
+  padding: 0;
+  margin-top: var(--admin-space-s);
+  gap: var(--admin-space-xxs);
+  overflow: visible;
+  overflow-y: auto;
+  /* Ensure the active tab's border renders above the content panel's border-left */
+  position: relative;
+  z-index: 1;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid var(--admin-border-subtle);
+  margin: var(--admin-space-xs) 0;
+}
+
+.tab {
+  @mixin type-body-s;
+  @mixin weight-medium;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  border-radius: var(--admin-interactive-radius) 0 0 var(--admin-interactive-radius);
+  padding: var(--admin-space-xs) var(--admin-space-m) var(--admin-space-xs) var(--admin-space-s);
+  background: transparent;
+  border: none;
+  /* Reserve space for the active right-border indicator so inactive tabs don't shift */
+  border-right: 2px solid transparent;
+  cursor: pointer;
+  color: var(--admin-text-secondary);
+  transition: color 0.15s;
+  text-align: left;
+  white-space: nowrap;
+  margin-left: calc(0 - var(--admin-space-s));
+
+  &:hover {
+    color: var(--admin-text-primary);
+    background-color: var(--admin-interactive-hover);
+    border-right-color: var(--admin-border-highlight);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+
+  &.active {
+    color: var(--admin-nav-selected-text);
+    background-color: var(--admin-nav-selected);
+    border-right-color: var(--admin-border-highlight);
+
+    &:hover {
+      background-color: var(--admin-nav-selected);
+    }
+  }
+
+  &.active.highContrast {
+    background-color: var(--admin-surface-inverted-primary);
+    color: var(--admin-text-inverted-primary);
+    border-right-color: var(--admin-border-inverted-prominent);
+  }
+}
+
+.tabIcon {
+  flex-shrink: 0;
+}

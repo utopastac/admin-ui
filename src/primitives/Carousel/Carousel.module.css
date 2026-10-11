@@ -1,0 +1,55 @@
+.carousel {
+  position: relative;
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden;
+  border-radius: var(--admin-radius-md);
+}
+
+.track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slide {
+  flex-shrink: 0;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--admin-border-subtle);
+  background: var(--admin-surface-primary);
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--admin-shadow-sm);
+  transition: all 0.2s;
+  padding: 0;
+  z-index: 1;
+
+  &:hover:not(:disabled) {
+    background: var(--admin-interactive-hover);
+  }
+
+  &:disabled {
+    @mixin disabled-button;
+    pointer-events: none;
+  }
+
+  &.navButtonPrev {
+    left: var(--admin-space-s);
+  }
+
+  &.navButtonNext {
+    right: var(--admin-space-s);
+  }
+}

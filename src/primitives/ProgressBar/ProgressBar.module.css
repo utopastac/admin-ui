@@ -1,0 +1,60 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+  width: 100%;
+
+  &.xs {
+    & .track {
+      height: 3px;
+    }
+  }
+
+  &.sm {
+    & .track {
+      height: 6px;
+    }
+  }
+
+  &.md {
+    & .track {
+      height: 8px;
+    }
+  }
+}
+
+.valueLabel {
+  @mixin type-body-xs;
+  color: var(--admin-text-subtle);
+  align-self: flex-end;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  background-color: var(--admin-surface-subtle);
+  border-radius: var(--admin-radius-pill);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--admin-radius-pill);
+  transition: width 0.3s ease;
+
+  &.default {
+    background-color: var(--admin-surface-highlight);
+  }
+
+  &.success {
+    background-color: var(--admin-surface-success-primary);
+  }
+
+  &.error {
+    background-color: var(--admin-surface-error-primary);
+  }
+
+  &.warning {
+    background-color: var(--admin-surface-warning-primary);
+  }
+}

@@ -1,0 +1,83 @@
+.container {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  width: 100%;
+  height: var(--admin-input-height-sm);
+  padding: 0 var(--admin-space-s);
+  background: var(--admin-input-background);
+  border: 1px solid var(--admin-input-border);
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-border-subtle);
+  }
+}
+
+.triggerLabel {
+  @mixin type-body-ui;
+  color: var(--admin-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.dropdown {
+  @mixin popover-panel;
+  padding: var(--admin-space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  min-width: 260px;
+}
+
+.groupHeader {
+  @mixin type-body-s;
+  @mixin weight-medium;
+  color: var(--admin-text-secondary);
+  margin: 0;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xs);
+
+  & + .group {
+    padding-top: var(--admin-space-s);
+    border-top: 1px solid var(--admin-border-subtle);
+  }
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--admin-space-m);
+  /* padding provides space for scaled-down shadows to render outside the swatch bounds */
+  padding: var(--admin-space-s);
+  overflow: visible;
+}
+
+.presetSwatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-extra-subtle);
+  border: 1px solid var(--admin-border-subtle);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--admin-border-prominent);
+  }
+}

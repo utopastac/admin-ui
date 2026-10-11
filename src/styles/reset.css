@@ -1,0 +1,4 @@
+/* Scoped reset for admin-ui components */
+*, *::before, *::after {
+  box-sizing: border-box;
+}

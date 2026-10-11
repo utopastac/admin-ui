@@ -1,0 +1,79 @@
+.linkForm {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  flex: 1;
+}
+
+.urlInput {
+  flex: 1;
+  height: 28px;
+  padding: 0 var(--admin-space-s);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-sm);
+  background-color: var(--admin-input-background);
+  color: var(--admin-text-primary);
+  font-family: var(--admin-font-sans);
+  @mixin type-body-s;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--admin-input-border-focus);
+    outline: var(--admin-focus-ring-width) var(--admin-focus-ring-style) var(--admin-interactive-focus);
+    outline-offset: 1px;
+  }
+
+  &::placeholder {
+    color: var(--admin-text-placeholder);
+  }
+}
+
+.confirmButton {
+  height: 28px;
+  padding: 0 var(--admin-space-s);
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  background-color: var(--admin-surface-primary);
+  color: var(--admin-text-primary);
+  font-family: var(--admin-font-sans);
+  @mixin type-body-s;
+  font-weight: var(--admin-font-weight-medium);
+  cursor: pointer;
+  transition: opacity 0.15s;
+
+  &:disabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}
+
+.cancelButton {
+  height: 28px;
+  padding: 0 var(--admin-space-s);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-sm);
+  background-color: transparent;
+  color: var(--admin-text-secondary);
+  font-family: var(--admin-font-sans);
+  @mixin type-body-s;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+    color: var(--admin-text-primary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}

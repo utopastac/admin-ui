@@ -1,0 +1,58 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--admin-text-subtle);
+  transition: transform 0.15s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.tab {
+  @mixin weight-medium;
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  border-radius: var(--admin-interactive-radius);
+  padding: var(--admin-space-xs) var(--admin-space-s);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--admin-text-secondary);
+  transition: color 0.15s;
+
+  &.sm {
+    @mixin type-body-m;
+    @mixin weight-medium;
+  }
+
+  &.lg {
+    @mixin type-body-m;
+    @mixin weight-medium;
+    padding: var(--admin-space-xs) var(--admin-space-m);
+  }
+
+  &:hover {
+    color: var(--admin-text-primary);
+    background-color: var(--admin-interactive-hover);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+
+  &.active {
+    color: var(--admin-nav-selected-text);
+    background-color: var(--admin-nav-selected);
+
+    & .chevron {
+      color: currentColor;
+    }
+  }
+}

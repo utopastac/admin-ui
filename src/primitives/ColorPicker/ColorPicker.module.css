@@ -1,0 +1,91 @@
+.colorPicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  flex: 1;
+  min-width: 0;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+}
+
+.swatch {
+  width: 23px;
+  height: 23px;
+  border-radius: var(--admin-radius-xs);
+  margin-left: -5px;
+  border: 1px solid var(--admin-border-subtle);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-input-border-focus);
+  }
+}
+
+.swatchFrame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @mixin input-wrapper;
+  border-radius: var(--admin-radius-sm);
+  padding: var(--admin-space-xs);
+  flex: 0 0 auto;
+
+  & .swatch {
+    margin-left: 0;
+  }
+
+  &.swatchFrameError {
+    border-color: var(--admin-surface-warning-primary);
+  }
+}
+
+.opacityInput {
+  width: 56px;
+  flex: 0 0 auto;
+}
+
+.dropdown {
+  @mixin popover-panel;
+  padding: var(--admin-space-l);
+  width: calc(200px + 2 * var(--admin-space-l));
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-m);
+}
+
+.wheelContainer {
+  display: flex;
+}
+
+.swatchGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-s);
+  border-top: 1px solid var(--admin-border-subtle);
+}
+
+.swatchOption {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--admin-radius-sm);
+  border: 2px solid var(--admin-border-subtle);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--admin-border-highlight);
+  }
+}
+
+.swatchSelected {
+  border-color: var(--admin-border-highlight);
+  box-shadow: 0 0 0 2px var(--admin-surface-primary), 0 0 0 4px var(--admin-border-highlight);
+}

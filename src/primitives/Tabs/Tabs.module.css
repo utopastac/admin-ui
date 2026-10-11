@@ -1,0 +1,38 @@
+.tabList {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  /* Size: md (default) */
+  &.md .tab {
+    font-size: var(--admin-font-size-s);
+    padding: var(--admin-space-s) var(--admin-space-l);
+    padding-bottom: var(--admin-space-m);
+  }
+
+  /* Size: sm */
+  &.sm .tab {
+    font-size: var(--admin-font-size-xs);
+    padding: var(--admin-space-xs) var(--admin-space-m);
+    padding-bottom: var(--admin-space-s);
+  }
+}
+
+.tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--admin-text-secondary);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--admin-text-primary);
+  }
+
+  &.active {
+    color: var(--admin-text-primary);
+    font-weight: var(--admin-font-weight-emphasis);
+    border-bottom: 2px solid var(--admin-border-prominent);
+    margin-bottom: -1px;
+  }
+}

@@ -1,0 +1,8 @@
+.root {
+  display: grid;
+  gap: var(--columns-gap, var(--admin-space-m));
+}
+
+.cols2 { grid-template-columns: repeat(2, 1fr); }
+.cols3 { grid-template-columns: repeat(3, 1fr); }
+.cols4 { grid-template-columns: repeat(4, 1fr); }

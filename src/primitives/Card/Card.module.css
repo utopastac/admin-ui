@@ -1,0 +1,18 @@
+.card {
+  background: var(--admin-card-background);
+  border: 1px solid var(--admin-card-border);
+  border-radius: var(--admin-radius-md);
+  padding: var(--admin-space-l);
+}
+
+.hoverable {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--admin-card-shadow);
+  }
+}
+
+.active {
+  border: 2px solid var(--admin-border-prominent);
+}

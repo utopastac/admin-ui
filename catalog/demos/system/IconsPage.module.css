@@ -1,0 +1,80 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-l);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-m);
+}
+
+.count {
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-subtle);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: var(--admin-space-s);
+}
+
+.empty {
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-subtle);
+  margin: 0;
+}
+
+.tile {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: var(--admin-space-m);
+  height: 64px;
+  background: var(--admin-surface-extra-subtle);
+  border: none;
+  border-radius: var(--admin-radius-md);
+  cursor: pointer;
+  color: var(--admin-text-primary);
+
+  &.copied {
+    background: var(--admin-surface-subtle);
+  }
+}
+
+.usageBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-m);
+}
+
+.usageNote {
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-secondary);
+  margin: 0;
+
+  & code {
+    font-family: var(--admin-font-mono);
+  }
+}
+
+.codeBlock {
+  background: var(--admin-surface-extra-subtle);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius-md);
+  padding: var(--admin-space-m);
+  font-size: var(--admin-font-size-s);
+  font-family: var(--admin-font-mono);
+  color: var(--admin-text-primary);
+  margin: 0;
+  overflow-x: auto;
+}

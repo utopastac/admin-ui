@@ -1,0 +1,5 @@
+.popover {
+  position: fixed;
+  z-index: 10001;
+  overflow-y: auto;
+}

@@ -1,0 +1,103 @@
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.toast {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--admin-space-s);
+  padding: var(--admin-space-s) var(--admin-space-m);
+  border-radius: var(--admin-radius-md);
+  background-color: var(--admin-surface-inverted-primary);
+  color: var(--admin-text-inverted-primary);
+  box-shadow: var(--admin-shadow-lg);
+  animation: toast-in 0.25s ease-out forwards;
+}
+
+.exiting {
+  animation: toast-out 0.3s ease-in forwards;
+}
+
+/* Status icon — color varies by variant */
+
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+/* Message text */
+
+.message {
+  @mixin type-body-s;
+  flex: 1;
+  margin: 0;
+  color: inherit;
+}
+
+/* Dismiss button */
+
+.dismiss {
+  @mixin icon-button;
+  flex-shrink: 0;
+  color: var(--admin-text-inverted-subtle);
+
+  &:hover {
+    color: var(--admin-text-inverted-primary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}
+
+/* Stack container */
+
+.stack {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  max-width: 360px;
+}
+
+.bottomRight {
+  bottom: var(--admin-space-l);
+  right: var(--admin-space-l);
+}
+
+.bottomLeft {
+  bottom: var(--admin-space-l);
+  left: var(--admin-space-l);
+}
+
+.topRight {
+  top: var(--admin-space-l);
+  right: var(--admin-space-l);
+}
+
+.topLeft {
+  top: var(--admin-space-l);
+  left: var(--admin-space-l);
+}

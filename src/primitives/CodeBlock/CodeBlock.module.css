@@ -1,0 +1,116 @@
+.container {
+  position: relative;
+  background: var(--admin-code-bg);
+  border-radius: var(--admin-radius-md);
+  overflow: hidden;
+
+  &:hover .copyButtonFloating {
+    opacity: 1;
+  }
+}
+
+/* Header bar with language label and copy button */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--admin-space-s) var(--admin-space-m);
+  background: var(--admin-code-header-bg);
+}
+
+.language {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-xs);
+  font-weight: var(--admin-font-weight-medium);
+  color: var(--admin-code-text-subtle);
+  text-transform: lowercase;
+  user-select: none;
+}
+
+/* Code area */
+.pre {
+  margin: 0;
+  padding: var(--admin-space-l);
+  overflow-x: auto;
+}
+
+.code {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-s);
+  font-weight: var(--admin-font-weight-body);
+  color: var(--admin-code-text);
+  line-height: 1.6;
+  white-space: pre;
+  tab-size: 2;
+  background: transparent;
+  padding: 0;
+}
+
+/* Line numbers */
+.line {
+  display: inline;
+}
+
+.lineNumber {
+  display: inline-block;
+  width: 2.5em;
+  text-align: right;
+  padding-right: var(--admin-space-l);
+  color: var(--admin-code-text-extra-subtle);
+  font-size: var(--admin-font-size-xs);
+  user-select: none;
+}
+
+.lineContent {
+  display: inline;
+}
+
+/* Copy button - shared styles */
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs) var(--admin-space-s);
+  background: transparent;
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-code-text-subtle);
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-xs);
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+  user-select: none;
+
+  &:hover {
+    color: var(--admin-code-text);
+    background: var(--admin-code-action-hover-bg);
+  }
+
+  &.copied {
+    color: var(--admin-code-text);
+  }
+}
+
+.copyLabel {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-xs);
+}
+
+/* Floating copy button when there is no header */
+.copyButtonFloating {
+  position: absolute;
+  top: var(--admin-space-s);
+  right: var(--admin-space-s);
+  background: var(--admin-code-toolbar-bg);
+  border: 1px solid var(--admin-code-toolbar-border);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, background-color 0.15s;
+
+  &.copied {
+    opacity: 1;
+  }
+
+  &:hover {
+    background: var(--admin-code-toolbar-hover-bg);
+  }
+}

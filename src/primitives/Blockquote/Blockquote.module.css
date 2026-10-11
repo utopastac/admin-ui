@@ -1,0 +1,23 @@
+.blockquote {
+  margin: 0;
+  padding: var(--admin-space-l) var(--admin-space-l);
+  border-left: 4px solid var(--admin-border-prominent);
+  background: var(--admin-surface-extra-subtle);
+  font-family: var(--admin-font-sans);
+}
+
+.content {
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-font-size-m);
+  font-weight: var(--admin-font-weight-body);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.cite {
+  margin-top: var(--admin-space-s);
+  color: var(--admin-text-subtle);
+  font-size: var(--admin-font-size-s);
+  font-weight: var(--admin-font-weight-medium);
+  font-style: normal;
+}

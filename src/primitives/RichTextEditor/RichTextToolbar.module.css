@@ -1,0 +1,20 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  padding: var(--admin-space-xs) var(--admin-space-xs);
+
+  background-color: var(--admin-surface-primary);
+  border-radius: var(--admin-radius-lg) var(--admin-radius-lg) 0 0;
+  flex-wrap: wrap;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.headingSelect {
+  min-width: 110px;
+}

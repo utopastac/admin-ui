@@ -1,0 +1,93 @@
+/* TimePicker — positioning container for dropdown */
+.timePicker {
+  position: relative;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  @mixin type-body-s;
+  height: var(--admin-input-height-md);
+  width: 100%;
+  padding: 0 var(--admin-space-xl) 0 var(--admin-space-m);
+  border: 1px solid var(--admin-input-border);
+  border-radius: var(--admin-radius-md);
+  background-color: var(--admin-input-background);
+  color: var(--admin-text-primary);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+
+  &:hover:not(:disabled) {
+    border-color: var(--admin-border-subtle);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--admin-input-border-focus);
+  }
+
+  &.open {
+    border-color: var(--admin-input-border-focus);
+  }
+
+  &.error {
+    border-color: var(--admin-surface-warning-primary);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.clockIcon {
+  position: absolute;
+  right: var(--admin-space-m);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--admin-text-subtle);
+  pointer-events: none;
+}
+
+/* Dropdown panel */
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--admin-space-xs));
+  left: 0;
+  right: 0;
+  @mixin popover-panel;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 100;
+  padding: var(--admin-space-xs) 0;
+}
+
+/* Slot items */
+.slot {
+  display: block;
+  width: 100%;
+  padding: var(--admin-space-s) var(--admin-space-m);
+  border: none;
+  background: none;
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  text-align: left;
+  font-weight: var(--admin-font-weight-body);
+  @mixin type-body-s;
+  transition: background-color 0.15s;
+
+  &:hover:not(:disabled) {
+    background-color: var(--admin-surface-extra-subtle);
+  }
+
+  &.selected {
+    background-color: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+    font-weight: var(--admin-font-weight-medium);
+  }
+
+  &.slotDisabled {
+    @mixin disabled-state;
+  }
+}

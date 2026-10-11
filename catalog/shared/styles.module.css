@@ -1,0 +1,23 @@
+.sectionContainer {
+  padding: var(--admin-space-xl);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--admin-space-s);
+  align-items: center;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  margin-top: var(--admin-space-xl);
+  padding-bottom: var(--admin-space-xl);
+  border-bottom: 1px solid var(--admin-border-subtle);
+}

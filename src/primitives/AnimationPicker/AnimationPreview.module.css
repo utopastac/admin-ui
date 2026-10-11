@@ -1,0 +1,32 @@
+.previewContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  padding: var(--admin-space-xs) 0;
+}
+
+.previewTrack {
+  flex: 1;
+  height: 32px;
+  background: var(--admin-surface-extra-subtle);
+  border-radius: var(--admin-radius-sm);
+  border: 1px solid var(--admin-border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.previewBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: var(--admin-space-xs);
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--admin-input-border-focus);
+  background: var(--admin-surface-info-secondary);
+  border-radius: var(--admin-radius-xs);
+
+  &.active {
+    left: calc(100% - var(--admin-space-xl));
+  }
+}

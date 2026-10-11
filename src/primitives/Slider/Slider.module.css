@@ -1,0 +1,149 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+  width: 100%;
+
+  &.disabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: not-allowed;
+
+    & .thumb {
+      pointer-events: none;
+    }
+
+    & .trackArea {
+      pointer-events: none;
+    }
+  }
+
+  /* ── Size variants ── */
+  &.sm {
+    & .track {
+      height: 4px;
+    }
+
+    & .trackArea {
+      padding: 6px 0;
+    }
+
+    & .thumb {
+      width: 16px;
+      height: 16px;
+      margin-left: -8px;
+    }
+  }
+
+  &.md {
+    & .track {
+      height: 6px;
+    }
+
+    & .trackArea {
+      padding: 7px 0;
+    }
+
+    & .thumb {
+      width: 20px;
+      height: 20px;
+      margin-left: -10px;
+    }
+  }
+}
+
+/* ── Track area (click/touch target) ── */
+.trackArea {
+  position: relative;
+  cursor: pointer;
+}
+
+/* ── Track (visual bar) ── */
+.track {
+  position: relative;
+  width: 100%;
+  background-color: var(--admin-surface-subtle);
+  border-radius: 9999px;
+}
+
+/* ── Fill (active range) ── */
+.fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: var(--admin-surface-highlight);
+  border-radius: 9999px;
+}
+
+/* ── Thumb ── */
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+  background-color: var(--admin-surface-highlight);
+  cursor: grab;
+  transition: transform 0.15s;
+  touch-action: none;
+
+  &:hover {
+    transform: translate(0, -50%) scale(1.15);
+
+    & .tooltip {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--admin-space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--admin-surface-inverted-primary);
+  color: var(--admin-text-inverted-primary);
+  @mixin type-body-xs;
+  padding: var(--admin-space-xxs) var(--admin-space-xs);
+  border-radius: var(--admin-radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+
+  &.tooltipVisible {
+    opacity: 1;
+  }
+}
+
+/* ── Labels ── */
+.labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  @mixin type-body-xs;
+  color: var(--admin-text-secondary);
+  user-select: none;
+}
+
+/* ── Step labels ── */
+.stepLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepLabel {
+  @mixin type-body-xs;
+  color: var(--admin-text-secondary);
+  user-select: none;
+  text-align: center;
+}

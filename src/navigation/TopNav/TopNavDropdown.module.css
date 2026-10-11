@@ -1,0 +1,59 @@
+.panel {
+  @mixin popover-panel;
+  position: fixed;
+  z-index: 10001;
+  min-width: 180px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--admin-space-xs) 0;
+  margin-top: 2px;
+  user-select: none;
+}
+
+.groupHeader {
+  @mixin type-body-xs;
+  font-weight: var(--admin-font-weight-medium);
+  padding: var(--admin-space-s) var(--admin-space-m) var(--admin-space-xs) var(--admin-space-m);
+  color: var(--admin-text-subtle);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--admin-separator-color);
+  margin: var(--admin-space-xs) 0;
+}
+
+.item {
+  @mixin type-body-s;
+  display: flex;
+  align-items: center;
+  padding: var(--admin-space-s) var(--admin-space-m);
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  outline: none;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring-inset;
+  }
+}
+
+.disabled {
+  @mixin disabled-state;
+  cursor: default;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: var(--admin-space-s);
+  margin-left: calc(var(--admin-space-xs) * -1);
+  color: var(--admin-icon-muted);
+}
+
+.label {
+  flex: 1;
+}

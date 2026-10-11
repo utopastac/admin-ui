@@ -1,0 +1,42 @@
+.main {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-s);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xs);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--admin-space-s);
+}
+
+.title {
+  font-size: var(--admin-font-size-m);
+  font-weight: var(--admin-font-weight-emphasis);
+  color: var(--admin-text-primary);
+}
+
+.count {
+  font-size: var(--admin-font-size-xs);
+  color: var(--admin-text-secondary);
+  white-space: nowrap;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-secondary);
+  line-height: 1.5;
+}

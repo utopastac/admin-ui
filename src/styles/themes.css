@@ -1,0 +1,1375 @@
+/*
+ * ADMIN UI — EXAMPLE THEMES
+ *
+ * Apply a theme by setting data-admin-theme on any wrapper element.
+ * Themes are word-matched (uses ~= selector), so multiple can be composed:
+ *
+ *   <div data-admin-theme="ocean">          ← single theme
+ *   <div data-admin-theme="ocean rounded">  ← color + shape theme
+ *
+ * Dark mode stacks with the existing data-theme="dark" attribute:
+ *
+ *   <div data-admin-theme="ocean" data-theme="dark">
+ *
+ * COLOR THEMES (accent only — surfaces stay neutral gray)
+ *   ocean    — sky blue accent
+ *   ember    — amber accent, DM Sans
+ *   forest   — green accent
+ *   violet   — purple accent
+ *   rose     — pink/red accent
+ *
+ * SURFACE THEMES (full palette shift)
+ *   slate    — blue-tinted gray surfaces throughout
+ *   voltage  — electric chartreuse and cyan on ink-black surfaces
+ *   zine     — financial-newsprint surfaces with claret accents
+ *   studio   — spacious graphite surfaces for sophisticated developer tools
+ *   luma     — luminous, rounded, Apple-like surfaces
+ *   terminal — command-line surfaces with green/amber accents
+ *   ledger   — finance/backoffice surfaces with ruled-line restraint
+ *   blueprint — architectural planning surfaces with precise blue linework
+ *   aurora   — soft futuristic surfaces with luminous teal and coral accents
+ *   stark    — Swiss black-and-white surfaces with generous spacing
+ *
+ * SHAPE THEMES (compose with any color theme)
+ *   rounded  — pill buttons, rounder inputs and interactive elements
+ *   sharp    — flat 4px radius throughout
+ *
+ * WHAT ACCENT THEMES CONTROL
+ *   — Brand accent (highlights, borders, focus rings, links)
+ *   — Primary button colors
+ *   — Selected state tint on interactive items
+ *
+ * WHAT SURFACE THEMES CONTROL
+ *   — All of the above, plus surface, text, and border base colors
+ *   — Interactive tokens cascade automatically from surface overrides
+ *
+ * WHAT NO THEME CONTROLS
+ *   — Status colors (warning, error, success, info)
+ *   — Code block palette (always dark)
+ */
+
+/* ──────────────── OCEAN ──────────────── */
+
+[data-admin-theme~="ocean"] {
+  --admin-surface-highlight:        #0284c7;
+  --admin-border-highlight:         #0284c7;
+  --admin-text-highlight:           #0284c7;
+  --admin-text-action:              #0284c7;
+  --admin-interactive-selected:     #e0f2fe;
+
+  --admin-button-primary-bg:        #0284c7;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #0369a1;
+}
+
+[data-admin-theme~="ocean"][data-theme="dark"] {
+  --admin-surface-highlight:        #38bdf8;
+  --admin-border-highlight:         #38bdf8;
+  --admin-text-highlight:           #7dd3fc;
+  --admin-text-action:              #7dd3fc;
+  --admin-interactive-selected:     rgba(56, 189, 248, 0.15);
+
+  --admin-button-primary-bg:        #38bdf8;
+  --admin-button-primary-text:      #0c4a6e;
+  --admin-button-primary-hover-bg:  #7dd3fc;
+}
+
+/* ──────────────── EMBER ──────────────── */
+
+[data-admin-theme~="ember"] {
+  --admin-surface-highlight:        #d97706;
+  --admin-border-highlight:         #d97706;
+  --admin-text-highlight:           #d97706;
+  --admin-text-action:              #d97706;
+  --admin-interactive-selected:     #fef3c7;
+
+  --admin-button-primary-bg:        #d97706;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #b45309;
+
+  --admin-font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+[data-admin-theme~="ember"][data-theme="dark"] {
+  --admin-surface-highlight:        #fbbf24;
+  --admin-border-highlight:         #fbbf24;
+  --admin-text-highlight:           #fcd34d;
+  --admin-text-action:              #fcd34d;
+  --admin-interactive-selected:     rgba(251, 191, 36, 0.15);
+
+  --admin-button-primary-bg:        #fbbf24;
+  --admin-button-primary-text:      #78350f;
+  --admin-button-primary-hover-bg:  #fcd34d;
+}
+
+/* ──────────────── FOREST ──────────────── */
+
+[data-admin-theme~="forest"] {
+  --admin-surface-highlight:        #16a34a;
+  --admin-border-highlight:         #16a34a;
+  --admin-text-highlight:           #16a34a;
+  --admin-text-action:              #16a34a;
+  --admin-interactive-selected:     #dcfce7;
+
+  --admin-button-primary-bg:        #16a34a;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #15803d;
+}
+
+[data-admin-theme~="forest"][data-theme="dark"] {
+  --admin-surface-highlight:        #4ade80;
+  --admin-border-highlight:         #4ade80;
+  --admin-text-highlight:           #86efac;
+  --admin-text-action:              #86efac;
+  --admin-interactive-selected:     rgba(74, 222, 128, 0.15);
+
+  --admin-button-primary-bg:        #4ade80;
+  --admin-button-primary-text:      #14532d;
+  --admin-button-primary-hover-bg:  #86efac;
+}
+
+/* ──────────────── VIOLET ──────────────── */
+
+[data-admin-theme~="violet"] {
+  --admin-surface-highlight:        #7c3aed;
+  --admin-border-highlight:         #7c3aed;
+  --admin-text-highlight:           #7c3aed;
+  --admin-text-action:              #7c3aed;
+  --admin-interactive-selected:     #ede9fe;
+
+  --admin-button-primary-bg:        #7c3aed;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #6d28d9;
+}
+
+[data-admin-theme~="violet"][data-theme="dark"] {
+  --admin-surface-highlight:        #a78bfa;
+  --admin-border-highlight:         #a78bfa;
+  --admin-text-highlight:           #c4b5fd;
+  --admin-text-action:              #c4b5fd;
+  --admin-interactive-selected:     rgba(167, 139, 250, 0.15);
+
+  --admin-button-primary-bg:        #a78bfa;
+  --admin-button-primary-text:      #2e1065;
+  --admin-button-primary-hover-bg:  #c4b5fd;
+}
+
+/* ──────────────── ROSE ──────────────── */
+
+[data-admin-theme~="rose"] {
+  --admin-surface-highlight:        #e11d48;
+  --admin-border-highlight:         #e11d48;
+  --admin-text-highlight:           #e11d48;
+  --admin-text-action:              #e11d48;
+  --admin-interactive-selected:     #ffe4e6;
+
+  --admin-button-primary-bg:        #e11d48;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #be123c;
+}
+
+[data-admin-theme~="rose"][data-theme="dark"] {
+  --admin-surface-highlight:        #fb7185;
+  --admin-border-highlight:         #fb7185;
+  --admin-text-highlight:           #fda4af;
+  --admin-text-action:              #fda4af;
+  --admin-interactive-selected:     rgba(251, 113, 133, 0.15);
+
+  --admin-button-primary-bg:        #fb7185;
+  --admin-button-primary-text:      #4c0519;
+  --admin-button-primary-hover-bg:  #fda4af;
+}
+
+/* ──────────────── SLATE ──────────────── */
+/*
+ * Full surface theme — overrides surfaces, text, borders, and accent.
+ * Interactive and input tokens cascade automatically from the surface overrides.
+ * --admin-interactive-selected and --admin-border-prominent don't cascade,
+ * so they are overridden explicitly.
+ */
+
+[data-admin-theme~="slate"] {
+  /* Surfaces — blue-tinted grays (cascade to --admin-input-background,
+     --admin-interactive-hover, --admin-interactive-active automatically) */
+  /* Shape */
+  --admin-button-radius:            4px;
+  --admin-interactive-radius:       2px;
+  --admin-input-radius:             4px;
+  --admin-radius-md:                4px;
+  --admin-radius-lg:                4px;
+
+  /* Surfaces — blue-tinted grays */
+  --admin-surface-primary:          #ffffff;
+  --admin-surface-extra-subtle:     #f1f5f9;
+  --admin-surface-subtle:           #e2e8f0;
+  --admin-surface-mid:              #cbd5e1;
+  --admin-surface-secondary:        #475569;
+  --admin-surface-highlight:        #3b82f6;
+
+  /* Text */
+  --admin-text-primary:             #0f172a;
+  --admin-text-secondary:           #475569;
+  --admin-text-subtle:              #94a3b8;
+  --admin-text-highlight:           #3b82f6;
+  --admin-text-action:              #3b82f6;
+
+  /* Border */
+  --admin-border-subtle:            rgba(15, 23, 42, 0.1);
+  --admin-border-prominent:         #0f172a;
+  --admin-border-highlight:         #3b82f6;
+
+  /* Selected tint (doesn't cascade from surface tokens) */
+  --admin-interactive-selected:     #dbeafe;
+
+  /* Button */
+  --admin-button-primary-bg:        #3b82f6;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #2563eb;
+}
+
+[data-admin-theme~="slate"][data-theme="dark"] {
+  --admin-surface-primary:          #0f172a;
+  --admin-surface-extra-subtle:     rgba(148, 163, 184, 0.08);
+  --admin-surface-subtle:           rgba(148, 163, 184, 0.15);
+  --admin-surface-mid:              #334155;
+  --admin-surface-secondary:        #94a3b8;
+  --admin-surface-highlight:        #60a5fa;
+
+  --admin-text-primary:             #f8fafc;
+  --admin-text-secondary:           #cbd5e1;
+  --admin-text-subtle:              #64748b;
+  --admin-text-highlight:           #93c5fd;
+  --admin-text-action:              #93c5fd;
+
+  --admin-border-subtle:            rgba(148, 163, 184, 0.15);
+  --admin-border-prominent:         #f8fafc;
+  --admin-border-highlight:         #60a5fa;
+
+  --admin-interactive-selected:     rgba(96, 165, 250, 0.15);
+
+  --admin-button-primary-bg:        #60a5fa;
+  --admin-button-primary-text:      #1e3a5f;
+  --admin-button-primary-hover-bg:  #93c5fd;
+}
+
+/* ──────────────── VOLTAGE ──────────────── */
+/*
+ * Full surface theme — high-contrast dark UI with electric utility colors.
+ * Light mode intentionally stays dark to preserve the theme's identity.
+ */
+
+[data-admin-theme~="voltage"] {
+  --admin-font-sans:                "IBM Plex Mono", "Space Mono", Menlo, monospace;
+  --admin-button-text-transform:    uppercase;
+  --admin-button-radius:            2px;
+  --admin-interactive-radius:       2px;
+  --admin-input-radius:             0px;
+  --admin-radius-md:                2px;
+  --admin-radius-lg:                2px;
+
+  --admin-surface-primary:          #080a0f;
+  --admin-surface-extra-subtle:     #101620;
+  --admin-surface-subtle:           #172231;
+  --admin-surface-mid:              #2a3f52;
+  --admin-surface-secondary:        #d7ff36;
+  --admin-surface-highlight:        #12f7d6;
+
+  --admin-text-primary:             #f7ffe8;
+  --admin-text-secondary:           #bed2c9;
+  --admin-text-subtle:              #7d928c;
+  --admin-text-highlight:           #12f7d6;
+  --admin-text-action:              #d7ff36;
+  --admin-text-inverted-primary:    #080a0f;
+
+  --admin-border-subtle:            rgba(215, 255, 54, 0.18);
+  --admin-border-prominent:         #d7ff36;
+  --admin-border-highlight:         #12f7d6;
+
+  --admin-interactive-hover:        rgba(18, 247, 214, 0.1);
+  --admin-interactive-active:       rgba(215, 255, 54, 0.16);
+  --admin-interactive-selected:     rgba(215, 255, 54, 0.2);
+  --admin-interactive-selected-prominent: rgba(18, 247, 214, 0.18);
+  --admin-overlay:                  rgba(0, 0, 0, 0.78);
+
+  --admin-input-background:         #0c1118;
+  --admin-input-border:             rgba(18, 247, 214, 0.28);
+  --admin-input-border-focus:       #d7ff36;
+
+  --admin-button-primary-bg:        #d7ff36;
+  --admin-button-primary-text:      #080a0f;
+  --admin-button-primary-hover-bg:  #12f7d6;
+
+  --admin-panel-background:         #0b1017;
+  --admin-panel-border:             rgba(18, 247, 214, 0.34);
+  --admin-panel-shadow:             0 18px 48px rgba(18, 247, 214, 0.18);
+  --admin-card-background:          #0b1017;
+  --admin-card-border:              rgba(215, 255, 54, 0.22);
+  --admin-card-shadow:              0 10px 28px rgba(18, 247, 214, 0.14);
+  --admin-table-header-background:  #101620;
+  --admin-table-row-hover:          rgba(18, 247, 214, 0.08);
+  --admin-table-row-selected:       rgba(215, 255, 54, 0.12);
+  --admin-table-border:             rgba(215, 255, 54, 0.18);
+  --admin-separator-color:          rgba(18, 247, 214, 0.22);
+  --admin-neutral-badge-bg:         rgba(215, 255, 54, 0.12);
+  --admin-neutral-badge-text:       #d7ff36;
+  --admin-neutral-badge-border:     rgba(18, 247, 214, 0.38);
+  --admin-link-text:                #12f7d6;
+  --admin-link-hover-text:          #d7ff36;
+  --admin-icon-primary:             #f7ffe8;
+  --admin-icon-secondary:           #bed2c9;
+  --admin-icon-muted:               #12f7d6;
+  --admin-focus-ring-offset:        1px;
+  --admin-overlay-backdrop-filter:  blur(2px);
+}
+
+[data-admin-theme~="voltage"][data-theme="dark"] {
+  --admin-surface-primary:          #030507;
+  --admin-surface-extra-subtle:     #0a1018;
+  --admin-surface-subtle:           #111b29;
+  --admin-surface-mid:              #24384a;
+  --admin-surface-secondary:        #ecff69;
+  --admin-surface-highlight:        #45ffe6;
+
+  --admin-text-primary:             #fbfff2;
+  --admin-text-secondary:           #d5e4de;
+  --admin-text-subtle:              #8da29b;
+  --admin-text-highlight:           #45ffe6;
+  --admin-text-action:              #ecff69;
+
+  --admin-border-subtle:            rgba(236, 255, 105, 0.2);
+  --admin-border-prominent:         #ecff69;
+  --admin-border-highlight:         #45ffe6;
+
+  --admin-interactive-hover:        rgba(69, 255, 230, 0.12);
+  --admin-interactive-active:       rgba(236, 255, 105, 0.18);
+  --admin-interactive-selected:     rgba(236, 255, 105, 0.22);
+  --admin-interactive-selected-prominent: rgba(69, 255, 230, 0.2);
+
+  --admin-input-background:         #070b11;
+  --admin-input-border:             rgba(69, 255, 230, 0.32);
+  --admin-input-border-focus:       #ecff69;
+
+  --admin-button-primary-bg:        #ecff69;
+  --admin-button-primary-text:      #030507;
+  --admin-button-primary-hover-bg:  #45ffe6;
+
+  --admin-panel-background:         #070b11;
+  --admin-panel-border:             rgba(69, 255, 230, 0.36);
+  --admin-card-background:          #070b11;
+  --admin-card-border:              rgba(236, 255, 105, 0.24);
+  --admin-neutral-badge-bg:         rgba(236, 255, 105, 0.14);
+  --admin-neutral-badge-text:       #ecff69;
+  --admin-neutral-badge-border:     rgba(69, 255, 230, 0.4);
+  --admin-link-text:                #45ffe6;
+  --admin-link-hover-text:          #ecff69;
+  --admin-icon-primary:             #fbfff2;
+  --admin-icon-secondary:           #d5e4de;
+  --admin-icon-muted:               #45ffe6;
+}
+
+/* ──────────────── ZINE ──────────────── */
+/*
+ * Full surface theme — warm financial-newsprint paper, charcoal ink, and claret accents.
+ */
+
+[data-admin-theme~="zine"] {
+  --admin-font-sans:                Georgia, "Times New Roman", serif;
+  --admin-button-text-transform:    uppercase;
+  --admin-button-radius:            0px;
+  --admin-interactive-radius:       0px;
+  --admin-input-radius:             0px;
+  --admin-radius-md:                0px;
+  --admin-radius-lg:                0px;
+
+  --admin-surface-primary:          #fff1e5;
+  --admin-surface-extra-subtle:     #f6dfcf;
+  --admin-surface-subtle:           #e9c9b8;
+  --admin-surface-mid:              #caa792;
+  --admin-surface-secondary:        #262a33;
+  --admin-surface-highlight:        #990f3d;
+
+  --admin-text-primary:             #262a33;
+  --admin-text-secondary:           #5b514b;
+  --admin-text-subtle:              #7c6f66;
+  --admin-text-placeholder:         #5f554e;
+  --admin-text-highlight:           #990f3d;
+  --admin-text-action:              #8f1738;
+  --admin-text-inverted-primary:    #fff1e5;
+
+  --admin-border-subtle:            rgba(38, 42, 51, 0.26);
+  --admin-border-prominent:         #262a33;
+  --admin-border-highlight:         #990f3d;
+
+  --admin-interactive-hover:        rgba(153, 15, 61, 0.08);
+  --admin-interactive-active:       rgba(38, 42, 51, 0.1);
+  --admin-interactive-selected:     rgba(153, 15, 61, 0.14);
+  --admin-interactive-selected-prominent: rgba(153, 15, 61, 0.16);
+
+  --admin-input-background:         #fffffb;
+  --admin-input-border:             rgba(38, 42, 51, 0.62);
+  --admin-input-border-focus:       #7a0026;
+
+  --admin-button-primary-bg:        #262a33;
+  --admin-button-primary-text:      #fff1e5;
+  --admin-button-primary-hover-bg:  #990f3d;
+
+  --admin-panel-background:         #fff7ef;
+  --admin-panel-border:             rgba(38, 42, 51, 0.28);
+  --admin-panel-shadow:             0 18px 44px rgba(38, 42, 51, 0.16);
+  --admin-card-background:          #fff6ee;
+  --admin-card-border:              rgba(38, 42, 51, 0.22);
+  --admin-card-shadow:              0 8px 18px rgba(38, 42, 51, 0.08);
+  --admin-table-header-background:  #e9c9b8;
+  --admin-table-row-hover:          rgba(153, 15, 61, 0.07);
+  --admin-table-row-selected:       rgba(153, 15, 61, 0.12);
+  --admin-table-border:             rgba(38, 42, 51, 0.24);
+  --admin-separator-color:          rgba(38, 42, 51, 0.28);
+  --admin-neutral-badge-bg:         #f3d8c8;
+  --admin-neutral-badge-text:       #262a33;
+  --admin-neutral-badge-border:     rgba(38, 42, 51, 0.24);
+  --admin-link-text:                #8f1738;
+  --admin-link-hover-text:          #262a33;
+  --admin-icon-primary:             #262a33;
+  --admin-icon-secondary:           #5b514b;
+  --admin-icon-muted:               #7c6f66;
+}
+
+[data-admin-theme~="zine"][data-theme="dark"] {
+  --admin-surface-primary:          #241c19;
+  --admin-surface-extra-subtle:     #322621;
+  --admin-surface-subtle:           #46342d;
+  --admin-surface-mid:              #7a6254;
+  --admin-surface-secondary:        #f7d9c5;
+  --admin-surface-highlight:        #d85b79;
+
+  --admin-text-primary:             #fff1e5;
+  --admin-text-secondary:           #e0c7b7;
+  --admin-text-subtle:              #ad9485;
+  --admin-text-placeholder:         #cab0a0;
+  --admin-text-highlight:           #f08aa2;
+  --admin-text-action:              #f08aa2;
+  --admin-text-inverted-primary:    #241c19;
+
+  --admin-border-subtle:            rgba(255, 241, 229, 0.2);
+  --admin-border-prominent:         #fff1e5;
+  --admin-border-highlight:         #f08aa2;
+
+  --admin-interactive-hover:        rgba(240, 138, 162, 0.1);
+  --admin-interactive-active:       rgba(255, 241, 229, 0.12);
+  --admin-interactive-selected:     rgba(240, 138, 162, 0.18);
+  --admin-interactive-selected-prominent: rgba(240, 138, 162, 0.2);
+
+  --admin-input-background:         #0f0b09;
+  --admin-input-border:             rgba(255, 241, 229, 0.52);
+  --admin-input-border-focus:       #ff9aad;
+
+  --admin-button-primary-bg:        #fff1e5;
+  --admin-button-primary-text:      #241c19;
+  --admin-button-primary-hover-bg:  #f08aa2;
+
+  --admin-panel-background:         #1b1513;
+  --admin-panel-border:             rgba(255, 241, 229, 0.24);
+  --admin-card-background:          #1f1815;
+  --admin-card-border:              rgba(255, 241, 229, 0.18);
+  --admin-table-header-background:  #322621;
+  --admin-table-row-hover:          rgba(240, 138, 162, 0.08);
+  --admin-table-row-selected:       rgba(240, 138, 162, 0.14);
+  --admin-table-border:             rgba(255, 241, 229, 0.18);
+  --admin-separator-color:          rgba(255, 241, 229, 0.22);
+  --admin-neutral-badge-bg:         #46342d;
+  --admin-neutral-badge-text:       #fff1e5;
+  --admin-neutral-badge-border:     rgba(255, 241, 229, 0.22);
+  --admin-link-text:                #f08aa2;
+  --admin-link-hover-text:          #fff1e5;
+  --admin-icon-primary:             #fff1e5;
+  --admin-icon-secondary:           #e0c7b7;
+  --admin-icon-muted:               #ad9485;
+}
+
+/* ──────────────── STUDIO ──────────────── */
+/*
+ * Full surface theme — spacious graphite UI for developer tools and dashboards.
+ */
+
+[data-admin-theme~="studio"] {
+  --admin-font-sans:                "IBM Plex Sans", "Aptos", system-ui, sans-serif;
+  --admin-font-mono:                "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+
+  --admin-space-s:                  0.625rem;
+  --admin-space-m:                  1.125rem;
+  --admin-space-l:                  1.5rem;
+  --admin-space-xl:                 2.5rem;
+  --admin-space-xxl:                4.5rem;
+  --admin-input-height-sm:          2rem;
+  --admin-input-height-md:          2.5rem;
+  --admin-topnav-padding:           4.5rem;
+  --admin-sidenav-padding:          4.5rem;
+
+  --admin-page-background:          radial-gradient(circle at 16% 0%, rgba(42, 91, 132, 0.28), transparent 32%), linear-gradient(135deg, #0c1016 0%, #121821 48%, #0c1118 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(18px) saturate(1.25);
+
+  --admin-surface-primary:          #121821;
+  --admin-surface-extra-subtle:     #18212d;
+  --admin-surface-subtle:           #202c39;
+  --admin-surface-mid:              #35485d;
+  --admin-surface-secondary:        #a9b7c7;
+  --admin-surface-highlight:        #6dd4ff;
+
+  --admin-text-primary:             #f3f7fb;
+  --admin-text-secondary:           #c2cedb;
+  --admin-text-subtle:              #8291a3;
+  --admin-text-placeholder:         #8f9daf;
+  --admin-text-highlight:           #8bdcff;
+  --admin-text-action:              #8bdcff;
+  --admin-text-inverted-primary:    #0c1016;
+
+  --admin-border-subtle:            rgba(194, 206, 219, 0.16);
+  --admin-border-prominent:         #d8e2ec;
+  --admin-border-highlight:         #6dd4ff;
+
+  --admin-interactive-hover:        rgba(109, 212, 255, 0.1);
+  --admin-interactive-active:       rgba(109, 212, 255, 0.16);
+  --admin-interactive-selected:     rgba(109, 212, 255, 0.18);
+  --admin-interactive-selected-prominent: rgba(109, 212, 255, 0.22);
+
+  --admin-input-background:         #0d131b;
+  --admin-input-border:             rgba(194, 206, 219, 0.22);
+  --admin-input-border-focus:       #6dd4ff;
+
+  --admin-button-primary-bg:        #d8e2ec;
+  --admin-button-primary-text:      #0c1016;
+  --admin-button-primary-hover-bg:  #6dd4ff;
+
+  --admin-panel-background:         rgba(18, 24, 33, 0.92);
+  --admin-panel-backdrop-filter:    blur(14px) saturate(1.2);
+  --admin-panel-border:             rgba(194, 206, 219, 0.2);
+  --admin-panel-shadow:             0 24px 64px rgba(0, 0, 0, 0.28);
+  --admin-card-background:          rgba(18, 24, 33, 0.78);
+  --admin-card-border:              rgba(194, 206, 219, 0.16);
+  --admin-card-shadow:              0 14px 34px rgba(0, 0, 0, 0.22);
+  --admin-table-header-background:  rgba(32, 44, 57, 0.9);
+  --admin-table-row-hover:          rgba(109, 212, 255, 0.08);
+  --admin-table-row-selected:       rgba(109, 212, 255, 0.14);
+  --admin-table-border:             rgba(194, 206, 219, 0.14);
+  --admin-separator-color:          rgba(194, 206, 219, 0.18);
+  --admin-neutral-badge-bg:         rgba(109, 212, 255, 0.1);
+  --admin-neutral-badge-text:       #c2cedb;
+  --admin-neutral-badge-border:     rgba(109, 212, 255, 0.22);
+  --admin-link-text:                #8bdcff;
+  --admin-link-hover-text:          #f3f7fb;
+  --admin-icon-primary:             #f3f7fb;
+  --admin-icon-secondary:           #c2cedb;
+  --admin-icon-muted:               #8291a3;
+  --admin-overlay-backdrop-filter:  blur(4px) saturate(1.15);
+}
+
+[data-admin-theme~="studio"][data-theme="dark"] {
+  --admin-page-background:          radial-gradient(circle at 18% 0%, rgba(88, 166, 255, 0.26), transparent 30%), radial-gradient(circle at 88% 12%, rgba(109, 212, 255, 0.12), transparent 24%), linear-gradient(135deg, #070a0f 0%, #101722 54%, #090d13 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(18px) saturate(1.3);
+
+  --admin-surface-primary:          #0f151d;
+  --admin-surface-extra-subtle:     #151d27;
+  --admin-surface-subtle:           #1d2835;
+  --admin-surface-mid:              #314458;
+  --admin-surface-secondary:        #b8c7d8;
+  --admin-surface-highlight:        #8bdcff;
+
+  --admin-text-primary:             #f7fbff;
+  --admin-text-secondary:           #ced9e5;
+  --admin-text-subtle:              #8d9bad;
+  --admin-text-placeholder:         #9ba8b8;
+  --admin-text-highlight:           #a7e6ff;
+  --admin-text-action:              #a7e6ff;
+
+  --admin-border-subtle:            rgba(206, 217, 229, 0.18);
+  --admin-border-prominent:         #f7fbff;
+  --admin-border-highlight:         #8bdcff;
+
+  --admin-input-background:         #090e14;
+  --admin-input-border:             rgba(206, 217, 229, 0.24);
+  --admin-input-border-focus:       #a7e6ff;
+
+  --admin-button-primary-bg:        #f7fbff;
+  --admin-button-primary-text:      #070a0f;
+  --admin-button-primary-hover-bg:  #8bdcff;
+
+  --admin-panel-background:         rgba(15, 21, 29, 0.94);
+  --admin-panel-backdrop-filter:    blur(14px) saturate(1.2);
+  --admin-panel-border:             rgba(206, 217, 229, 0.22);
+  --admin-card-background:          rgba(15, 21, 29, 0.8);
+  --admin-card-border:              rgba(206, 217, 229, 0.18);
+  --admin-table-header-background:  rgba(29, 40, 53, 0.92);
+  --admin-table-border:             rgba(206, 217, 229, 0.16);
+  --admin-neutral-badge-bg:         rgba(139, 220, 255, 0.12);
+  --admin-neutral-badge-text:       #ced9e5;
+  --admin-neutral-badge-border:     rgba(139, 220, 255, 0.24);
+  --admin-link-text:                #a7e6ff;
+  --admin-link-hover-text:          #f7fbff;
+  --admin-icon-primary:             #f7fbff;
+  --admin-icon-secondary:           #ced9e5;
+  --admin-icon-muted:               #8d9bad;
+}
+
+/* ──────────────── LUMA ──────────────── */
+/*
+ * Full surface theme — luminous, calm, and highly rounded.
+ */
+
+[data-admin-theme~="luma"] {
+  --admin-font-sans:                "SF Pro Text", "Aptos", system-ui, sans-serif;
+  --admin-button-radius:            var(--admin-radius-pill);
+  --admin-interactive-radius:       14px;
+  --admin-input-radius:             12px;
+  --admin-radius-md:                14px;
+  --admin-radius-lg:                18px;
+  --admin-shadow-md:                0 12px 32px rgba(29, 29, 31, 0.08);
+  --admin-shadow-lg:                0 18px 48px rgba(29, 29, 31, 0.12);
+
+  --admin-page-background:          radial-gradient(circle at 24% -8%, rgba(0, 113, 227, 0.16), transparent 34%), radial-gradient(circle at 88% 4%, rgba(52, 199, 89, 0.12), transparent 26%), linear-gradient(180deg, #f8fbff 0%, #eef5ff 46%, #f7f7f8 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(22px) saturate(1.45);
+
+  --admin-surface-primary:          rgba(255, 255, 255, 0.92);
+  --admin-surface-extra-subtle:     rgba(245, 247, 250, 0.92);
+  --admin-surface-subtle:           rgba(232, 238, 247, 0.86);
+  --admin-surface-mid:              #cdd7e4;
+  --admin-surface-secondary:        #6e6e73;
+  --admin-surface-highlight:        #0071e3;
+
+  --admin-text-primary:             #1d1d1f;
+  --admin-text-secondary:           #515154;
+  --admin-text-subtle:              #86868b;
+  --admin-text-placeholder:         #76767b;
+  --admin-text-highlight:           #0066cc;
+  --admin-text-action:              #0066cc;
+  --admin-text-inverted-primary:    #ffffff;
+
+  --admin-border-subtle:            rgba(29, 29, 31, 0.12);
+  --admin-border-prominent:         #1d1d1f;
+  --admin-border-highlight:         #0071e3;
+
+  --admin-interactive-hover:        rgba(0, 113, 227, 0.08);
+  --admin-interactive-active:       rgba(0, 113, 227, 0.12);
+  --admin-interactive-selected:     rgba(0, 113, 227, 0.14);
+  --admin-interactive-selected-prominent: rgba(0, 113, 227, 0.18);
+
+  --admin-input-background:         rgba(255, 255, 255, 0.96);
+  --admin-input-border:             rgba(29, 29, 31, 0.14);
+  --admin-input-border-focus:       #0071e3;
+
+  --admin-button-primary-bg:        #0071e3;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #005bb5;
+
+  --admin-panel-background:         rgba(255, 255, 255, 0.76);
+  --admin-panel-backdrop-filter:    blur(36px) saturate(1.7);
+  --admin-panel-border:             rgba(29, 29, 31, 0.1);
+  --admin-panel-shadow:             0 22px 56px rgba(29, 29, 31, 0.14);
+  --admin-card-background:          rgba(255, 255, 255, 0.72);
+  --admin-card-border:              rgba(29, 29, 31, 0.09);
+  --admin-card-shadow:              0 12px 34px rgba(29, 29, 31, 0.1);
+  --admin-table-header-background:  rgba(232, 238, 247, 0.72);
+  --admin-table-row-hover:          rgba(0, 113, 227, 0.07);
+  --admin-table-row-selected:       rgba(0, 113, 227, 0.12);
+  --admin-table-border:             rgba(29, 29, 31, 0.1);
+  --admin-separator-color:          rgba(29, 29, 31, 0.1);
+  --admin-neutral-badge-bg:         rgba(255, 255, 255, 0.74);
+  --admin-neutral-badge-text:       #515154;
+  --admin-neutral-badge-border:     rgba(29, 29, 31, 0.12);
+  --admin-link-text:                #0066cc;
+  --admin-link-hover-text:          #1d1d1f;
+  --admin-icon-primary:             #1d1d1f;
+  --admin-icon-secondary:           #515154;
+  --admin-icon-muted:               #86868b;
+  --admin-overlay-backdrop-filter:  blur(12px) saturate(1.25);
+}
+
+[data-admin-theme~="luma"][data-theme="dark"] {
+  --admin-page-background:          radial-gradient(circle at 22% -4%, rgba(10, 132, 255, 0.22), transparent 34%), radial-gradient(circle at 82% 8%, rgba(48, 209, 88, 0.12), transparent 26%), linear-gradient(180deg, #08090d 0%, #10131a 54%, #090a0f 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(22px) saturate(1.45);
+
+  --admin-surface-primary:          rgba(28, 28, 30, 0.92);
+  --admin-surface-extra-subtle:     rgba(44, 44, 46, 0.9);
+  --admin-surface-subtle:           rgba(58, 58, 60, 0.86);
+  --admin-surface-mid:              #48484a;
+  --admin-surface-secondary:        #aeaeb2;
+  --admin-surface-highlight:        #0a84ff;
+
+  --admin-text-primary:             #f5f5f7;
+  --admin-text-secondary:           #d1d1d6;
+  --admin-text-subtle:              #8e8e93;
+  --admin-text-placeholder:         #a1a1a6;
+  --admin-text-highlight:           #64b5ff;
+  --admin-text-action:              #64b5ff;
+  --admin-text-inverted-primary:    #ffffff;
+
+  --admin-border-subtle:            rgba(245, 245, 247, 0.14);
+  --admin-border-prominent:         #f5f5f7;
+  --admin-border-highlight:         #0a84ff;
+
+  --admin-interactive-hover:        rgba(10, 132, 255, 0.12);
+  --admin-interactive-active:       rgba(10, 132, 255, 0.16);
+  --admin-interactive-selected:     rgba(10, 132, 255, 0.2);
+  --admin-interactive-selected-prominent: rgba(10, 132, 255, 0.24);
+
+  --admin-input-background:         rgba(18, 18, 20, 0.92);
+  --admin-input-border:             rgba(245, 245, 247, 0.18);
+  --admin-input-border-focus:       #64b5ff;
+
+  --admin-button-primary-bg:        #0a84ff;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #64b5ff;
+
+  --admin-panel-background:         rgba(28, 28, 30, 0.76);
+  --admin-panel-backdrop-filter:    blur(36px) saturate(1.7);
+  --admin-panel-border:             rgba(245, 245, 247, 0.16);
+  --admin-card-background:          rgba(28, 28, 30, 0.72);
+  --admin-card-border:              rgba(245, 245, 247, 0.14);
+  --admin-table-header-background:  rgba(58, 58, 60, 0.72);
+  --admin-table-border:             rgba(245, 245, 247, 0.12);
+  --admin-neutral-badge-bg:         rgba(245, 245, 247, 0.1);
+  --admin-neutral-badge-text:       #d1d1d6;
+  --admin-neutral-badge-border:     rgba(245, 245, 247, 0.14);
+  --admin-link-text:                #64b5ff;
+  --admin-link-hover-text:          #f5f5f7;
+  --admin-icon-primary:             #f5f5f7;
+  --admin-icon-secondary:           #d1d1d6;
+  --admin-icon-muted:               #8e8e93;
+}
+
+/* ──────────────── TERMINAL ──────────────── */
+/*
+ * Full surface theme — command-line UI with green/amber utility accents.
+ */
+
+[data-admin-theme~="terminal"] {
+  --admin-font-sans:                "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --admin-font-mono:                "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --admin-button-text-transform:    uppercase;
+  --admin-button-radius:            2px;
+  --admin-interactive-radius:       2px;
+  --admin-input-radius:             2px;
+  --admin-radius-md:                2px;
+  --admin-radius-lg:                2px;
+
+  --admin-page-background:          linear-gradient(180deg, #050806 0%, #07110b 100%);
+  --admin-chrome-background:        #050806;
+
+  --admin-surface-primary:          #07110b;
+  --admin-surface-extra-subtle:     #0b1b11;
+  --admin-surface-subtle:           #102719;
+  --admin-surface-mid:              #254333;
+  --admin-surface-secondary:        #b7f7c6;
+  --admin-surface-highlight:        #39ff88;
+
+  --admin-text-primary:             #e8ffe9;
+  --admin-text-secondary:           #b9d8bd;
+  --admin-text-subtle:              #76947d;
+  --admin-text-placeholder:         #86a78d;
+  --admin-text-highlight:           #39ff88;
+  --admin-text-action:              #ffd166;
+  --admin-text-inverted-primary:    #050806;
+
+  --admin-border-subtle:            rgba(57, 255, 136, 0.18);
+  --admin-border-prominent:         #b7f7c6;
+  --admin-border-highlight:         #ffd166;
+
+  --admin-interactive-hover:        rgba(57, 255, 136, 0.08);
+  --admin-interactive-active:       rgba(255, 209, 102, 0.14);
+  --admin-interactive-selected:     rgba(57, 255, 136, 0.16);
+  --admin-interactive-selected-prominent: rgba(255, 209, 102, 0.18);
+
+  --admin-input-background:         #030604;
+  --admin-input-border:             rgba(57, 255, 136, 0.32);
+  --admin-input-border-focus:       #ffd166;
+
+  --admin-button-primary-bg:        #39ff88;
+  --admin-button-primary-text:      #050806;
+  --admin-button-primary-hover-bg:  #ffd166;
+
+  --admin-panel-background:         #030604;
+  --admin-panel-border:             rgba(57, 255, 136, 0.34);
+  --admin-panel-shadow:             0 0 0 1px rgba(57, 255, 136, 0.18), 0 18px 44px rgba(0, 0, 0, 0.46);
+  --admin-card-background:          #08110b;
+  --admin-card-border:              rgba(57, 255, 136, 0.24);
+  --admin-card-shadow:              none;
+  --admin-table-header-background:  #0b1b11;
+  --admin-table-row-hover:          rgba(57, 255, 136, 0.08);
+  --admin-table-row-selected:       rgba(255, 209, 102, 0.12);
+  --admin-table-border:             rgba(57, 255, 136, 0.2);
+  --admin-separator-color:          rgba(57, 255, 136, 0.26);
+  --admin-neutral-badge-bg:         rgba(57, 255, 136, 0.1);
+  --admin-neutral-badge-text:       #b7f7c6;
+  --admin-neutral-badge-border:     rgba(57, 255, 136, 0.28);
+  --admin-link-text:                #ffd166;
+  --admin-link-hover-text:          #39ff88;
+  --admin-icon-primary:             #e8ffe9;
+  --admin-icon-secondary:           #b9d8bd;
+  --admin-icon-muted:               #39ff88;
+  --admin-focus-ring-width:         1px;
+  --admin-focus-ring-offset:        1px;
+}
+
+[data-admin-theme~="terminal"][data-theme="dark"] {
+  --admin-page-background:          radial-gradient(circle at 12% 0%, rgba(57, 255, 136, 0.08), transparent 28%), linear-gradient(180deg, #020403 0%, #06100a 100%);
+  --admin-chrome-background:        #020403;
+
+  --admin-surface-primary:          #050c08;
+  --admin-surface-extra-subtle:     #09170e;
+  --admin-surface-subtle:           #0e2216;
+  --admin-surface-mid:              #223d2e;
+  --admin-surface-secondary:        #c9ffd5;
+  --admin-surface-highlight:        #64ff9d;
+
+  --admin-text-primary:             #f0fff1;
+  --admin-text-secondary:           #c8e2cc;
+  --admin-text-subtle:              #86a78d;
+  --admin-text-placeholder:         #94b79b;
+  --admin-text-highlight:           #64ff9d;
+  --admin-text-action:              #ffe08a;
+
+  --admin-border-subtle:            rgba(100, 255, 157, 0.2);
+  --admin-border-prominent:         #f0fff1;
+  --admin-border-highlight:         #ffe08a;
+
+  --admin-input-background:         #020403;
+  --admin-input-border:             rgba(100, 255, 157, 0.34);
+  --admin-input-border-focus:       #ffe08a;
+
+  --admin-button-primary-bg:        #64ff9d;
+  --admin-button-primary-text:      #020403;
+  --admin-button-primary-hover-bg:  #ffe08a;
+
+  --admin-panel-background:         #020403;
+  --admin-panel-border:             rgba(100, 255, 157, 0.36);
+  --admin-card-background:          #050c08;
+  --admin-card-border:              rgba(100, 255, 157, 0.26);
+  --admin-table-header-background:  #09170e;
+  --admin-table-border:             rgba(100, 255, 157, 0.22);
+  --admin-neutral-badge-bg:         rgba(100, 255, 157, 0.12);
+  --admin-neutral-badge-text:       #c9ffd5;
+  --admin-neutral-badge-border:     rgba(100, 255, 157, 0.3);
+  --admin-link-text:                #ffe08a;
+  --admin-link-hover-text:          #64ff9d;
+  --admin-icon-primary:             #f0fff1;
+  --admin-icon-secondary:           #c8e2cc;
+  --admin-icon-muted:               #64ff9d;
+}
+
+/* ──────────────── LEDGER ──────────────── */
+/*
+ * Full surface theme — restrained finance and backoffice operations palette.
+ */
+
+[data-admin-theme~="ledger"] {
+  --admin-font-sans:                "Aptos", "IBM Plex Sans", system-ui, sans-serif;
+  --admin-button-radius:            4px;
+  --admin-interactive-radius:       4px;
+  --admin-input-radius:             4px;
+  --admin-radius-md:                4px;
+  --admin-radius-lg:                6px;
+
+  --admin-page-background:          linear-gradient(180deg, #f7f6ee 0%, #eef2e6 100%);
+  --admin-chrome-background:        #f7f6ee;
+
+  --admin-surface-primary:          #fffff8;
+  --admin-surface-extra-subtle:     #f0f1e7;
+  --admin-surface-subtle:           #e1e5d6;
+  --admin-surface-mid:              #bfc8ad;
+  --admin-surface-secondary:        #33443a;
+  --admin-surface-highlight:        #0f6b4f;
+
+  --admin-text-primary:             #1f2a24;
+  --admin-text-secondary:           #526158;
+  --admin-text-subtle:              #7d8a80;
+  --admin-text-placeholder:         #6e7c72;
+  --admin-text-highlight:           #0f6b4f;
+  --admin-text-action:              #0f5d7a;
+  --admin-text-inverted-primary:    #fffff8;
+
+  --admin-border-subtle:            rgba(31, 42, 36, 0.18);
+  --admin-border-prominent:         #1f2a24;
+  --admin-border-highlight:         #0f6b4f;
+
+  --admin-interactive-hover:        rgba(15, 107, 79, 0.08);
+  --admin-interactive-active:       rgba(15, 93, 122, 0.12);
+  --admin-interactive-selected:     rgba(15, 107, 79, 0.14);
+  --admin-interactive-selected-prominent: rgba(15, 93, 122, 0.16);
+
+  --admin-input-background:         #ffffff;
+  --admin-input-border:             rgba(31, 42, 36, 0.28);
+  --admin-input-border-focus:       #0f6b4f;
+
+  --admin-button-primary-bg:        #173d32;
+  --admin-button-primary-text:      #fffff8;
+  --admin-button-primary-hover-bg:  #0f6b4f;
+
+  --admin-panel-background:         #fffff8;
+  --admin-panel-border:             rgba(31, 42, 36, 0.2);
+  --admin-panel-shadow:             0 14px 34px rgba(31, 42, 36, 0.12);
+  --admin-card-background:          #fffffb;
+  --admin-card-border:              rgba(31, 42, 36, 0.16);
+  --admin-card-shadow:              none;
+  --admin-table-header-background:  #e1e5d6;
+  --admin-table-row-hover:          rgba(15, 107, 79, 0.06);
+  --admin-table-row-selected:       rgba(15, 93, 122, 0.1);
+  --admin-table-border:             rgba(31, 42, 36, 0.22);
+  --admin-separator-color:          rgba(31, 42, 36, 0.2);
+  --admin-neutral-badge-bg:         #edf0e4;
+  --admin-neutral-badge-text:       #33443a;
+  --admin-neutral-badge-border:     rgba(31, 42, 36, 0.18);
+  --admin-link-text:                #0f5d7a;
+  --admin-link-hover-text:          #173d32;
+  --admin-icon-primary:             #1f2a24;
+  --admin-icon-secondary:           #526158;
+  --admin-icon-muted:               #7d8a80;
+}
+
+[data-admin-theme~="ledger"][data-theme="dark"] {
+  --admin-page-background:          linear-gradient(180deg, #101812 0%, #151f18 100%);
+  --admin-chrome-background:        #101812;
+
+  --admin-surface-primary:          #162119;
+  --admin-surface-extra-subtle:     #1d2b22;
+  --admin-surface-subtle:           #293a2f;
+  --admin-surface-mid:              #526657;
+  --admin-surface-secondary:        #c8d7c8;
+  --admin-surface-highlight:        #79d4a8;
+
+  --admin-text-primary:             #f2f6ec;
+  --admin-text-secondary:           #cbd8ca;
+  --admin-text-subtle:              #8fa08f;
+  --admin-text-placeholder:         #a4b4a3;
+  --admin-text-highlight:           #9ee6be;
+  --admin-text-action:              #8fd4ee;
+
+  --admin-border-subtle:            rgba(203, 216, 202, 0.16);
+  --admin-border-prominent:         #f2f6ec;
+  --admin-border-highlight:         #79d4a8;
+
+  --admin-input-background:         #101812;
+  --admin-input-border:             rgba(203, 216, 202, 0.24);
+  --admin-input-border-focus:       #9ee6be;
+
+  --admin-button-primary-bg:        #d6ead5;
+  --admin-button-primary-text:      #101812;
+  --admin-button-primary-hover-bg:  #79d4a8;
+
+  --admin-panel-background:         #121b15;
+  --admin-panel-border:             rgba(203, 216, 202, 0.18);
+  --admin-card-background:          #162119;
+  --admin-card-border:              rgba(203, 216, 202, 0.14);
+  --admin-table-header-background:  #293a2f;
+  --admin-table-row-hover:          rgba(121, 212, 168, 0.08);
+  --admin-table-row-selected:       rgba(143, 212, 238, 0.1);
+  --admin-table-border:             rgba(203, 216, 202, 0.16);
+  --admin-separator-color:          rgba(203, 216, 202, 0.18);
+  --admin-neutral-badge-bg:         #293a2f;
+  --admin-neutral-badge-text:       #cbd8ca;
+  --admin-neutral-badge-border:     rgba(203, 216, 202, 0.16);
+  --admin-link-text:                #8fd4ee;
+  --admin-link-hover-text:          #f2f6ec;
+  --admin-icon-primary:             #f2f6ec;
+  --admin-icon-secondary:           #cbd8ca;
+  --admin-icon-muted:               #8fa08f;
+}
+
+/* ──────────────── BLUEPRINT ──────────────── */
+/*
+ * Full surface theme — architectural planning surfaces with precise linework.
+ */
+
+[data-admin-theme~="blueprint"] {
+  --admin-font-sans:                "Aptos", "IBM Plex Sans", system-ui, sans-serif;
+  --admin-button-radius:            3px;
+  --admin-interactive-radius:       3px;
+  --admin-input-radius:             3px;
+  --admin-radius-md:                3px;
+  --admin-radius-lg:                3px;
+
+  --admin-page-background:          linear-gradient(rgba(21, 87, 142, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 87, 142, 0.08) 1px, transparent 1px), #eef7ff;
+  --admin-chrome-background:        rgba(238, 247, 255, 0.84);
+  --admin-topnav-backdrop-filter:   blur(14px) saturate(1.2);
+
+  --admin-surface-primary:          #fbfdff;
+  --admin-surface-extra-subtle:     #e6f2fc;
+  --admin-surface-subtle:           #d5e8f7;
+  --admin-surface-mid:              #9fc4df;
+  --admin-surface-secondary:        #29506d;
+  --admin-surface-highlight:        #146ca8;
+
+  --admin-text-primary:             #17324a;
+  --admin-text-secondary:           #3f5f78;
+  --admin-text-subtle:              #7892a7;
+  --admin-text-placeholder:         #637f96;
+  --admin-text-highlight:           #146ca8;
+  --admin-text-action:              #0e5f95;
+  --admin-text-inverted-primary:    #fbfdff;
+
+  --admin-border-subtle:            rgba(20, 108, 168, 0.22);
+  --admin-border-prominent:         #17324a;
+  --admin-border-highlight:         #146ca8;
+
+  --admin-interactive-hover:        rgba(20, 108, 168, 0.08);
+  --admin-interactive-active:       rgba(20, 108, 168, 0.12);
+  --admin-interactive-selected:     rgba(20, 108, 168, 0.16);
+  --admin-interactive-selected-prominent: rgba(20, 108, 168, 0.2);
+
+  --admin-input-background:         #ffffff;
+  --admin-input-border:             rgba(20, 108, 168, 0.32);
+  --admin-input-border-focus:       #146ca8;
+
+  --admin-button-primary-bg:        #17324a;
+  --admin-button-primary-text:      #fbfdff;
+  --admin-button-primary-hover-bg:  #146ca8;
+
+  --admin-panel-background:         rgba(251, 253, 255, 0.94);
+  --admin-panel-backdrop-filter:    blur(10px) saturate(1.15);
+  --admin-panel-border:             rgba(20, 108, 168, 0.26);
+  --admin-panel-shadow:             0 0 0 1px rgba(20, 108, 168, 0.08), 0 16px 40px rgba(23, 50, 74, 0.12);
+  --admin-card-background:          rgba(251, 253, 255, 0.88);
+  --admin-card-border:              rgba(20, 108, 168, 0.24);
+  --admin-card-shadow:              none;
+  --admin-table-header-background:  rgba(213, 232, 247, 0.92);
+  --admin-table-row-hover:          rgba(20, 108, 168, 0.07);
+  --admin-table-row-selected:       rgba(20, 108, 168, 0.12);
+  --admin-table-border:             rgba(20, 108, 168, 0.26);
+  --admin-separator-color:          rgba(20, 108, 168, 0.26);
+  --admin-neutral-badge-bg:         rgba(213, 232, 247, 0.9);
+  --admin-neutral-badge-text:       #17324a;
+  --admin-neutral-badge-border:     rgba(20, 108, 168, 0.28);
+  --admin-link-text:                #0e5f95;
+  --admin-link-hover-text:          #17324a;
+  --admin-icon-primary:             #17324a;
+  --admin-icon-secondary:           #3f5f78;
+  --admin-icon-muted:               #146ca8;
+  --admin-focus-ring-width:         1px;
+  --admin-focus-ring-offset:        1px;
+}
+
+[data-admin-theme~="blueprint"][data-theme="dark"] {
+  --admin-page-background:          linear-gradient(rgba(105, 190, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(105, 190, 255, 0.08) 1px, transparent 1px), #07121d;
+  --admin-chrome-background:        rgba(7, 18, 29, 0.84);
+  --admin-topnav-backdrop-filter:   blur(14px) saturate(1.25);
+
+  --admin-surface-primary:          #0c1a27;
+  --admin-surface-extra-subtle:     #122435;
+  --admin-surface-subtle:           #1a3146;
+  --admin-surface-mid:              #355c78;
+  --admin-surface-secondary:        #b9ddf7;
+  --admin-surface-highlight:        #69beff;
+
+  --admin-text-primary:             #eff8ff;
+  --admin-text-secondary:           #c0d8ec;
+  --admin-text-subtle:              #7e9ab1;
+  --admin-text-placeholder:         #91abc0;
+  --admin-text-highlight:           #9bd3ff;
+  --admin-text-action:              #9bd3ff;
+
+  --admin-border-subtle:            rgba(105, 190, 255, 0.18);
+  --admin-border-prominent:         #eff8ff;
+  --admin-border-highlight:         #69beff;
+
+  --admin-input-background:         #07121d;
+  --admin-input-border:             rgba(105, 190, 255, 0.3);
+  --admin-input-border-focus:       #9bd3ff;
+
+  --admin-button-primary-bg:        #eff8ff;
+  --admin-button-primary-text:      #07121d;
+  --admin-button-primary-hover-bg:  #69beff;
+
+  --admin-panel-background:         rgba(12, 26, 39, 0.94);
+  --admin-panel-backdrop-filter:    blur(10px) saturate(1.2);
+  --admin-panel-border:             rgba(105, 190, 255, 0.24);
+  --admin-card-background:          rgba(12, 26, 39, 0.84);
+  --admin-card-border:              rgba(105, 190, 255, 0.2);
+  --admin-table-header-background:  rgba(26, 49, 70, 0.9);
+  --admin-table-border:             rgba(105, 190, 255, 0.2);
+  --admin-neutral-badge-bg:         rgba(105, 190, 255, 0.12);
+  --admin-neutral-badge-text:       #b9ddf7;
+  --admin-neutral-badge-border:     rgba(105, 190, 255, 0.28);
+  --admin-link-text:                #9bd3ff;
+  --admin-link-hover-text:          #eff8ff;
+  --admin-icon-primary:             #eff8ff;
+  --admin-icon-secondary:           #c0d8ec;
+  --admin-icon-muted:               #69beff;
+}
+
+/* ──────────────── AURORA ──────────────── */
+/*
+ * Full surface theme — soft futuristic surfaces with luminous accent fields.
+ */
+
+[data-admin-theme~="aurora"] {
+  --admin-font-sans:                "Aptos", "IBM Plex Sans", system-ui, sans-serif;
+  --admin-button-radius:            12px;
+  --admin-interactive-radius:       10px;
+  --admin-input-radius:             10px;
+  --admin-radius-md:                12px;
+  --admin-radius-lg:                16px;
+
+  --admin-page-background:          radial-gradient(circle at 18% 0%, rgba(61, 220, 151, 0.22), transparent 30%), radial-gradient(circle at 86% 8%, rgba(255, 123, 105, 0.18), transparent 28%), linear-gradient(135deg, #f6fffb 0%, #eef9ff 48%, #fff4f1 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(20px) saturate(1.35);
+
+  --admin-surface-primary:          rgba(255, 255, 255, 0.9);
+  --admin-surface-extra-subtle:     rgba(235, 250, 246, 0.9);
+  --admin-surface-subtle:           rgba(220, 241, 239, 0.86);
+  --admin-surface-mid:              #afd8d2;
+  --admin-surface-secondary:        #49646b;
+  --admin-surface-highlight:        #1aa982;
+
+  --admin-text-primary:             #193135;
+  --admin-text-secondary:           #4f686d;
+  --admin-text-subtle:              #7f9799;
+  --admin-text-placeholder:         #6f8789;
+  --admin-text-highlight:           #1aa982;
+  --admin-text-action:              #c85f4d;
+  --admin-text-inverted-primary:    #ffffff;
+
+  --admin-border-subtle:            rgba(25, 49, 53, 0.12);
+  --admin-border-prominent:         #193135;
+  --admin-border-highlight:         #1aa982;
+
+  --admin-interactive-hover:        rgba(26, 169, 130, 0.08);
+  --admin-interactive-active:       rgba(200, 95, 77, 0.12);
+  --admin-interactive-selected:     rgba(26, 169, 130, 0.14);
+  --admin-interactive-selected-prominent: rgba(200, 95, 77, 0.16);
+
+  --admin-input-background:         rgba(255, 255, 255, 0.96);
+  --admin-input-border:             rgba(25, 49, 53, 0.16);
+  --admin-input-border-focus:       #1aa982;
+
+  --admin-button-primary-bg:        #193135;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #1aa982;
+
+  --admin-panel-background:         rgba(255, 255, 255, 0.78);
+  --admin-panel-backdrop-filter:    blur(18px) saturate(1.3);
+  --admin-panel-border:             rgba(25, 49, 53, 0.1);
+  --admin-panel-shadow:             0 24px 64px rgba(25, 49, 53, 0.12);
+  --admin-card-background:          rgba(255, 255, 255, 0.68);
+  --admin-card-border:              rgba(25, 49, 53, 0.1);
+  --admin-card-shadow:              0 12px 34px rgba(25, 49, 53, 0.08);
+  --admin-table-header-background:  rgba(220, 241, 239, 0.74);
+  --admin-table-row-hover:          rgba(26, 169, 130, 0.07);
+  --admin-table-row-selected:       rgba(200, 95, 77, 0.1);
+  --admin-table-border:             rgba(25, 49, 53, 0.1);
+  --admin-separator-color:          rgba(25, 49, 53, 0.1);
+  --admin-neutral-badge-bg:         rgba(255, 255, 255, 0.64);
+  --admin-neutral-badge-text:       #4f686d;
+  --admin-neutral-badge-border:     rgba(25, 49, 53, 0.12);
+  --admin-link-text:                #c85f4d;
+  --admin-link-hover-text:          #193135;
+  --admin-icon-primary:             #193135;
+  --admin-icon-secondary:           #4f686d;
+  --admin-icon-muted:               #7f9799;
+  --admin-overlay-backdrop-filter:  blur(12px) saturate(1.25);
+}
+
+[data-admin-theme~="aurora"][data-theme="dark"] {
+  --admin-page-background:          radial-gradient(circle at 18% 0%, rgba(61, 220, 151, 0.2), transparent 30%), radial-gradient(circle at 84% 4%, rgba(255, 123, 105, 0.16), transparent 28%), linear-gradient(135deg, #061111 0%, #0d1b24 52%, #130f18 100%);
+  --admin-chrome-background:        transparent;
+  --admin-topnav-backdrop-filter:   blur(20px) saturate(1.35);
+
+  --admin-surface-primary:          rgba(13, 27, 36, 0.92);
+  --admin-surface-extra-subtle:     rgba(19, 40, 48, 0.9);
+  --admin-surface-subtle:           rgba(28, 55, 63, 0.86);
+  --admin-surface-mid:              #3f7076;
+  --admin-surface-secondary:        #c3eeeb;
+  --admin-surface-highlight:        #6cf0c6;
+
+  --admin-text-primary:             #f0fffb;
+  --admin-text-secondary:           #c7e5e1;
+  --admin-text-subtle:              #8eaaa8;
+  --admin-text-placeholder:         #9db9b6;
+  --admin-text-highlight:           #8affd6;
+  --admin-text-action:              #ffad9e;
+
+  --admin-border-subtle:            rgba(195, 238, 235, 0.14);
+  --admin-border-prominent:         #f0fffb;
+  --admin-border-highlight:         #6cf0c6;
+
+  --admin-input-background:         rgba(6, 17, 17, 0.9);
+  --admin-input-border:             rgba(195, 238, 235, 0.2);
+  --admin-input-border-focus:       #8affd6;
+
+  --admin-button-primary-bg:        #f0fffb;
+  --admin-button-primary-text:      #061111;
+  --admin-button-primary-hover-bg:  #6cf0c6;
+
+  --admin-panel-background:         rgba(13, 27, 36, 0.86);
+  --admin-panel-backdrop-filter:    blur(18px) saturate(1.3);
+  --admin-panel-border:             rgba(195, 238, 235, 0.14);
+  --admin-card-background:          rgba(13, 27, 36, 0.72);
+  --admin-card-border:              rgba(195, 238, 235, 0.12);
+  --admin-table-header-background:  rgba(28, 55, 63, 0.78);
+  --admin-table-border:             rgba(195, 238, 235, 0.12);
+  --admin-neutral-badge-bg:         rgba(195, 238, 235, 0.1);
+  --admin-neutral-badge-text:       #c7e5e1;
+  --admin-neutral-badge-border:     rgba(195, 238, 235, 0.14);
+  --admin-link-text:                #ffad9e;
+  --admin-link-hover-text:          #f0fffb;
+  --admin-icon-primary:             #f0fffb;
+  --admin-icon-secondary:           #c7e5e1;
+  --admin-icon-muted:               #8eaaa8;
+}
+
+/* ──────────────── STARK ──────────────── */
+/*
+ * Full surface theme — modern Swiss black-and-white system.
+ */
+
+[data-admin-theme~="stark"] {
+  --admin-font-sans:                "Helvetica Neue", "Aptos", system-ui, sans-serif;
+  --admin-font-mono:                "SFMono-Regular", "JetBrains Mono", Menlo, monospace;
+  --admin-button-radius:            2px;
+  --admin-interactive-radius:       2px;
+  --admin-input-radius:             2px;
+  --admin-radius-md:                2px;
+  --admin-radius-lg:                2px;
+  --admin-shadow-md:                none;
+  --admin-shadow-lg:                none;
+  --admin-shadow-xl:                none;
+
+  --admin-page-background:          #ffffff;
+  --admin-chrome-background:        #ffffff;
+
+  --admin-surface-primary:          #ffffff;
+  --admin-surface-extra-subtle:     #f2f2ef;
+  --admin-surface-subtle:           #e6e6e1;
+  --admin-surface-mid:              #c8c8c0;
+  --admin-surface-secondary:        #111111;
+  --admin-surface-highlight:        #111111;
+
+  --admin-text-primary:             #050505;
+  --admin-text-secondary:           #3a3a3a;
+  --admin-text-subtle:              #747474;
+  --admin-text-placeholder:         #6a6a6a;
+  --admin-text-highlight:           #111111;
+  --admin-text-action:              #111111;
+  --admin-text-inverted-primary:    #ffffff;
+
+  --admin-border-subtle:            rgba(17, 17, 17, 0.18);
+  --admin-border-prominent:         #111111;
+  --admin-border-highlight:         #111111;
+
+  --admin-interactive-hover:        rgba(17, 17, 17, 0.06);
+  --admin-interactive-active:       rgba(17, 17, 17, 0.1);
+  --admin-interactive-selected:     rgba(17, 17, 17, 0.12);
+  --admin-interactive-selected-text: #050505;
+  --admin-interactive-selected-prominent: rgba(17, 17, 17, 0.18);
+  --admin-nav-selected:             #111111;
+  --admin-nav-selected-text:        #ffffff;
+
+  --admin-input-background:         #ffffff;
+  --admin-input-border:             rgba(17, 17, 17, 0.34);
+  --admin-input-border-focus:       #111111;
+
+  --admin-button-primary-bg:        #111111;
+  --admin-button-primary-text:      #ffffff;
+  --admin-button-primary-hover-bg:  #000000;
+
+  --admin-panel-background:         #ffffff;
+  --admin-panel-border:             #111111;
+  --admin-panel-shadow:             none;
+  --admin-card-background:          #ffffff;
+  --admin-card-border:              rgba(17, 17, 17, 0.28);
+  --admin-card-shadow:              none;
+  --admin-table-header-background:  #f2f2ef;
+  --admin-table-row-hover:          rgba(17, 17, 17, 0.05);
+  --admin-table-row-selected:       rgba(17, 17, 17, 0.1);
+  --admin-table-border:             rgba(17, 17, 17, 0.22);
+  --admin-separator-color:          rgba(17, 17, 17, 0.24);
+  --admin-neutral-badge-bg:         #ffffff;
+  --admin-neutral-badge-text:       #111111;
+  --admin-neutral-badge-border:     rgba(17, 17, 17, 0.28);
+  --admin-link-text:                #111111;
+  --admin-link-hover-text:          #000000;
+  --admin-icon-primary:             #050505;
+  --admin-icon-secondary:           #3a3a3a;
+  --admin-icon-muted:               #747474;
+  --admin-focus-ring-width:         1px;
+  --admin-focus-ring-offset:        3px;
+}
+
+[data-admin-theme~="stark"][data-theme="dark"] {
+  --admin-page-background:          #050505;
+  --admin-chrome-background:        #050505;
+
+  --admin-surface-primary:          #0a0a0a;
+  --admin-surface-extra-subtle:     #121212;
+  --admin-surface-subtle:           #1f1f1f;
+  --admin-surface-mid:              #3a3a3a;
+  --admin-surface-secondary:        #f5f5f0;
+  --admin-surface-highlight:        #ffffff;
+
+  --admin-text-primary:             #ffffff;
+  --admin-text-secondary:           #d7d7d2;
+  --admin-text-subtle:              #9a9a94;
+  --admin-text-placeholder:         #adada6;
+  --admin-text-highlight:           #ffffff;
+  --admin-text-action:              #ffffff;
+  --admin-text-inverted-primary:    #050505;
+
+  --admin-border-subtle:            rgba(255, 255, 255, 0.18);
+  --admin-border-prominent:         #ffffff;
+  --admin-border-highlight:         #ffffff;
+
+  --admin-interactive-hover:        rgba(255, 255, 255, 0.08);
+  --admin-interactive-active:       rgba(255, 255, 255, 0.12);
+  --admin-interactive-selected:     rgba(255, 255, 255, 0.16);
+  --admin-interactive-selected-text: #ffffff;
+  --admin-interactive-selected-prominent: rgba(255, 255, 255, 0.22);
+  --admin-nav-selected:             #ffffff;
+  --admin-nav-selected-text:        #050505;
+
+  --admin-input-background:         #050505;
+  --admin-input-border:             rgba(255, 255, 255, 0.36);
+  --admin-input-border-focus:       #ffffff;
+
+  --admin-button-primary-bg:        #ffffff;
+  --admin-button-primary-text:      #050505;
+  --admin-button-primary-hover-bg:  #e8e8e2;
+
+  --admin-panel-background:         #0a0a0a;
+  --admin-panel-border:             #ffffff;
+  --admin-card-background:          #0a0a0a;
+  --admin-card-border:              rgba(255, 255, 255, 0.28);
+  --admin-table-header-background:  #121212;
+  --admin-table-row-hover:          rgba(255, 255, 255, 0.07);
+  --admin-table-row-selected:       rgba(255, 255, 255, 0.12);
+  --admin-table-border:             rgba(255, 255, 255, 0.22);
+  --admin-separator-color:          rgba(255, 255, 255, 0.24);
+  --admin-neutral-badge-bg:         #0a0a0a;
+  --admin-neutral-badge-text:       #ffffff;
+  --admin-neutral-badge-border:     rgba(255, 255, 255, 0.28);
+  --admin-link-text:                #ffffff;
+  --admin-link-hover-text:          #d7d7d2;
+  --admin-icon-primary:             #ffffff;
+  --admin-icon-secondary:           #d7d7d2;
+  --admin-icon-muted:               #9a9a94;
+}
+
+/* ──────────────── ROUNDED ──────────────── */
+/* Compose with any color theme: data-admin-theme="ocean rounded" */
+
+[data-admin-theme~="rounded"] {
+  --admin-button-radius:       var(--admin-radius-pill);
+  --admin-interactive-radius:  var(--admin-radius-pill);
+  --admin-input-radius:        var(--admin-radius-pill);
+}
+
+/* ──────────────── SHARP ──────────────── */
+/* Compose with any color theme: data-admin-theme="forest sharp" */
+
+[data-admin-theme~="sharp"] {
+  --admin-button-radius:       4px;
+  --admin-interactive-radius:  2px;
+  --admin-input-radius:        4px;
+  --admin-radius-md:           4px;
+  --admin-radius-lg:           4px;
+}

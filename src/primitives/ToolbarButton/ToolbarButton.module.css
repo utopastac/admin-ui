@@ -1,0 +1,72 @@
+.toolbarButton {
+  @mixin icon-button;
+  width: var(--admin-icon-button-size-md);
+  height: var(--admin-icon-button-size-md);
+  border-radius: var(--admin-interactive-radius);
+  color: var(--admin-icon-muted);
+  transition: background-color 0.15s, color 0.15s;
+  position: relative;
+
+  &:hover {
+    background-color: var(--admin-interactive-hover);
+    color: var(--admin-icon-primary);
+  }
+
+  &:focus-visible {
+    @mixin focus-ring;
+  }
+
+  &.pressed {
+    background-color: var(--admin-surface-subtle);
+    color: var(--admin-icon-primary);
+
+    &:hover {
+      background-color: var(--admin-surface-subtle);
+      color: var(--admin-icon-primary);
+    }
+  }
+
+  &.selected {
+    background-color: var(--admin-interactive-selected);
+    color: var(--admin-interactive-selected-text);
+    outline: 1.5px solid var(--admin-input-border-focus);
+    outline-offset: -1.5px;
+
+    &:hover {
+      background-color: var(--admin-interactive-selected);
+      color: var(--admin-interactive-selected-text);
+    }
+  }
+
+  &.inUse::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--admin-text-highlight);
+  }
+
+  /* Sizes */
+  &.sm {
+    width: var(--admin-icon-button-size-xs);
+    height: var(--admin-icon-button-size-xs);
+    padding: 2px;
+    border-radius: var(--admin-radius-xs);
+
+    &.inUse::after {
+      width: 4px;
+      height: 4px;
+      top: 2px;
+      right: 2px;
+    }
+  }
+
+  &.md {
+    width: var(--admin-icon-button-size-md);
+    height: var(--admin-icon-button-size-md);
+    padding: 4px;
+  }
+}

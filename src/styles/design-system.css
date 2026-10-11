@@ -1,0 +1,594 @@
+/*
+ * ADMIN DESIGN SYSTEM
+ *
+ * All tokens are prefixed with --admin- to ensure complete isolation
+ * from the phone content UI system (@interventions/ui).
+ *
+ * This design system powers the admin chrome layer — navigation,
+ * primitives, modals, and future admin tool components.
+ *
+ * COLOR TOKEN LAYERS:
+ *   1. Primitives — raw color values from Figma
+ *   2. Semantic — meaningful names referencing primitives
+ *
+ * Components should ONLY use semantic tokens (--admin-text-*, --admin-surface-*,
+ * --admin-border-*). Never reference primitives directly.
+ */
+
+/* ──────────────── PRIMITIVE COLOR TOKENS (from Figma) ──────────────── */
+:root {
+  /* White */
+  --admin-white-100: #ffffff;
+  --admin-white-alpha-5:  #ffffff0d;
+  --admin-white-alpha-10: #ffffff1a;
+  --admin-white-alpha-20: #ffffff33;
+  --admin-white-alpha-30: #ffffff4d;
+  --admin-white-alpha-40: #ffffff66;
+  --admin-white-alpha-50: #ffffff80;
+  --admin-white-alpha-60: #ffffff99;
+  --admin-white-alpha-70: #ffffffb3;
+  --admin-white-alpha-80: #ffffffcc;
+  --admin-white-alpha-90: #ffffffe6;
+
+  /* Black — opaque shades */
+  --admin-black-2:   #f5f5f5;
+  --admin-black-5:   #efefef;
+  --admin-black-10:  #e8e8e8;
+  --admin-black-20:  #dbdbdb;
+  --admin-black-30:  #c0c0c0;
+  --admin-black-40:  #a1a1a1;
+  --admin-black-50:  #7b7b7b;
+  --admin-black-60:  #676767;
+  --admin-black-70:  #525252;
+  --admin-black-80:  #282828;
+  --admin-black-85:  #1e1e1e;
+  --admin-black-90:  #101010;
+  --admin-black-100: #000000;
+
+  /* Black — alpha */
+  --admin-black-alpha-2:  #00000005;
+  --admin-black-alpha-5:  #0000000d;
+  --admin-black-alpha-10: #0000001a;
+  --admin-black-alpha-20: #00000033;
+  --admin-black-alpha-30: #0000004d;
+  --admin-black-alpha-40: #00000066;
+  --admin-black-alpha-50: #00000080;
+  --admin-black-alpha-60: #00000099;
+  --admin-black-alpha-70: #000000b3;
+  --admin-black-alpha-80: #000000cc;
+  --admin-black-alpha-90: #000000e6;
+  --admin-black-alpha-100: #000000ff;
+
+  /* Blue */
+  --admin-blue-10:  #eef2ff;
+  --admin-blue-20:  #c4d4ff;
+  --admin-blue-30:  #aec2ff;
+  --admin-blue-40:  #97afff;
+  --admin-blue-50:  #7592f0;
+  --admin-blue-60:  #5f80eb;
+  --admin-blue-70:  #4a6fe6;
+  --admin-blue-80:  #345de1;
+  --admin-blue-90:  #1a48dd;
+  --admin-blue-100: #0033d9;
+  --admin-blue-150: #002361;
+
+  /* Orange */
+  --admin-orange-10:  #fff5ea;
+  --admin-orange-20:  #ffead5;
+  --admin-orange-30:  #ffdfc0;
+  --admin-orange-40:  #ffd5ab;
+  --admin-orange-50:  #ffca95;
+  --admin-orange-60:  #ffbb78;
+  --admin-orange-70:  #ffad5b;
+  --admin-orange-80:  #ff9e3d;
+  --admin-orange-90:  #ff9020;
+  --admin-orange-100: #ff8103;
+  --admin-orange-150: #8e4700;
+
+  /* Green */
+  --admin-green-10:  #e5fff2;
+  --admin-green-20:  #c6f2dc;
+  --admin-green-30:  #a6e6c6;
+  --admin-green-40:  #87d9b0;
+  --admin-green-50:  #67cc9a;
+  --admin-green-60:  #52c38b;
+  --admin-green-70:  #3eba7c;
+  --admin-green-80:  #29b26e;
+  --admin-green-90:  #15a95f;
+  --admin-green-100: #00a050;
+  --admin-green-150: #005a22;
+
+  /* Red */
+  --admin-red-10:  #fff5f5;
+  --admin-red-20:  #ffe5e5;
+  --admin-red-30:  #ffd4d4;
+  --admin-red-40:  #ffc4c4;
+  --admin-red-50:  #ffb3b3;
+  --admin-red-60:  #f99393;
+  --admin-red-70:  #f37474;
+  --admin-red-80:  #ec5454;
+  --admin-red-90:  #e63535;
+  --admin-red-100: #e01515;
+  --admin-red-150: #7d1010;
+
+  /* Brand (aliases for blue) */
+  --admin-brand-100: #0033d9;
+  --admin-brand-50:  #7592f0;
+  --admin-brand-10:  #eef2ff;
+}
+
+/* ──────────────── SEMANTIC COLOR TOKENS (from Figma) ──────────────── */
+:root {
+  /* Surface */
+  --admin-surface-primary: var(--admin-white-100);
+  --admin-surface-secondary: var(--admin-black-70);
+  --admin-surface-mid: var(--admin-black-20);
+  --admin-surface-subtle: var(--admin-black-5);
+  --admin-surface-extra-subtle: var(--admin-black-2);
+  --admin-surface-action: var(--admin-black-100);
+  --admin-surface-highlight: var(--admin-brand-100);
+  --admin-surface-inverted-primary: var(--admin-black-100);
+  --admin-surface-inverted-subtle: var(--admin-white-alpha-30);
+  --admin-surface-inverted-extra-subtle: var(--admin-white-alpha-10);
+
+  /* Text */
+  --admin-text-primary: var(--admin-black-100);
+  --admin-text-secondary: var(--admin-black-70);
+  --admin-text-subtle: var(--admin-black-50);
+  --admin-text-placeholder: var(--admin-black-50);
+  --admin-text-highlight: var(--admin-blue-100);
+  --admin-text-action: var(--admin-black-100);
+  --admin-text-warning: var(--admin-orange-150);
+  --admin-text-annotation: var(--admin-orange-150);
+  --admin-text-success: var(--admin-green-150);
+  --admin-text-error: var(--admin-red-150);
+  --admin-text-info: var(--admin-blue-150);
+  --admin-text-inverted-primary: var(--admin-white-100);
+  --admin-text-inverted-secondary: var(--admin-white-alpha-80);
+  --admin-text-inverted-subtle: var(--admin-white-alpha-50);
+  --admin-text-inverted-extra-subtle: var(--admin-white-alpha-10);
+
+  /* Border */
+  --admin-border-prominent: var(--admin-surface-inverted-primary);
+  --admin-border-subtle: var(--admin-black-alpha-10);
+  --admin-border-highlight: var(--admin-blue-100);
+  --admin-border-inverted-prominent: var(--admin-surface-primary);
+  --admin-border-inverted-subtle: var(--admin-surface-inverted-subtle);
+  --admin-border-info: var(--admin-blue-20);
+  --admin-border-success: var(--admin-green-30);
+  --admin-border-warning: var(--admin-orange-30);
+  --admin-border-error: var(--admin-red-30);
+
+  /* Status surfaces */
+  --admin-surface-warning-primary: var(--admin-orange-100);
+  --admin-surface-warning-secondary: var(--admin-orange-50);
+  --admin-surface-warning-subtle: var(--admin-orange-10);
+  --admin-surface-success-primary: var(--admin-green-100);
+  --admin-surface-success-secondary: var(--admin-green-50);
+  --admin-surface-success-subtle: var(--admin-green-10);
+  --admin-surface-error-primary: var(--admin-red-100);
+  --admin-surface-error-secondary: var(--admin-red-50);
+  --admin-surface-error-subtle: var(--admin-red-10);
+  --admin-surface-info-primary: var(--admin-blue-100);
+  --admin-surface-info-secondary: var(--admin-blue-20);
+  --admin-surface-info-subtle: var(--admin-blue-10);
+
+  /* Page canvas */
+  --admin-page-background: var(--admin-surface-primary);
+  --admin-chrome-background: var(--admin-surface-primary);
+  --admin-topnav-backdrop-filter: none;
+
+  /* Component role surfaces */
+  --admin-panel-background: var(--admin-surface-primary);
+  --admin-panel-backdrop-filter: none;
+  --admin-panel-border: var(--admin-border-subtle);
+  --admin-panel-shadow: var(--admin-shadow-xl);
+  --admin-card-background: var(--admin-surface-primary);
+  --admin-card-border: var(--admin-border-subtle);
+  --admin-card-shadow: var(--admin-shadow-md);
+  --admin-table-header-background: var(--admin-surface-subtle);
+  --admin-table-row-hover: var(--admin-surface-extra-subtle);
+  --admin-table-row-selected: var(--admin-surface-extra-subtle);
+  --admin-table-border: var(--admin-border-subtle);
+  --admin-separator-color: var(--admin-border-subtle);
+
+  /* Role text */
+  --admin-link-text: var(--admin-text-highlight);
+  --admin-link-hover-text: var(--admin-text-primary);
+  --admin-icon-primary: var(--admin-text-primary);
+  --admin-icon-secondary: var(--admin-text-secondary);
+  --admin-icon-muted: var(--admin-text-subtle);
+  --admin-neutral-badge-bg: var(--admin-surface-subtle);
+  --admin-neutral-badge-text: var(--admin-text-primary);
+  --admin-neutral-badge-border: transparent;
+
+  /* Component: icon buttons */
+  --admin-icon-button-size-xs: 1.5rem;  /* 24px */
+  --admin-icon-button-size-sm: 1.75rem; /* 28px */
+  --admin-icon-button-size-md: 2rem;    /* 32px */
+
+  /* Component: inputs */
+  --admin-input-height-sm: 1.75rem;    /* 28px */
+  --admin-input-height-md: 2.25rem;    /* 36px */
+  --admin-input-radius: var(--admin-radius-md);
+  --admin-input-padding-x: 0.75rem;    /* 12px — between space-s and space-m */
+  --admin-input-background: var(--admin-surface-extra-subtle);
+  --admin-input-border: transparent;
+  --admin-control-hover-border: var(--admin-border-subtle);
+  --admin-input-border-focus: var(--admin-border-highlight);
+
+  /* Component: buttons */
+  --admin-button-text-transform: none;
+  --admin-button-primary-bg: var(--admin-surface-action);
+  --admin-button-primary-text: var(--admin-text-inverted-primary);
+  --admin-button-primary-hover-bg: var(--admin-black-90);
+  --admin-button-destructive-bg: var(--admin-surface-warning-primary);
+  --admin-button-destructive-text: var(--admin-text-inverted-primary);
+  --admin-button-destructive-hover-bg: var(--admin-orange-90);
+
+  /* Component: code blocks (always dark — these do not change in dark mode) */
+  --admin-code-bg: #0d1117;
+  --admin-code-header-bg: rgba(255, 255, 255, 0.04);
+  --admin-code-text: #c9d1d9;
+  --admin-code-text-subtle: #8b949e;
+  --admin-code-text-extra-subtle: #484f58;
+  --admin-code-toolbar-bg: #161b22;
+  --admin-code-toolbar-border: #30363d;
+  --admin-code-toolbar-hover-bg: #21262d;
+  --admin-code-action-hover-bg: rgba(255, 255, 255, 0.08);
+
+  /* Disabled state */
+  --admin-opacity-disabled: 0.5;
+
+  /* Navigation */
+  --admin-topnav-padding: var(--admin-space-xxl);
+  --admin-sidenav-padding: var(--admin-space-xxl);
+  --admin-panel-header-height: 48px;
+
+  /* Interactive (derived — for focus rings, active tints, overlays) */
+  --admin-interactive-hover: var(--admin-surface-extra-subtle);
+  --admin-interactive-active: var(--admin-surface-subtle);
+  --admin-interactive-selected: var(--admin-black-10);
+  --admin-interactive-selected-text: var(--admin-text-primary);
+  --admin-interactive-selected-prominent: var(--admin-blue-10);
+  --admin-nav-selected: var(--admin-interactive-selected);
+  --admin-nav-selected-text: var(--admin-interactive-selected-text);
+  --admin-interactive-focus: var(--admin-border-highlight);
+  --admin-focus-ring-width: 2px;
+  --admin-focus-ring-style: solid;
+  --admin-focus-ring-offset: 2px;
+  --admin-overlay: var(--admin-black-alpha-50);
+  --admin-overlay-backdrop-filter: none;
+
+}
+
+/* ──────────────── DARK MODE OVERRIDES ──────────────── */
+[data-theme="dark"] {
+  /* Surface */
+  --admin-surface-primary: var(--admin-black-90);
+  --admin-surface-secondary: var(--admin-black-40);
+  --admin-surface-mid: var(--admin-black-80);
+  --admin-surface-subtle: var(--admin-black-80);
+  --admin-surface-extra-subtle: var(--admin-black-85);
+  --admin-surface-action: var(--admin-white-100);
+  --admin-surface-highlight: var(--admin-brand-100);
+  --admin-surface-inverted-primary: var(--admin-white-100);
+  --admin-surface-inverted-subtle: var(--admin-black-alpha-20);
+  --admin-surface-inverted-extra-subtle: var(--admin-black-alpha-10);
+
+  /* Text */
+  --admin-text-primary: var(--admin-white-100);
+  --admin-text-secondary: var(--admin-white-alpha-80);
+  --admin-text-subtle: var(--admin-white-alpha-50);
+  --admin-text-placeholder: var(--admin-white-alpha-50);
+  --admin-text-highlight: var(--admin-blue-20);
+  --admin-text-action: var(--admin-white-100);
+  --admin-text-warning: var(--admin-orange-50);
+  --admin-text-annotation: var(--admin-orange-50);
+  --admin-text-success: var(--admin-green-50);
+  --admin-text-error: var(--admin-red-50);
+  --admin-text-info: var(--admin-blue-20);
+  --admin-text-inverted-primary: var(--admin-black-100);
+  --admin-text-inverted-secondary: var(--admin-black-alpha-80);
+  --admin-text-inverted-subtle: var(--admin-black-alpha-50);
+  --admin-text-inverted-extra-subtle: var(--admin-black-alpha-10);
+
+  /* Border */
+  --admin-border-prominent: var(--admin-white-100);
+  --admin-border-subtle: var(--admin-white-alpha-10);
+  --admin-border-highlight: var(--admin-blue-40);
+  --admin-border-inverted-prominent: var(--admin-black-100);
+  --admin-border-inverted-subtle: var(--admin-black-alpha-20);
+  --admin-border-info: var(--admin-blue-80);
+  --admin-border-success: var(--admin-green-80);
+  --admin-border-warning: var(--admin-orange-80);
+  --admin-border-error: var(--admin-red-80);
+
+  /* Status surfaces */
+  --admin-surface-warning-primary: var(--admin-orange-100);
+  --admin-surface-warning-secondary: var(--admin-orange-150);
+  --admin-surface-warning-subtle: var(--admin-orange-150);
+  --admin-surface-success-primary: var(--admin-green-100);
+  --admin-surface-success-secondary: var(--admin-green-150);
+  --admin-surface-success-subtle: var(--admin-green-150);
+  --admin-surface-error-primary: var(--admin-red-100);
+  --admin-surface-error-secondary: var(--admin-red-150);
+  --admin-surface-error-subtle: var(--admin-red-150);
+  --admin-surface-info-primary: var(--admin-blue-100);
+  --admin-surface-info-secondary: var(--admin-blue-150);
+  --admin-surface-info-subtle: var(--admin-blue-150);
+
+  /* Buttons */
+  --admin-button-primary-hover-bg: var(--admin-black-10);
+
+  /* Interactive */
+  --admin-interactive-hover: var(--admin-white-alpha-10);
+  --admin-interactive-active: var(--admin-white-alpha-20);
+  --admin-interactive-selected: var(--admin-white-alpha-20);
+  --admin-interactive-selected-text: var(--admin-text-primary);
+  --admin-interactive-selected-prominent: var(--admin-white-alpha-20);
+  --admin-nav-selected: var(--admin-interactive-selected);
+  --admin-nav-selected-text: var(--admin-interactive-selected-text);
+  --admin-overlay: var(--admin-black-alpha-80);
+
+}
+
+/* ──────────────── NON-COLOR TOKENS ──────────────── */
+:root {
+  /* Font families */
+  --admin-font-sans: "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --admin-font-serif: Georgia, serif;
+  --admin-font-mono: Menlo, monospace;
+
+  /* Mono font sizes — slightly smaller than sans equivalents to compensate for mono's larger optical size */
+  --admin-font-size-mono-s: 0.75rem;    /* 12px (sans s = 12.8px) */
+  --admin-font-size-mono-xs: 0.6875rem; /* 11px (sans xs = 12px) */
+
+  /* Border radius — scale */
+  --admin-radius: 0.75rem; /* 12px */
+  --admin-radius-xs: calc(var(--admin-radius) - 6px);
+  --admin-radius-sm: calc(var(--admin-radius) - 4px);
+  --admin-radius-md: calc(var(--admin-radius) - 2px);
+  --admin-radius-lg: var(--admin-radius);
+  --admin-radius-xl: calc(var(--admin-radius) + 4px);
+  --admin-radius-pill: 9999px;
+
+  /* Border radius — component roles (override these to theme shapes) */
+  --admin-interactive-radius: var(--admin-radius-sm); /* nav items, toolbar buttons, menu/list rows */
+  --admin-button-radius: var(--admin-radius-lg);       /* primary, secondary, ghost buttons */
+
+  /* Shadows */
+  --admin-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --admin-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --admin-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+  --admin-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --admin-shadow-panel: -4px 0 16px rgb(0 0 0 / 0.08);
+  --admin-shadow-handle: 0 0 0 1px rgba(0, 0, 0, 0.25);   /* color picker / gradient stop handles */
+  --admin-shadow-overflow-left: 4px 0 8px -2px rgba(0, 0, 0, 0.12);   /* overflow indicator, left edge */
+  --admin-shadow-overflow-right: -4px 0 8px -2px rgba(0, 0, 0, 0.12); /* overflow indicator, right edge */
+
+  /* Spacing scale */
+  --admin-space-xxl: 4rem;  /* 64px */
+  --admin-space-xl: 2rem;  /* 32px */
+  --admin-space-l: 1.25rem;     /* 20px */
+  --admin-space-m: 1rem;      /* 16px */
+  --admin-space-s: 0.5rem;   /* 8px */
+  --admin-space-xs: 0.25rem;   /* 4px */
+  --admin-space-xxs: 0.25rem; /* 4px */
+
+  /* Typography scale */
+  --admin-font-size-4xl: 2.25rem;  /* 36px */
+  --admin-font-size-3xl: 1.875rem; /* 30px */
+  --admin-font-size-2xl: 1.5rem;   /* 24px */
+  --admin-font-size-xl: 1.25rem;   /* 20px */
+  --admin-font-size-l: 1rem;       /* 16px */
+  --admin-font-size-m: 0.875rem;  /* 14px */
+  --admin-font-size-s: 0.8rem;     /* 12.8px */
+  --admin-font-size-xs: 0.75rem;   /* 12px */
+  --admin-font-size-ui: 0.6875rem;   /* 11px */
+
+  /* Letter-spacing (tracking) */
+  --admin-tracking-tightest: -0.055em;
+  --admin-tracking-tighter:  -0.04em;
+  --admin-tracking-tight:    -0.03em;
+  --admin-tracking-snug:     -0.02em;
+  --admin-tracking-normal:    -0.01em;
+  --admin-tracking-wide:      0.01em;
+
+  /* Weights */
+  --admin-font-weight-medium: 500;   /* Medium */
+  --admin-font-weight-body: 400;      /* Regular */
+  --admin-font-weight-emphasis: 600;  /* Semibold */
+
+  /* ── Deprecated: use --admin-tracking-* equivalents above ── */
+  --admin-letter-spacing-xl:        var(--admin-tracking-tightest);
+  --admin-letter-spacing-l:         var(--admin-tracking-tighter);
+  --admin-letter-spacing-m:         var(--admin-tracking-tight);
+  --admin-letter-spacing-s:         var(--admin-tracking-snug);
+  --admin-letter-spacing-xs:        var(--admin-tracking-normal);
+  --admin-letter-spacing-uppercase: var(--admin-tracking-wide);
+}
+
+/* ──────────────── GLOBAL RESETS ──────────────── */
+* {
+  border-color: var(--admin-border-subtle);
+}
+
+body {
+  font-family: var(--admin-font-sans);
+  -webkit-font-smoothing: antialiased;
+  background: var(--admin-page-background);
+  color: var(--admin-text-primary);
+}
+
+/* ──────────────── TYPOGRAPHY MIXINS (for use in CSS Modules) ──────────────── */
+
+/* Headings — medium weight (500) */
+@define-mixin type-heading-xl {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-medium);
+  font-size: var(--admin-font-size-4xl);
+  line-height: 1.1;
+  letter-spacing: var(--admin-tracking-tightest);
+}
+
+@define-mixin type-heading-l {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-medium);
+  font-size: var(--admin-font-size-2xl);
+  line-height: 1.15;
+  letter-spacing: var(--admin-tracking-tighter);
+}
+
+@define-mixin type-heading-m {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-medium);
+  font-size: var(--admin-font-size-xl);
+  line-height: 1.2;
+  letter-spacing: var(--admin-tracking-tight);
+}
+
+@define-mixin type-heading-s {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-medium);
+  font-size: var(--admin-font-size-l);
+  line-height: 1.25;
+  letter-spacing: var(--admin-tracking-snug);
+}
+
+@define-mixin type-heading-xs {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-medium);
+  font-size: var(--admin-font-size-m);
+  line-height: 1.33;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+/* Overline — semibold, uppercase */
+@define-mixin type-overline {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-emphasis);
+  text-transform: uppercase;
+  font-size: var(--admin-font-size-xs);
+  line-height: 1;
+  letter-spacing: var(--admin-tracking-wide);
+}
+
+/* Body — regular weight (400) */
+@define-mixin type-body-l {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-body);
+  font-size: var(--admin-font-size-l);
+  line-height: 1.25;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-m {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-body);
+  font-size: var(--admin-font-size-m);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-s {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-body);
+  font-size: var(--admin-font-size-s);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-xs {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-body);
+  font-size: var(--admin-font-size-xs);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-ui {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-body);
+  font-size: var(--admin-font-size-ui);
+  line-height: 1.25;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+/* Body strong — semibold weight (600) */
+@define-mixin type-body-m-strong {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-emphasis);
+  font-size: var(--admin-font-size-m);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-s-strong {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-emphasis);
+  font-size: var(--admin-font-size-s);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+@define-mixin type-body-xs-strong {
+  font-family: var(--admin-font-sans);
+  font-weight: var(--admin-font-weight-emphasis);
+  font-size: var(--admin-font-size-xs);
+  line-height: 1.5;
+  letter-spacing: var(--admin-tracking-normal);
+}
+
+/* ──────────────── FONT WEIGHT MIXINS ──────────────── */
+@define-mixin weight-regular {
+  font-weight: var(--admin-font-weight-body);
+}
+
+@define-mixin weight-medium {
+  font-weight: var(--admin-font-weight-medium);
+}
+
+@define-mixin weight-semibold {
+  font-weight: var(--admin-font-weight-emphasis);
+}
+
+/* ──────────────── MONO MIXINS ──────────────── */
+@define-mixin type-mono-s {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-mono-s);
+  line-height: 1.5;
+}
+
+@define-mixin type-mono-xs {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-font-size-mono-xs);
+  line-height: 1.5;
+}
+
+/* ──────────────── DEPRECATED TOKENS ──────────────── */
+/*
+ * These tokens are kept for backwards compatibility with external consumers.
+ * Do not use in new code. Will be removed in a future major version.
+ *
+ * --admin-background-*     → use --admin-surface-* equivalents
+ * --admin-interactive-subtle → use --admin-interactive-hover
+ */
+:root {
+  --admin-background-primary: var(--admin-surface-primary);
+  --admin-background-inverted-primary: var(--admin-surface-inverted-primary);
+  --admin-background-mid: var(--admin-surface-mid);
+  --admin-background-inverted-secondary: var(--admin-surface-secondary);
+  --admin-background-subtle: var(--admin-surface-subtle);
+  --admin-background-extra-subtle: var(--admin-surface-extra-subtle);
+  --admin-background-highlight: var(--admin-surface-highlight);
+  --admin-background-annotation: var(--admin-orange-50);
+  --admin-background-annotation-subtle: var(--admin-orange-30);
+  --admin-interactive-subtle: var(--admin-interactive-hover);
+}
+
+[data-theme="dark"] {
+  --admin-background-annotation: var(--admin-orange-150);
+  --admin-background-annotation-subtle: var(--admin-orange-150);
+  --admin-interactive-subtle: var(--admin-interactive-hover);
+}

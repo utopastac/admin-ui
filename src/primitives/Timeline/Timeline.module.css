@@ -1,0 +1,124 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0 var(--admin-space-s);
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Connector line grows from below the dot/avatar to the bottom of the row */
+  &.withLine::after {
+    content: '';
+    flex: 1;
+    width: 2px;
+    margin-top: var(--admin-space-xs);
+    background-color: var(--admin-border-subtle);
+  }
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: var(--admin-space-xs);
+  flex-shrink: 0;
+  border: 2px solid var(--admin-border-subtle);
+  background-color: var(--admin-surface-subtle);
+
+  &.success {
+    background-color: var(--admin-text-success);
+    border-color: var(--admin-text-success);
+  }
+
+  &.warning {
+    background-color: var(--admin-text-annotation);
+    border-color: var(--admin-text-annotation);
+  }
+
+  &.info {
+    background-color: var(--admin-text-highlight);
+    border-color: var(--admin-text-highlight);
+  }
+
+  &.error {
+    background-color: var(--admin-text-error);
+    border-color: var(--admin-text-error);
+  }
+
+  &.default {
+    background-color: var(--admin-surface-subtle);
+    border-color: var(--admin-border-subtle);
+  }
+}
+
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  color: var(--admin-text-secondary);
+
+  &.success {
+    color: var(--admin-text-success);
+  }
+
+  &.warning {
+    color: var(--admin-text-annotation);
+  }
+
+  &.info {
+    color: var(--admin-text-highlight);
+  }
+
+  &.error {
+    color: var(--admin-text-error);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-xxs);
+  padding-bottom: var(--admin-space-m);
+}
+
+.title {
+  font-family: var(--admin-font-sans);
+  font-size: var(--admin-font-size-m);
+  font-weight: var(--admin-font-weight-emphasis);
+  color: var(--admin-text-primary);
+  line-height: 1.4;
+}
+
+.timestamp {
+  font-family: var(--admin-font-sans);
+  font-size: var(--admin-font-size-s);
+  font-weight: var(--admin-font-weight-body);
+  color: var(--admin-text-secondary);
+  line-height: 1.4;
+}
+
+.description {
+  font-family: var(--admin-font-sans);
+  font-size: var(--admin-font-size-s);
+  font-weight: var(--admin-font-weight-body);
+  color: var(--admin-text-primary);
+  line-height: 1.5;
+}

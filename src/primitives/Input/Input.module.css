@@ -1,0 +1,43 @@
+.input {
+  @mixin input-md;
+  @mixin type-body-s;
+
+  &.error {
+    border-color: var(--admin-surface-error-primary);
+  }
+}
+
+.prefixWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  @mixin input-wrapper;
+  height: var(--admin-input-height-md);
+  padding: 0 var(--admin-input-padding-x);
+  border-radius: var(--admin-input-radius);
+
+  &.error {
+    border-color: var(--admin-surface-error-primary);
+  }
+}
+
+.prefix {
+  @mixin type-body-s;
+  color: var(--admin-text-subtle);
+  flex-shrink: 0;
+  user-select: none;
+  cursor: default;
+  line-height: 1;
+}
+
+.prefixInput {
+  @mixin type-body-s;
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--admin-text-primary);
+  outline: none;
+  padding: 0;
+  height: 100%;
+}

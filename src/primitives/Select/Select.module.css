@@ -1,0 +1,159 @@
+.container {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Trigger button */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-s);
+  width: 100%;
+  border: 1px solid var(--admin-input-border);
+  border-radius: var(--admin-radius-md);
+  background-color: var(--admin-input-background);
+  color: var(--admin-text-primary);
+  font-weight: var(--admin-font-weight-body);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--admin-control-hover-border);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--admin-input-border-focus);
+  }
+
+  &.open {
+    border-color: var(--admin-input-border-focus);
+  }
+
+  &:disabled {
+    opacity: var(--admin-opacity-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Size variants */
+  &.sm {
+    height: var(--admin-input-height-sm);
+    padding: 0 var(--admin-space-s);
+    font-size: var(--admin-font-size-xs);
+  }
+
+  &.md {
+    height: var(--admin-input-height-md);
+    padding: 0 var(--admin-space-m);
+    font-size: var(--admin-font-size-s);
+  }
+}
+
+/* Trigger content wrapper (holds accessory + text) */
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  min-width: 0;
+  flex: 1;
+}
+
+/* Shared accessory slot (trigger + option rows) */
+.accessory {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Text inside trigger */
+.selectedText {
+  color: var(--admin-text-primary);
+}
+
+.placeholder {
+  color: var(--admin-text-subtle);
+}
+
+/* Chevron icon */
+.chevron {
+  flex-shrink: 0;
+  color: var(--admin-text-secondary);
+  transition: transform 0.2s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.dropdown {
+  @mixin popover-panel;
+  min-width: max-content;
+  max-height: 240px;
+  padding: var(--admin-space-xs) 0;
+}
+
+/* Option items */
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-s);
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  text-align: left;
+  font-weight: var(--admin-font-weight-body);
+  transition: background-color 0.15s;
+
+  &.sm {
+    padding: calc(var(--admin-space-s) * 0.75) var(--admin-space-s);
+    font-size: var(--admin-font-size-xs);
+  }
+
+  &.md {
+    padding: var(--admin-space-s) var(--admin-space-m);
+    font-size: var(--admin-font-size-s);
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--admin-interactive-hover);
+  }
+}
+
+.optionSelected {
+  background-color: var(--admin-interactive-selected);
+  color: var(--admin-interactive-selected-text);
+  font-weight: var(--admin-font-weight-medium);
+}
+
+.optionDisabled {
+  opacity: var(--admin-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.optionLabel {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--admin-space-s);
+}
+
+.optionDescription {
+  @mixin type-body-xs;
+  color: var(--admin-text-subtle);
+}
+
+.optionSelected .optionDescription {
+  color: inherit;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  color: currentColor;
+}
