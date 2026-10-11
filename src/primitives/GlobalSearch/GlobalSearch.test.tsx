@@ -205,4 +205,12 @@ describe('GlobalSearch', () => {
     );
     expect(container.firstElementChild).toHaveClass('custom-search');
   });
+
+  it('portals the results list to document.body', async () => {
+    const user = userEvent.setup();
+    render(<GlobalSearch {...defaultProps} query="dash" />);
+    await user.click(screen.getByRole('combobox'));
+    const listbox = screen.getByRole('listbox');
+    expect(listbox.parentElement).toBe(document.body);
+  });
 });

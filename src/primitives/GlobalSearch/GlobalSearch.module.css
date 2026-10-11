@@ -31,12 +31,10 @@
 }
 
 .dropdown {
-  position: absolute;
-  top: calc(100% + var(--admin-space-xs));
-  left: 0;
-  min-width: 320px;
-  max-width: 420px;
-  max-height: 360px;
+  position: fixed;
+  min-width: min(320px, calc(100vw - 2 * var(--admin-space-m)));
+  max-width: min(420px, calc(100vw - 2 * var(--admin-space-m)));
+  max-height: min(360px, calc(100vh - 6rem));
   overflow-y: auto;
   background: var(--admin-panel-background);
   background-clip: padding-box;
@@ -45,7 +43,7 @@
   border: 1px solid var(--admin-panel-border);
   border-radius: var(--admin-radius-md);
   box-shadow: var(--admin-panel-shadow);
-  z-index: 100;
+  z-index: 10000;
   padding: var(--admin-space-xs);
 
   & mark {

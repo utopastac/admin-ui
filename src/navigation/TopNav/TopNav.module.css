@@ -1,5 +1,9 @@
 /* TopNav — horizontal top bar with tabs on the left and actions on the right.
- * Sits at the top of the viewport above the main content area. */
+ * Sits at the top of the viewport above the main content area.
+ *
+ * Desktop: single row via `display: contents` on .bar so left / tabs / right
+ * flex as siblings. Mobile: column with a second tab row that collapses on
+ * scroll-down and reveals on scroll-up. */
 
 .topNav {
   position: sticky;
@@ -16,10 +20,6 @@
   gap: var(--admin-space-s);
   min-width: 0;
 
-  @mixin mobile {
-    padding: 0 var(--admin-space-m);
-  }
-
   &.sm {
     height: 48px;
   }
@@ -29,72 +29,158 @@
     padding-top: var(--admin-space-s);
   }
 
-  & .left {
+  /* Mobile: stack chrome + tab row; height grows with the second row. */
+  @mixin mobile {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: auto;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+
+    &.sm,
+    &.lg {
+      height: auto;
+      padding-top: 0;
+    }
+  }
+}
+
+.bar {
+  display: contents;
+
+  @mixin mobile {
     display: flex;
     align-items: center;
-    gap: var(--admin-space-m);
-    height: 100%;
+    justify-content: space-between;
+    gap: var(--admin-space-s);
+    height: 48px;
     min-width: 0;
+    padding: 0 var(--admin-space-m);
+    flex-shrink: 0;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-m);
+  height: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
+  order: 1;
+
+  @mixin mobile {
     flex: 1;
   }
+}
 
-  & .leading {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+.leading {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  flex-shrink: 0;
+
+  &:focus-visible {
+    @mixin focus-ring;
+    border-radius: var(--admin-radius-sm);
   }
+}
 
-  & .brand {
-    display: flex;
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  height: 100%;
+  min-width: 0;
+  flex: 1;
+  order: 2;
+
+  @mixin mobile {
+    order: 3;
+    flex: none;
+    flex-wrap: wrap;
     align-items: center;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    color: inherit;
-    flex-shrink: 0;
+    gap: var(--admin-space-xxs) var(--admin-space-xs);
+    height: auto;
+    max-height: 3.5rem;
+    padding: var(--admin-space-s) var(--admin-space-m);
+    border-top: 1px solid var(--admin-border-subtle);
+    opacity: 1;
+    transform: translateY(0);
+    overflow: hidden;
+    pointer-events: auto;
+    transition:
+      max-height 0.22s ease,
+      opacity 0.18s ease,
+      transform 0.22s ease,
+      padding 0.22s ease,
+      border-color 0.18s ease;
 
-    &:focus-visible {
-      @mixin focus-ring;
-      border-radius: var(--admin-radius-sm);
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
     }
   }
+}
 
-  & .tabs {
-    display: flex;
-    align-items: center;
-    gap: var(--admin-space-xs);
-    height: 100%;
-    min-width: 0;
-
-    @mixin mobile {
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
+.tabsCollapsed {
+  @mixin mobile {
+    & .tabs {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-6px);
+      padding-top: 0;
+      padding-bottom: 0;
+      border-top-color: transparent;
+      pointer-events: none;
     }
   }
+}
 
-  & .separator {
-    width: 1px;
-    height: 16px;
-    background: var(--admin-border-subtle);
-    flex-shrink: 0;
+.tabsRevealed {
+  @mixin mobile {
+    & .tabs {
+      max-height: 3.5rem;
+      opacity: 1;
+      transform: translateY(0);
+      padding: var(--admin-space-s) var(--admin-space-m);
+      pointer-events: auto;
+    }
   }
+}
 
-  & .right {
-    display: flex;
-    align-items: center;
-    gap: var(--admin-space-s);
-    flex-shrink: 0;
-  }
+.separator {
+  width: 1px;
+  height: 16px;
+  background: var(--admin-border-subtle);
+  flex-shrink: 0;
+}
 
-  & .actions {
-    display: flex;
-    align-items: center;
-    gap: var(--admin-space-xs);
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-s);
+  flex-shrink: 0;
+  order: 3;
+
+  @mixin mobile {
+    order: 2;
   }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
 }

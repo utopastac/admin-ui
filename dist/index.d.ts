@@ -1406,6 +1406,9 @@ export declare interface TooltipProps {
  * underline indicator for the active tab. The optional `actions` slot sits
  * on the right for toolbar buttons, menus, or other controls.
  *
+ * On mobile viewports, tabs move to a second row that hides while scrolling
+ * down and animates back in when scrolling up.
+ *
  * This component is fully controlled — active state and click handling
  * are managed by the consumer via props.
  *

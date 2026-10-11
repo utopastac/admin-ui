@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { Search } from 'lucide-react';
 import GlobalSearchResult from './GlobalSearchResult';
 import styles from './GlobalSearch.module.css';
@@ -37,6 +38,10 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({
+    top: -9999,
+    left: -9999,
+  });
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -44,17 +49,53 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
 
   const showDropdown = open && (query.length > 0 || loading);
 
+  const updateDropdownPosition = useCallback(() => {
+    const wrapper = wrapperRef.current;
+    const panel = listRef.current;
+    if (!wrapper || !panel) return;
+
+    const anchorRect = wrapper.getBoundingClientRect();
+    const panelWidth = panel.offsetWidth;
+    const viewportWidth = window.innerWidth;
+    const gap = 8;
+    let left = anchorRect.left;
+
+    if (left + panelWidth > viewportWidth - gap) {
+      left = Math.max(gap, viewportWidth - panelWidth - gap);
+    }
+
+    setDropdownStyle({
+      top: anchorRect.bottom + 4,
+      left,
+    });
+  }, []);
+
   // Reset active index when results change
   useEffect(() => {
     setActiveIndex(-1);
   }, [results]);
 
+  useEffect(() => {
+    if (!showDropdown) return;
+    const raf = requestAnimationFrame(() => {
+      updateDropdownPosition();
+    });
+    window.addEventListener('resize', updateDropdownPosition);
+    window.addEventListener('scroll', updateDropdownPosition, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', updateDropdownPosition);
+      window.removeEventListener('scroll', updateDropdownPosition, true);
+    };
+  }, [showDropdown, results, updateDropdownPosition]);
+
   // Click outside to close
   useEffect(() => {
     function handleMouseDown(e: MouseEvent) {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
+      const target = e.target as Node;
+      if (wrapperRef.current?.contains(target)) return;
+      if (listRef.current?.contains(target)) return;
+      setOpen(false);
     }
     document.addEventListener('mousedown', handleMouseDown);
     return () => document.removeEventListener('mousedown', handleMouseDown);
@@ -144,6 +185,41 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
     inputRef.current?.blur();
   };
 
+  const dropdown = showDropdown ? (
+    <div
+      ref={listRef}
+      className={styles.dropdown}
+      style={dropdownStyle}
+      role="listbox"
+    >
+      {loading && results.length === 0 ? (
+        <div className={styles.statusMessage}>Searching...</div>
+      ) : results.length === 0 ? (
+        <div className={styles.statusMessage}>{emptyMessage}</div>
+      ) : (
+        results.map((result, index) => (
+          <div
+            key={result.id}
+            data-result-index={index}
+            role="option"
+            aria-selected={index === activeIndex}
+            onClick={() => handleResultClick(result.id)}
+            onMouseEnter={() => setActiveIndex(index)}
+          >
+            {renderResult ? (
+              renderResult(result)
+            ) : (
+              <GlobalSearchResult
+                result={result}
+                active={index === activeIndex}
+              />
+            )}
+          </div>
+        ))
+      )}
+    </div>
+  ) : null;
+
   return (
     <div
       ref={wrapperRef}
@@ -168,35 +244,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
         />
       </div>
 
-      {showDropdown && (
-        <div ref={listRef} className={styles.dropdown} role="listbox">
-          {loading && results.length === 0 ? (
-            <div className={styles.statusMessage}>Searching...</div>
-          ) : results.length === 0 ? (
-            <div className={styles.statusMessage}>{emptyMessage}</div>
-          ) : (
-            results.map((result, index) => (
-              <div
-                key={result.id}
-                data-result-index={index}
-                role="option"
-                aria-selected={index === activeIndex}
-                onClick={() => handleResultClick(result.id)}
-                onMouseEnter={() => setActiveIndex(index)}
-              >
-                {renderResult ? (
-                  renderResult(result)
-                ) : (
-                  <GlobalSearchResult
-                    result={result}
-                    active={index === activeIndex}
-                  />
-                )}
-              </div>
-            ))
-          )}
-        </div>
-      )}
+      {dropdown && createPortal(dropdown, document.body)}
     </div>
   );
 };

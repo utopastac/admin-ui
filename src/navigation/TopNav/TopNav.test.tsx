@@ -67,6 +67,57 @@ describe('TopNav', () => {
     ).toBeTruthy();
   });
 
+  it('renders tabs in a dedicated tabs region', () => {
+    render(<TopNav {...defaultProps} />);
+    const tabs = screen.getByTestId('top-nav-tabs');
+    expect(tabs).toContainElement(screen.getByText('Flows'));
+    expect(tabs).toContainElement(screen.getByText('Settings'));
+  });
+
+  it('reveals mobile tabs when scrolling up and hides them when scrolling down', () => {
+    let matches = true;
+    const listeners: Array<(event: MediaQueryListEvent) => void> = [];
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn((query: string) => ({
+        media: query,
+        get matches() {
+          return matches;
+        },
+        onchange: null,
+        addEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => {
+          listeners.push(listener);
+        },
+        removeEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => {
+          listeners.splice(listeners.indexOf(listener), 1);
+        },
+        dispatchEvent: vi.fn(),
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+      })),
+    );
+
+    const { container } = render(<TopNav {...defaultProps} />);
+    const nav = container.firstElementChild as HTMLElement;
+    expect(nav.className).toContain('tabsRevealed');
+
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 120 });
+    fireEvent.scroll(window);
+    expect(nav.className).toContain('tabsCollapsed');
+
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 40 });
+    fireEvent.scroll(window);
+    expect(nav.className).toContain('tabsRevealed');
+
+    matches = false;
+    act(() => {
+      listeners.forEach((listener) => listener({ matches: false } as MediaQueryListEvent));
+    });
+    expect(nav.className).toContain('tabsRevealed');
+
+    vi.unstubAllGlobals();
+  });
+
   it('does not render brand element when not provided', () => {
     const { container } = render(<TopNav {...defaultProps} />);
     const brandButtons = container.querySelectorAll('[class*="brand"]');

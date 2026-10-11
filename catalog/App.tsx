@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import { TopNav, SideNav } from '@/navigation';
 import { AppLayout } from '@/layout';
-import { ToolbarButton, Select, GlobalSearch } from '@/primitives';
-import type { SelectOption, GlobalSearchResultData } from '@/primitives';
+import { ToolbarButton, Select, GlobalSearch, CommandDialog } from '@/primitives';
+import type { SelectOption, GlobalSearchResultData, CommandGroup } from '@/primitives';
 import { useMediaQuery, ADMIN_MOBILE_QUERY } from '@/hooks';
 import { useHashRoute, navigate } from './router';
 import { aboutSections, systemSections, componentTabs, buildNavTabs } from './data/navigation';
 import type { MainTab } from './data/navigation';
 import { demos } from './demos';
-import { AsteriskSquare, Sun, Moon, Github, Menu } from 'lucide-react';
+import { AsteriskSquare, Sun, Moon, Github, Menu, Search } from 'lucide-react';
 import styles from './App.module.css';
 
 interface ThemeSwatchData {
@@ -187,6 +187,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeComponentTabId, setActiveComponentTabId] = useState('primitives');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [catalogSearchOpen, setCatalogSearchOpen] = useState(false);
   const isMobile = useMediaQuery(ADMIN_MOBILE_QUERY);
 
   useEffect(() => {
@@ -233,6 +234,20 @@ export default function App() {
 
   const navTabs = useMemo(() => buildNavTabs(navigate), []);
 
+  const catalogCommandGroups = useMemo((): CommandGroup[] => [
+    {
+      searchOnly: true,
+      items: searchIndex.map((entry) => ({
+        id: `${entry.tab}/${entry.id}`,
+        label: entry.label,
+        onSelect: () => {
+          navigate(entry.tab, entry.id);
+          setCatalogSearchOpen(false);
+        },
+      })),
+    },
+  ], []);
+
   const closeMobileNav = () => setMobileNavOpen(false);
 
   const handleComponentTabSelect = (tabId: string) => {
@@ -278,7 +293,14 @@ export default function App() {
       activeTabId={tab === 'home' ? '' : tab}
       onTabSelect={handleTopNavTabSelect}
       search={
-        isMobile ? undefined : (
+        isMobile ? (
+          <ToolbarButton
+            icon={Search}
+            aria-label="Search catalog"
+            title="Search catalog"
+            onClick={() => setCatalogSearchOpen(true)}
+          />
+        ) : (
           <GlobalSearch
             query={searchQuery}
             onQueryChange={setSearchQuery}
@@ -353,16 +375,28 @@ export default function App() {
   ) : undefined;
 
   return (
-    <AppLayout
-      topNav={topNav}
-      sideNav={sideNav}
-      sideNavWidth={360}
-      mobileNavOpen={mobileNavOpen}
-      onMobileNavOpenChange={setMobileNavOpen}
-    >
-      <div className={tab === 'home' ? undefined : styles.content}>
-        {ActiveDemo && <ActiveDemo />}
-      </div>
-    </AppLayout>
+    <>
+      <AppLayout
+        topNav={topNav}
+        sideNav={sideNav}
+        sideNavWidth={360}
+        mobileNavOpen={mobileNavOpen}
+        onMobileNavOpenChange={setMobileNavOpen}
+      >
+        <div className={tab === 'home' ? undefined : styles.content}>
+          {ActiveDemo && <ActiveDemo />}
+        </div>
+      </AppLayout>
+      {isMobile && (
+        <CommandDialog
+          open={catalogSearchOpen}
+          onClose={() => setCatalogSearchOpen(false)}
+          onOpen={() => setCatalogSearchOpen(true)}
+          groups={catalogCommandGroups}
+          placeholder="Search the catalog…"
+          emptyMessage="No matches"
+        />
+      )}
+    </>
   );
 }
