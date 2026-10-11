@@ -17,6 +17,12 @@
   flex-direction: column;
   padding-left: var(--admin-sidenav-padding-left, var(--admin-sidenav-padding));
   padding-right: var(--admin-sidenav-padding-right, var(--admin-sidenav-padding));
+
+  /* Desktop chrome uses spacious --admin-sidenav-padding (often xxl); collapse it in drawers / narrow viewports. */
+  @mixin mobile {
+    padding-left: var(--admin-space-m);
+    padding-right: var(--admin-space-m);
+  }
 }
 
 /* Tabbed layout */

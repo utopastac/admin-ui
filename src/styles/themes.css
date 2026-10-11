@@ -1373,3 +1373,14 @@
   --admin-radius-md:           4px;
   --admin-radius-lg:           4px;
 }
+
+/* ──────────────── MOBILE CHROME PADDING ──────────────── */
+/* After all theme token blocks so spacious xxl / 4.5rem chrome padding collapses on small viewports. */
+
+@media (max-width: 767px) {
+  :root,
+  [data-admin-theme] {
+    --admin-topnav-padding: var(--admin-space-m);
+    --admin-sidenav-padding: var(--admin-space-m);
+  }
+}

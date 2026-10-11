@@ -13,6 +13,12 @@
   -webkit-backdrop-filter: var(--admin-topnav-backdrop-filter);
   backdrop-filter: var(--admin-topnav-backdrop-filter);
   flex-shrink: 0;
+  gap: var(--admin-space-s);
+  min-width: 0;
+
+  @mixin mobile {
+    padding: 0 var(--admin-space-m);
+  }
 
   &.sm {
     height: 48px;
@@ -28,6 +34,14 @@
     align-items: center;
     gap: var(--admin-space-m);
     height: 100%;
+    min-width: 0;
+    flex: 1;
+  }
+
+  & .leading {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   & .brand {
@@ -38,6 +52,7 @@
     padding: 0;
     cursor: pointer;
     color: inherit;
+    flex-shrink: 0;
 
     &:focus-visible {
       @mixin focus-ring;
@@ -50,6 +65,17 @@
     align-items: center;
     gap: var(--admin-space-xs);
     height: 100%;
+    min-width: 0;
+
+    @mixin mobile {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   & .separator {
@@ -63,6 +89,7 @@
     display: flex;
     align-items: center;
     gap: var(--admin-space-s);
+    flex-shrink: 0;
   }
 
   & .actions {

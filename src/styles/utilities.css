@@ -82,3 +82,19 @@
 .admin-weight-semibold {
   @mixin weight-semibold;
 }
+
+/* ── Responsive ── */
+
+.admin-hide-on-mobile {
+  @mixin mobile {
+    display: none !important;
+  }
+}
+
+.admin-show-on-mobile {
+  display: none !important;
+
+  @mixin mobile {
+    display: block !important;
+  }
+}

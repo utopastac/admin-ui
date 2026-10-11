@@ -1,6 +1,14 @@
 .root {
   display: grid;
   gap: var(--columns-gap, var(--admin-space-m));
+
+  @mixin mobile {
+    &.cols2,
+    &.cols3,
+    &.cols4 {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .cols2 { grid-template-columns: repeat(2, 1fr); }

@@ -2,6 +2,9 @@ import { default as default_2 } from 'react';
 import { JSX as JSX_2 } from 'react/jsx-runtime';
 import { LucideIcon } from 'lucide-react';
 
+/** Matches the `@mixin mobile` / `--admin-breakpoint-md` (768px) boundary. */
+export declare const ADMIN_MOBILE_QUERY = "(max-width: 767px)";
+
 export declare const AlertDialog: default_2.FC<AlertDialogProps>;
 
 declare interface AlertDialogProps {
@@ -45,6 +48,13 @@ export declare interface AppLayoutProps {
     /** Fixed width for the side nav column. Accepts any CSS width value (e.g. 240, '240px', '16rem'). */
     sideNavWidth?: number | string;
     panel?: default_2.ReactNode;
+    /**
+     * Controlled open state for the mobile side-nav drawer.
+     * Only used at mobile widths; ignored on desktop.
+     */
+    mobileNavOpen?: boolean;
+    /** Called when the mobile side-nav drawer should open or close. */
+    onMobileNavOpenChange?: (open: boolean) => void;
     className?: string;
 }
 
@@ -1116,6 +1126,8 @@ declare interface SidePanelProps {
     actions?: default_2.ReactNode;
     width?: 'sm' | 'md' | 'lg' | 'xl' | 's' | 'm' | 'l' | 'small' | 'medium' | 'large' | number;
     mode?: 'overlay' | 'push';
+    /** Which edge the overlay panel slides from. Defaults to `right`. Ignored in push mode. */
+    side?: 'left' | 'right';
     'data-testid'?: string;
 }
 
@@ -1433,6 +1445,8 @@ export declare interface TopNavDropdownItem {
 }
 
 declare interface TopNavProps {
+    /** Optional content rendered before the brand (e.g. a mobile menu button). */
+    leading?: default_2.ReactNode;
     /** Optional branding element rendered at the far left, before tabs. Clicking navigates home. */
     brand?: default_2.ReactNode;
     /** Called when the brand element is clicked. */
@@ -1470,5 +1484,11 @@ export declare interface TopNavTabData {
      */
     dropdownGroups?: TopNavDropdownGroup[];
 }
+
+/**
+ * Subscribe to a CSS media query. Returns whether it currently matches.
+ * SSR / non-browser environments return `false`.
+ */
+export declare function useMediaQuery(query: string): boolean;
 
 export { }

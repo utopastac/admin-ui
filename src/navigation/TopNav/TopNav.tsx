@@ -8,6 +8,8 @@ import { resolveSize } from '@/utils/resolveSize';
 export type TopNavSize = 'sm' | 'lg' | 's' | 'l' | 'small' | 'large';
 
 interface TopNavProps {
+  /** Optional content rendered before the brand (e.g. a mobile menu button). */
+  leading?: React.ReactNode;
   /** Optional branding element rendered at the far left, before tabs. Clicking navigates home. */
   brand?: React.ReactNode;
   /** Called when the brand element is clicked. */
@@ -54,6 +56,7 @@ interface TopNavProps {
  * ```
  */
 const TopNav: React.FC<TopNavProps> = ({
+  leading,
   brand,
   onBrandClick,
   tabs,
@@ -95,6 +98,7 @@ const TopNav: React.FC<TopNavProps> = ({
   return (
     <nav aria-label="Main navigation" className={`${styles.topNav} ${styles[resolvedSize]} ${className}`} data-testid="top-nav">
       <div className={styles.left}>
+        {leading && <div className={styles.leading}>{leading}</div>}
         {brand && (
           <button
             type="button"

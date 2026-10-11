@@ -8,6 +8,18 @@
  * Do not add utility classes here — see utilities.css for that.
  */
 
+/* ──────────────── RESPONSIVE ──────────────── */
+
+/*
+ * mobile — wrap rules that should only apply at phone/tablet widths.
+ * Matches ADMIN_MOBILE_QUERY / (max-width: 767px).
+ */
+@define-mixin mobile {
+  @media (max-width: 767px) {
+    @mixin-content;
+  }
+}
+
 /* ──────────────── FOCUS RINGS ──────────────── */
 
 /* Standard outset focus ring — use on most interactive elements */

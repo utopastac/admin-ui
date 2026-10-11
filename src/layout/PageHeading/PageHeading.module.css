@@ -4,6 +4,11 @@
   justify-content: space-between;
   gap: var(--admin-space-l);
   padding-bottom: var(--admin-space-xl);
+
+  @mixin mobile {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .content {
@@ -32,4 +37,8 @@
   align-items: center;
   gap: var(--admin-space-s);
   flex-shrink: 0;
+
+  @mixin mobile {
+    flex-wrap: wrap;
+  }
 }

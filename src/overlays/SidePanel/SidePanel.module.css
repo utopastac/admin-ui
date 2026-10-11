@@ -15,26 +15,42 @@
 .panel {
   position: fixed;
   top: 0;
-  right: 0;
   bottom: 0;
+  max-width: 100vw;
   background: var(--admin-panel-background);
-  border-left: 1px solid var(--admin-panel-border);
-  border-top-left-radius: var(--admin-radius-lg);
-  border-bottom-left-radius: var(--admin-radius-lg);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow: var(--admin-panel-shadow);
-  animation: sidepanel-slide-in 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 
-  &.closing {
-    animation: sidepanel-slide-out 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  &.right {
+    right: 0;
+    border-left: 1px solid var(--admin-panel-border);
+    border-top-left-radius: var(--admin-radius-lg);
+    border-bottom-left-radius: var(--admin-radius-lg);
+    animation: sidepanel-slide-in-right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+
+    &.closing {
+      animation: sidepanel-slide-out-right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
   }
 
-  &.sm { width: 280px; }
-  &.md { width: 320px; }
-  &.lg { width: 400px; }
-  &.xl { width: 540px; }
+  &.left {
+    left: 0;
+    border-right: 1px solid var(--admin-panel-border);
+    border-top-right-radius: var(--admin-radius-lg);
+    border-bottom-right-radius: var(--admin-radius-lg);
+    animation: sidepanel-slide-in-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+
+    &.closing {
+      animation: sidepanel-slide-out-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+  }
+
+  &.sm { width: min(280px, 100vw); }
+  &.md { width: min(320px, 100vw); }
+  &.lg { width: min(400px, 100vw); }
+  &.xl { width: min(540px, 100vw); }
 }
 
 .header {
@@ -98,6 +114,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  max-width: 100vw;
 }
 
 @keyframes sidepanel-backdrop-in {
@@ -110,14 +127,24 @@
   to { opacity: 0; }
 }
 
-@keyframes sidepanel-slide-in {
+@keyframes sidepanel-slide-in-right {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
 
-@keyframes sidepanel-slide-out {
+@keyframes sidepanel-slide-out-right {
   from { transform: translateX(0); }
   to { transform: translateX(100%); }
+}
+
+@keyframes sidepanel-slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes sidepanel-slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
 @keyframes sidepanel-push-in {

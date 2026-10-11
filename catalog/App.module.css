@@ -1,5 +1,18 @@
 .content {
   padding: var(--admin-space-xl);
+
+  @mixin mobile {
+    padding: var(--admin-space-m);
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--admin-space-xs);
+  font-size: var(--admin-font-size-s);
+  color: var(--admin-text-primary);
+  font-weight: var(--admin-font-weight-emphasis);
 }
 
 .themeSwatch {

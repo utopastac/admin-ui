@@ -91,15 +91,22 @@
 .rowDesc {
   @mixin type-body-s;
   color: var(--admin-text-primary);
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-width: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 
 .rowToken {
   @mixin type-mono-xs;
   color: var(--admin-text-subtle);
-  flex: 1 0 auto;
+  flex: 0 0 280px;
+  width: 280px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rowHex {
@@ -107,8 +114,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--admin-space-xs);
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 auto;
   margin-left: auto;
 
   & > button {

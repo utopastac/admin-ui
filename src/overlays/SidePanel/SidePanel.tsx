@@ -16,6 +16,8 @@ interface SidePanelProps {
   actions?: React.ReactNode;
   width?: 'sm' | 'md' | 'lg' | 'xl' | 's' | 'm' | 'l' | 'small' | 'medium' | 'large' | number;
   mode?: 'overlay' | 'push';
+  /** Which edge the overlay panel slides from. Defaults to `right`. Ignored in push mode. */
+  side?: 'left' | 'right';
   'data-testid'?: string;
 }
 
@@ -35,6 +37,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
   actions,
   width = 'md',
   mode = 'overlay',
+  side = 'right',
   'data-testid': dataTestId,
 }) => {
   const resolvedWidth = typeof width === 'string' ? resolveSize(width, 'md') : width;
@@ -42,6 +45,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
   const targetWidth = isPreset ? presetWidths[resolvedWidth] : resolvedWidth;
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
+  const sideClass = side === 'left' ? styles.left : styles.right;
 
   const [mounted, setMounted] = useState(isOpen);
   const [closing, setClosing] = useState(false);
@@ -150,7 +154,9 @@ const SidePanel: React.FC<SidePanelProps> = ({
   }
 
   // overlay mode (default)
-  const panelStyle = isPreset ? undefined : { width: resolvedWidth as number };
+  const panelStyle = isPreset
+    ? undefined
+    : { width: `min(${resolvedWidth as number}px, 100vw)` };
 
   return (
     <div
@@ -163,7 +169,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby={hasStringTitle ? titleId : undefined}
-        className={`${styles.panel} ${isPreset ? styles[resolvedWidth as string] : ''}${closing ? ` ${styles.closing}` : ''}`}
+        className={`${styles.panel} ${sideClass} ${isPreset ? styles[resolvedWidth as string] : ''}${closing ? ` ${styles.closing}` : ''}`}
         style={panelStyle}
         onAnimationEnd={handlePanelAnimationEnd}
         onClick={(e) => e.stopPropagation()}

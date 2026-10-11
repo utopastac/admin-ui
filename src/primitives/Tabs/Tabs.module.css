@@ -2,6 +2,17 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid var(--admin-border-subtle);
+  min-width: 0;
+
+  @mixin mobile {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   /* Size: md (default) */
   &.md .tab {

@@ -4,11 +4,12 @@ import { TopNav, SideNav } from '@/navigation';
 import { AppLayout } from '@/layout';
 import { ToolbarButton, Select, GlobalSearch } from '@/primitives';
 import type { SelectOption, GlobalSearchResultData } from '@/primitives';
+import { useMediaQuery, ADMIN_MOBILE_QUERY } from '@/hooks';
 import { useHashRoute, navigate } from './router';
 import { aboutSections, systemSections, componentTabs, buildNavTabs } from './data/navigation';
 import type { MainTab } from './data/navigation';
 import { demos } from './demos';
-import { Sun, Moon, Github } from 'lucide-react';
+import { AsteriskSquare, Sun, Moon, Github, Menu } from 'lucide-react';
 import styles from './App.module.css';
 
 interface ThemeSwatchData {
@@ -185,6 +186,8 @@ export default function App() {
   const [theme, setTheme] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeComponentTabId, setActiveComponentTabId] = useState('primitives');
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const isMobile = useMediaQuery(ADMIN_MOBILE_QUERY);
 
   useEffect(() => {
     if (tab !== 'components') return;
@@ -206,6 +209,10 @@ export default function App() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    if (!isMobile) setMobileNavOpen(false);
+  }, [isMobile]);
+
   const searchResults = useMemo((): GlobalSearchResultData[] => {
     if (!searchQuery.trim()) return [];
     const q = searchQuery.toLowerCase();
@@ -226,10 +233,23 @@ export default function App() {
 
   const navTabs = useMemo(() => buildNavTabs(navigate), []);
 
+  const closeMobileNav = () => setMobileNavOpen(false);
+
   const handleComponentTabSelect = (tabId: string) => {
     setActiveComponentTabId(tabId);
     const selectedTab = componentTabs.find((t) => t.id === tabId);
     if (selectedTab) navigate('components', selectedTab.sections[0].items[0].id);
+    if (isMobile) closeMobileNav();
+  };
+
+  const handleSideNavSelect = (id: string) => {
+    setPage(id);
+    if (isMobile) closeMobileNav();
+  };
+
+  const handleTopNavTabSelect = (id: string) => {
+    setTab(id);
+    if (isMobile) closeMobileNav();
   };
 
   const showSidebar = tab === 'about' || tab === 'system' || tab === 'components';
@@ -238,28 +258,36 @@ export default function App() {
 
   const topNav = (
     <TopNav
+      leading={
+        isMobile && showSidebar ? (
+          <ToolbarButton
+            icon={Menu}
+            aria-label="Open navigation"
+            onClick={() => setMobileNavOpen(true)}
+          />
+        ) : undefined
+      }
       brand={
-        <span style={{
-          fontSize: 'var(--admin-font-size-s)',
-          color: 'var(--admin-text-primary)',
-          fontWeight: 'var(--admin-font-weight-emphasis)',
-        }}>
+        <span className={styles.brand}>
+          <AsteriskSquare size={16} aria-hidden="true" />
           Admin UI
         </span>
       }
       onBrandClick={() => navigate('home', 'home')}
       tabs={navTabs}
       activeTabId={tab === 'home' ? '' : tab}
-      onTabSelect={setTab}
+      onTabSelect={handleTopNavTabSelect}
       search={
-        <GlobalSearch
-          query={searchQuery}
-          onQueryChange={setSearchQuery}
-          results={searchResults}
-          onSelect={handleSearchSelect}
-          placeholder="Search the catalog…"
-          emptyMessage="No matches"
-        />
+        isMobile ? undefined : (
+          <GlobalSearch
+            query={searchQuery}
+            onQueryChange={setSearchQuery}
+            results={searchResults}
+            onSelect={handleSearchSelect}
+            placeholder="Search the catalog…"
+            emptyMessage="No matches"
+          />
+        )
       }
       actions={
         <>
@@ -307,7 +335,7 @@ export default function App() {
         activeTabId={activeComponentTabId}
         onTabSelect={handleComponentTabSelect}
         activeId={page}
-        onSelect={setPage}
+        onSelect={handleSideNavSelect}
         collapsible={false}
         globalSearchable
         globalSearchPlaceholder="Search components…"
@@ -317,7 +345,7 @@ export default function App() {
       <SideNav
         sections={sideNavSections}
         activeId={page}
-        onSelect={setPage}
+        onSelect={handleSideNavSelect}
         collapsible={false}
         footer={githubFooter}
       />
@@ -325,7 +353,13 @@ export default function App() {
   ) : undefined;
 
   return (
-    <AppLayout topNav={topNav} sideNav={sideNav} sideNavWidth={360}>
+    <AppLayout
+      topNav={topNav}
+      sideNav={sideNav}
+      sideNavWidth={360}
+      mobileNavOpen={mobileNavOpen}
+      onMobileNavOpenChange={setMobileNavOpen}
+    >
       <div className={tab === 'home' ? undefined : styles.content}>
         {ActiveDemo && <ActiveDemo />}
       </div>

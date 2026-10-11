@@ -23,6 +23,10 @@
   height: calc(100vh - var(--admin-top-nav-height, 48px));
   flex-shrink: 0;
   overflow: hidden;
+
+  @mixin mobile {
+    display: none;
+  }
 }
 
 .content {

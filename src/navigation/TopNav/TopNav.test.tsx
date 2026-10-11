@@ -50,6 +50,23 @@ describe('TopNav', () => {
     expect(screen.getByText('MyApp')).toBeInTheDocument();
   });
 
+  it('renders leading content before the brand', () => {
+    render(
+      <TopNav
+        {...defaultProps}
+        leading={<button type="button">Menu</button>}
+        brand={<span>MyApp</span>}
+      />,
+    );
+    const nav = screen.getByTestId('top-nav');
+    const leading = screen.getByText('Menu');
+    const brand = screen.getByText('MyApp');
+    expect(nav.compareDocumentPosition(leading) & Node.DOCUMENT_POSITION_CONTAINED_BY).toBeTruthy();
+    expect(
+      leading.compareDocumentPosition(brand) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it('does not render brand element when not provided', () => {
     const { container } = render(<TopNav {...defaultProps} />);
     const brandButtons = container.querySelectorAll('[class*="brand"]');

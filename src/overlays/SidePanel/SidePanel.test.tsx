@@ -103,6 +103,19 @@ describe('SidePanel', () => {
     expect(panel?.className).toContain('md');
   });
 
+  it('defaults to the right side', () => {
+    const { container } = render(<SidePanel {...defaultProps} />);
+    const panel = container.querySelector('[class*="panel"]');
+    expect(panel?.className).toContain('right');
+  });
+
+  it('applies the left side class', () => {
+    const { container } = render(<SidePanel {...defaultProps} side="left" />);
+    const panel = container.querySelector('[class*="panel"]');
+    expect(panel?.className).toContain('left');
+    expect(panel?.className).not.toContain('right');
+  });
+
   describe('push mode', () => {
     it('renders panel content in push mode', () => {
       render(<SidePanel {...defaultProps} mode="push" />);
