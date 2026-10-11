@@ -6,6 +6,8 @@ import {
   Keyboard,
   Layers,
   PanelLeft,
+  Search,
+  Settings,
   SwatchBook,
   Terminal,
 } from 'lucide-react';
@@ -14,9 +16,13 @@ import { SectionHeading, CardGrid } from '@/layout';
 import { SideNav } from '@/navigation';
 import type { SideNavSectionData } from '@/navigation';
 import {
+  Avatar,
   Badge,
+  Banner,
   Button,
   Card,
+  Checkbox,
+  Chip,
   CodeBlock,
   ColorPicker,
   Command,
@@ -26,15 +32,25 @@ import {
   EditableText,
   GradientPicker,
   Input,
+  Kbd,
   PixelArtEditor,
+  ProgressBar,
+  ProgressCircular,
   RichTextEditor,
   SegmentedControl,
+  Select,
   ShadowEditor,
+  Skeleton,
+  Slider,
+  Spinner,
+  Tabs,
   Text,
   Toggle,
+  ToolbarButton,
   AnimationPicker,
 } from '@/primitives';
 import type { CommandGroup, DataGridColumn, PhoneShadow } from '@/primitives';
+import { sampleAvatars } from '../data/avatars';
 
 type IconComponent = React.ComponentType<{ size?: number }>;
 const asIcon = (icon: unknown) => icon as IconComponent;
@@ -588,6 +604,188 @@ function PixelPanel() {
   );
 }
 
+function GalleryTile({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  const open = () => navigate('components', id);
+
+  return (
+    <div
+      className={styles.galleryTile}
+      role="link"
+      tabIndex={0}
+      aria-label={`Open ${label}`}
+      onClick={open}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          open();
+        }
+      }}
+    >
+      <div className={styles.galleryDemo}>{children}</div>
+    </div>
+  );
+}
+
+function ComponentGallery() {
+  const [checked, setChecked] = useState(true);
+  const [enabled, setEnabled] = useState(true);
+  const [tab, setTab] = useState('overview');
+  const [plan, setPlan] = useState('pro');
+  const [view, setView] = useState('list');
+  const [volume, setVolume] = useState(62);
+  const [chipOn, setChipOn] = useState(true);
+  const avatar = sampleAvatars[0];
+
+  return (
+    <div className={styles.componentGrid}>
+      <GalleryTile id="button" label="Button">
+        <div className={styles.galleryRow}>
+          <Button size="sm">Primary</Button>
+          <Button size="sm" variant="secondary">Secondary</Button>
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="badge" label="Badge">
+        <div className={styles.galleryRow}>
+          <Badge variant="success" size="sm">Success</Badge>
+          <Badge variant="warning" size="sm">Warning</Badge>
+          <Badge variant="info" size="sm">Info</Badge>
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="chip" label="Chip">
+        <Chip
+          selected={chipOn}
+          onSelect={() => setChipOn((value) => !value)}
+          avatar={{ src: avatar.src, name: avatar.name }}
+        >
+          {avatar.name}
+        </Chip>
+      </GalleryTile>
+
+      <GalleryTile id="avatar" label="Avatar">
+        <div className={styles.galleryRow}>
+          <Avatar src={avatar.src} name={avatar.name} size="sm" />
+          <Avatar src={sampleAvatars[1].src} name={sampleAvatars[1].name} size="md" />
+          <Avatar src={sampleAvatars[2].src} name={sampleAvatars[2].name} size="lg" />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="toggle" label="Toggle">
+        <Toggle
+          label="Enabled"
+          checked={enabled}
+          onChange={setEnabled}
+          aria-label="Enabled"
+        />
+      </GalleryTile>
+
+      <GalleryTile id="checkbox" label="Checkbox">
+        <Checkbox
+          label="Notify me"
+          checked={checked}
+          onChange={setChecked}
+        />
+      </GalleryTile>
+
+      <GalleryTile id="segmented-control" label="SegmentedControl">
+        <SegmentedControl
+          size="sm"
+          value={view}
+          onChange={setView}
+          options={[
+            { value: 'list', label: 'List' },
+            { value: 'grid', label: 'Grid' },
+          ]}
+        />
+      </GalleryTile>
+
+      <GalleryTile id="tabs" label="Tabs">
+        <Tabs
+          size="sm"
+          activeId={tab}
+          onChange={setTab}
+          tabs={[
+            { id: 'overview', label: 'Overview' },
+            { id: 'activity', label: 'Activity' },
+          ]}
+        />
+      </GalleryTile>
+
+      <GalleryTile id="select" label="Select">
+        <Select
+          size="sm"
+          value={plan}
+          onChange={setPlan}
+          options={[
+            { value: 'free', label: 'Free' },
+            { value: 'pro', label: 'Pro' },
+            { value: 'team', label: 'Team' },
+          ]}
+        />
+      </GalleryTile>
+
+      <GalleryTile id="slider" label="Slider">
+        <div className={styles.galleryStretch}>
+          <Slider
+            value={volume}
+            onChange={(value) => setVolume(typeof value === 'number' ? value : value[0])}
+            aria-label="Volume"
+            size="sm"
+          />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="progress-bar" label="ProgressBar">
+        <div className={styles.galleryStretch}>
+          <ProgressBar value={72} size="sm" showValue />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="spinner" label="Spinner">
+        <div className={styles.galleryRow}>
+          <Spinner size="sm" />
+          <ProgressCircular value={64} size="sm" />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="kbd" label="Kbd">
+        <div className={styles.galleryRow}>
+          <Kbd>⌘</Kbd>
+          <Kbd>K</Kbd>
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="toolbar-button" label="ToolbarButton">
+        <div className={styles.galleryRow}>
+          <ToolbarButton icon={Search} aria-label="Search" />
+          <ToolbarButton icon={Settings} aria-label="Settings" selected />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="skeleton" label="Skeleton">
+        <div className={styles.galleryStretch}>
+          <Skeleton variant="text" />
+          <Skeleton variant="text" />
+          <Skeleton variant="rect" height={28} />
+        </div>
+      </GalleryTile>
+
+      <GalleryTile id="banner" label="Banner">
+        <Banner variant="info" message="Deploy finished without errors." />
+      </GalleryTile>
+    </div>
+  );
+}
+
 function ThemeTile({
   option,
   selected,
@@ -705,7 +903,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.alt}`}>
+      <section className={styles.band}>
         <div className={styles.inner}>
           <SectionHeading
             size="lg"
@@ -731,6 +929,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.band} aria-label="Component gallery">
+        <div className={styles.inner}>
+          <ComponentGallery />
+        </div>
+      </section>
+
       <section className={styles.band}>
         <div className={styles.inner}>
           <SectionHeading
@@ -742,7 +946,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.alt}`}>
+      <section className={styles.band}>
         <div className={styles.inner}>
           <SectionHeading
             size="lg"
@@ -769,7 +973,7 @@ import { Button, DataGrid, SideNav } from 'admin-ui';`}</CodeBlock>
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.alt}`}>
+      <section className={styles.band}>
         <div className={styles.inner}>
           <SectionHeading
             size="lg"

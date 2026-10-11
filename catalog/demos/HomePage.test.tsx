@@ -8,6 +8,7 @@ describe('HomePage', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Build admin tools with one stylesheet' })).toBeInTheDocument();
     expect(screen.getByText(/authored in react with opinionated defaults/i)).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Component gallery' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Advanced components' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Themes that compose' })).toBeInTheDocument();
   });
